@@ -39,6 +39,9 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    
+    NSLog(@"in initWithStyle method.");
+    
     self = [super initWithStyle:style];
     if (self) {
         
