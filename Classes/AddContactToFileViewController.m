@@ -35,6 +35,7 @@
     
     [self presentModalViewController:picker animated:YES];
     [picker release];
+    NSLog(@"this is my change");
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
