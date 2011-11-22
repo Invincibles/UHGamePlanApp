@@ -23,6 +23,9 @@
 -(void) selectAContactAction:(id)sender
 {
     NSLog(@"coming to select a contact...");
+    
+    NSLog(@"this is my change");
+    
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     picker.peoplePickerDelegate = self;
