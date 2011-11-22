@@ -22,7 +22,7 @@
 
 -(void) selectAContactAction:(id)sender
 {
-    NSLog(@"coming to select a contact...");
+    NSLog(@"coming to select a contact........");
     
     NSLog(@"this is my change");
     
