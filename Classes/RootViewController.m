@@ -6,6 +6,7 @@
 #import "EventManagerViewController.h"
 #import "ShareFilesViewController.h"
 #import "ManagedContactViewController.h"
+#import "HelpViewController.h"
 
 #import "FolderListViewController.h"
 
@@ -73,7 +74,7 @@
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     
     // Two sections, one for each detail view controller.
-    return 5;
+    return 6;
 }
 
 
@@ -121,6 +122,10 @@
             cell.titleLabel.text = @"My Map";
             cell.iconImage.image = [UIImage imageNamed:@"geotag.png"];
             break;
+        case 5:
+            cell.titleLabel.text = @"Help";
+            cell.iconImage.image = [UIImage imageNamed:@"help.png"];
+            break;
     }
     return cell;
 }
@@ -159,15 +164,18 @@
         folderList.fileView = newDetailViewController;
         [folderList release];
     }
-    
     if(row == 4){
-        
        SecondDetailViewController *newDetailViewController = [[SecondDetailViewController alloc] initWithNibName:@"SecondDetailView" bundle:nil];
         UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:newDetailViewController];
         nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
         detailViewController = nav;
-        
-        
+    }
+    if(row == 5){
+    
+        HelpViewController *newDetailViewController = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:[NSBundle mainBundle]];
+        //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newDetailViewController];
+        //nav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+        detailViewController = newDetailViewController;
         
     }
     // Update the split view controller's view controllers array.

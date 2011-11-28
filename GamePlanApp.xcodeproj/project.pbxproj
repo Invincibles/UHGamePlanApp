@@ -15,6 +15,10 @@
 		28AA66DB115C16800003B21C /* FirstDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA66D5115C16800003B21C /* FirstDetailViewController.m */; };
 		28AA66DC115C16800003B21C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA66D7115C16800003B21C /* RootViewController.m */; };
 		28AA66DD115C16800003B21C /* SecondDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA66D9115C16800003B21C /* SecondDetailViewController.m */; };
+		78050FF814833BFA00E376AD /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78050FF614833BFA00E376AD /* HelpViewController.m */; };
+		78050FF914833BFA00E376AD /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78050FF714833BFA00E376AD /* HelpViewController.xib */; };
+		78050FFC1483460D00E376AD /* userguide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 78050FFB1483460D00E376AD /* userguide.pdf */; };
+		78050FFE1483508C00E376AD /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 78050FFD1483508C00E376AD /* help.png */; };
 		7807DD951464736800FC78B9 /* GPEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7807DD941464736800FC78B9 /* GPEventViewController.m */; };
 		7807DDAA1464BDAA00FC78B9 /* back-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7807DDA91464BDAA00FC78B9 /* back-icon2.png */; };
 		782094D71464438B008F287B /* GeoTagScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782094D61464438B008F287B /* GeoTagScreenView.m */; };
@@ -121,6 +125,11 @@
 		28AA66D9115C16800003B21C /* SecondDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondDetailViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GamePlanApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlanApp_Prefix.pch; sourceTree = "<group>"; };
+		78050FF514833BFA00E376AD /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		78050FF614833BFA00E376AD /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		78050FF714833BFA00E376AD /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
+		78050FFB1483460D00E376AD /* userguide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = userguide.pdf; sourceTree = "<group>"; };
+		78050FFD1483508C00E376AD /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		7807DD931464736700FC78B9 /* GPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEventViewController.h; sourceTree = "<group>"; };
 		7807DD941464736800FC78B9 /* GPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEventViewController.m; sourceTree = "<group>"; };
 		7807DDA91464BDAA00FC78B9 /* back-icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon2.png"; sourceTree = "<group>"; };
@@ -304,6 +313,8 @@
 				28AA66D3115C16800003B21C /* AppDelegate.m */,
 				78AE36FE1466083000F83544 /* DescriptionVC.h */,
 				78AE36FF1466083000F83544 /* DescriptionVC.m */,
+				78050FF514833BFA00E376AD /* HelpViewController.h */,
+				78050FF614833BFA00E376AD /* HelpViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78050FF714833BFA00E376AD /* HelpViewController.xib */,
 				78BF7498146A3F9C00E51D82 /* FolderListViewController.xib */,
 				78BF74C2146A50F800E51D82 /* BluetoothViewController.xib */,
 				78BF74BD146A488700E51D82 /* ShareFilesViewController.xib */,
@@ -402,6 +414,7 @@
 		78EA289E146BB1BC00AD7412 /* New Images */ = {
 			isa = PBXGroup;
 			children = (
+				78050FFD1483508C00E376AD /* help.png */,
 				78EA28A0146BB1E800AD7412 /* Add-Contacts-11-10-11.png */,
 				78EA28A1146BB1E800AD7412 /* Calendar-11-10-11.png */,
 				78EA28A2146BB1E800AD7412 /* Contacts-11-10-11.png */,
@@ -490,6 +503,7 @@
 		E4CA049B14502B6200B45465 /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				78050FFB1483460D00E376AD /* userguide.pdf */,
 				E4CA0491145029A200B45465 /* test1.pdf */,
 				E4CA0492145029A200B45465 /* test2.pdf */,
 				E4CA0493145029A200B45465 /* test3.pdf */,
@@ -601,6 +615,9 @@
 				78EA28B5146BB1E800AD7412 /* Share-Files-11-10-11.png in Resources */,
 				78EA28B6146BB1E800AD7412 /* View-Calendar-11-10-11.png in Resources */,
 				78EA28B7146BB1E800AD7412 /* View-Edit-Contacts-11-10-11.png in Resources */,
+				78050FF914833BFA00E376AD /* HelpViewController.xib in Resources */,
+				78050FFC1483460D00E376AD /* userguide.pdf in Resources */,
+				78050FFE1483508C00E376AD /* help.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +661,7 @@
 				78BF74C1146A50EB00E51D82 /* BluetoothViewController.m in Sources */,
 				E495FD9D146B65EA004B3AD8 /* GPPersonViewController.m in Sources */,
 				E495FD9E146B65EA004B3AD8 /* AddContactToFileViewController.m in Sources */,
+				78050FF814833BFA00E376AD /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -142,7 +142,8 @@
  
     NSString *urlAdd = [[NSBundle mainBundle] pathForResource:self.filename ofType: @"pdf"];
     NSURL *ur = [NSURL fileURLWithPath:urlAdd]; 
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:ur]; [fileWebView loadRequest:requestObj];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:ur]; 
+    [fileWebView loadRequest:requestObj];
     
     
     
@@ -239,6 +240,7 @@
     nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
+    nav.view.superview.frame = CGRectMake(312, 242, 400, 211);
     [bluetoothVC release];
     
 }
