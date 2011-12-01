@@ -173,8 +173,6 @@
     if(row == 5){
     
         HelpViewController *newDetailViewController = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:[NSBundle mainBundle]];
-        //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newDetailViewController];
-        //nav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
         detailViewController = newDetailViewController;
         
     }
