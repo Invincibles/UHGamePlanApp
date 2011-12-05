@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "GeoTagScreenView.m"
-         timestampString = "344721687.002123"
+         timestampString = "344755621.81008"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "43"
+         endingLineNumber = "43"
          landmarkName = "-doneAction:"
          landmarkType = "5">
       </FileBreakpoint>

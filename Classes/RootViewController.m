@@ -169,7 +169,6 @@
         detailViewController = newDetailViewController;
     }
     if(row == 5){
-<<<<<<< HEAD
         
         NewHelpViewController *newHelpVC = [[NewHelpViewController alloc] initWithNibName:@"NewHelpViewController" bundle:nil];
         detailViewController = newHelpVC;
