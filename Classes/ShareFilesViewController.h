@@ -25,6 +25,8 @@
     NSMutableArray* arrayoffileicons;
     UIScrollView *scrollView;
     UIBarButtonItem *manageFolderBtn;
+    
+    int isLandscpae;
 }
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *manageFolderBtn;
 
@@ -38,6 +40,8 @@
 @property (nonatomic, retain) NSMutableArray* fileslist;
 //@property (nonatomic) int fileCount;
 @property (nonatomic, retain) NSMutableArray* arrayoffileicons;
+
+@property (nonatomic) int isLandscape;
 
 - (IBAction)previousButton:(id)sender;
 - (IBAction)nextButton:(id)sender;

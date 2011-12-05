@@ -25,8 +25,10 @@
     int fileID;
     BOOL ispotrait;
     CLLocationManager *lManager;
+    NSDate *openedDate;
 }
 //@property(nonatomic,retain)databaseManager *dbManager;
+@property(nonatomic,retain)NSDate* openedDate;
 @property(nonatomic, retain) GKSession *presentSession;
 @property(nonatomic, retain) GKPeerPickerController *picker;
 @property(nonatomic,retain)CLLocationManager *lManager;
@@ -40,4 +42,7 @@
 - (IBAction)shareButton:(id)sender;
 - (IBAction)contactButton:(id)sender;
 - (IBAction)noteButton:(id)sender;
+
+- (IBAction)historyButton:(id)sender;
+
 @end

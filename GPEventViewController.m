@@ -51,10 +51,17 @@
     }
      NSString* id =self.addVC.eventID;
     int fileid=self.addVC.delegate.fileVC.fileID;
+     NSDate *openeddate=self.addVC.delegate.fileVC.openedDate;
     NSLog(@"%d---gp fileid",fileid);
     NSDate *now = [NSDate date]; 
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into eventTable (eventid,fid,eventDate) values ('%@',%d,'%@')",id,fileid,now]];
     NSLog(@"%@", query);
+    
+    NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET eventid='%d' WHERE fid='%d' and openeddate='%@'",id,fileid,openeddate]];
+    
+    NSLog(@"%@", query);
+    NSLog(@"%@", query1);
+    BOOL suc1 = [dbManager.db executeUpdate:query1];
     BOOL suc = [dbManager.db executeUpdate:query];
     if(suc)
         NSLog(@"insert is successful.");
@@ -77,12 +84,42 @@
 
 -(void) viewDidLoad{
     
-   
-    
     [super viewDidLoad];
+    
+    databaseManager *dbManager=[[databaseManager alloc] init];
+    [dbManager updateNames];
+    dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
+    NSLog(@"path--- %@",dbManager.databasePath);
+    if(![dbManager.db open]){
+        NSLog(@"Could not open db.");
+        
+    }
+    else{
+        NSLog(@"database is open.");
+    }
+    
+    NSString* id =self.addVC.eventID;
+    int fileid=self.addVC.delegate.fileVC.fileID;
+   
+    NSLog(@"%d---gp fileid",fileid);
+    
     UIBarButtonItem* afBtn = [[UIBarButtonItem alloc] initWithTitle:@"Add To File" style:UIBarButtonItemStylePlain target:self action:@selector(addToFile:)];
     self.navigationItem.rightBarButtonItem = afBtn;
-    NSLog(@"coming to view did load...");
+    
+    NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select eventid from eventTable where eventid='%@' and fid='%d'",id,fileid]];
+    NSLog(@"%@", query);
+    
+    FMResultSet *rs=[dbManager.db executeQuery:query];
+    
+    if([rs next])
+        [afBtn setEnabled:NO];
+    else
+        [afBtn setEnabled:YES];
+    
+    [rs close];
+    [dbManager.db close];
+    [query release];
+    [afBtn release];
 }
 
 - (void)dealloc

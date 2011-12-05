@@ -192,6 +192,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     [super viewDidLoad];
 
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    
     self.title = @"Tagged Contacts";
     
     // Uncomment the following line to preserve selection between presentations.
@@ -264,6 +266,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     if(person1 != nil)
         name = (NSString*)ABRecordCopyCompositeName(person1);
     cell.textLabel.text = [NSString stringWithString:name];
+    cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
+    
     return cell;
 }
 

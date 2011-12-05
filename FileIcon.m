@@ -8,17 +8,48 @@
 
 #import "FileIcon.h"
 #import "FileViewController.h"
+#import "databaseManager.h"
+
 
 @implementation FileIcon
 
-@synthesize fileImage,fileNameLabel,fileButton,mydelegate,fileid;
+@synthesize fileImage,fileNameLabel,fileButton,mydelegate,fileid,openedDate;
 
 -(void) aMethod:(id)sender
 {
     NSLog(@"%@ is clicked. fid - %d",fileNameLabel.text,fileid);
     
+    // added for history
+     
+     databaseManager *dbManager=[[databaseManager alloc] init];
+     [dbManager updateNames];
+     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
+     NSLog(@"path ---- %@",dbManager.databasePath);
+     if(![dbManager.db open]){
+     NSLog(@"Could not open db.");
+     return;
+     }
+     else{
+     NSLog(@"database is open.");
+     }
+     openedDate = [NSDate date];
+    
+     //NSLog(@"%@",now);
+     
+     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into filehistory (fid,openeddate) values (%d,'%@')",fileid,openedDate]];
+     NSLog(@"%@", query);
+     BOOL suc = [dbManager.db executeUpdate:query];
+     if(suc)
+     NSLog(@"insert is successful.");
+     else
+     NSLog(@"insert failed.");
+     
+     [dbManager.db close];
+    
+    
     FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
     fvc.fileID = self.fileid;
+    fvc.openedDate=self.openedDate;
     NSArray *split = [fileNameLabel.text componentsSeparatedByString:@"."];
     fvc.filename=[split objectAtIndex:0];
     [mydelegate presentModalViewController:fvc animated:YES];

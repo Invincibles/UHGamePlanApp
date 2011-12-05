@@ -196,8 +196,36 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         else{
             NSLog(@"database is open.");
         }
+        NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select fid from filesystem where foldername='%@' and isfolder=0",[[folderList objectAtIndex:rownumber] foldername ]]];
+        NSLog(@"%@", query1);
+        FMResultSet *rs=[dbManager.db executeQuery:query1];
+        
+        while([rs next])
+        {
+         int fileID=[rs intForColumn:@"fid"]; 
+        NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+             BOOL suc = [dbManager.db executeUpdate:query];
+        NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where fid='%d'",fileID]];
+            NSLog(@"%@", query1);
+             BOOL suc1 = [dbManager.db executeUpdate:query1];
+            NSString* query2 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from geotagTable where fid='%d'",fileID]];
+            NSLog(@"%@", query2);
+             BOOL suc2 = [dbManager.db executeUpdate:query2];
+            NSString* query3 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filehistory where fid='%d'",fileID]];
+            NSLog(@"%@", query3);
+             BOOL suc3 = [dbManager.db executeUpdate:query3];
+            NSString* query4 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where fid='%d'",fileID]];
+            NSLog(@"%@", query4);
+             BOOL suc4 = [dbManager.db executeUpdate:query4];
+        }
+        
+        
         NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filesystem where foldername='%@'",[[folderList objectAtIndex:rownumber] foldername ]]];
         NSLog(@"%@", query);
+        
+        
+        
         BOOL suc = [dbManager.db executeUpdate:query];
         if(suc)
             NSLog(@"delete is successful.");
@@ -221,6 +249,9 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomUIAlert* myAlert = [[CustomUIAlert alloc] initWithTitle:@"Create Folder" message:@"Please Enter a Folder Name" delegate:self cancelButtonTitle:@"Cancel" okButtonTitle:@"Ok"];
     [myAlert show];
     [myAlert release];
+}
+
+- (IBAction)fileDownlaod:(id)sender {
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -324,6 +355,11 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
                 break;
         }
         */
+        
+        NSLog(@"in did select row at index : %d",indexPath.row);
+        
+        NSLog(@"Folder Name : %@",[NSString stringWithString:[[folderList objectAtIndex:indexPath.row] foldername]]);
+        
         fileView.foldername = [NSString stringWithString:[[folderList objectAtIndex:indexPath.row] foldername]];
         [fileView reloadFiles];
     }

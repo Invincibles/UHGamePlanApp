@@ -60,6 +60,8 @@
 {
     self.title = @"Events List";
     
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"File Events" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEventAction:)];
     UIBarButtonItem *addEventButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
                                        UIBarButtonSystemItemAdd target:self action:@selector(addEventAction:)];
@@ -71,7 +73,7 @@
 	
 	// Initialize an event store object with the init method. Initilize the array for events.
 	self.eventStore = [[EKEventStore alloc] init];
-    
+        
 	self.eventsList = [[NSMutableArray alloc] initWithArray:0];
 	
 	// Get the default calendar from store.
@@ -164,7 +166,7 @@
     static NSString *CellIdentifier = @"Cell";
 	
 	// Add disclosure triangle to cell
-	UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDisclosureIndicator;
+	//UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDisclosureIndicator;
     
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -173,10 +175,12 @@
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-	cell.accessoryType = editableCellAccessoryType;
+	//cell.accessoryType = editableCellAccessoryType;
     
 	// Get the event at the row selected and display it's title
 	cell.textLabel.text = [[self.eventsList objectAtIndex:indexPath.row] title];
+    
+    cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
     
 	return cell;
 }
@@ -246,7 +250,7 @@
     [self.navigationController pushViewController:eventViewController animated:YES];
     
     [eventViewController release];
-    
+        
 }
 
 
@@ -303,7 +307,7 @@
 	NSDate *startDate = [NSDate date];
 	
 	// endDate is 1 day = 60*60*24 seconds = 86400 seconds from startDate
-	NSDate *endDate = [NSDate distantFuture];
+	//NSDate *endDate = [NSDate distantFuture];
 	
 	// Create the predicate. Pass it the default calendar.
 	NSArray *calendarArray = [NSArray arrayWithObject:defaultCalendar];

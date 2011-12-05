@@ -24,7 +24,7 @@
 @synthesize toolbar;
 @synthesize Button;
 @synthesize numberOfFiles;
-@synthesize foldername,arrayoffileicons,fileslist;
+@synthesize foldername,arrayoffileicons,fileslist,isLandscape;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,37 +82,39 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
-{    
+{   
+    NSLog(@"in view did load");
     scrollView.backgroundColor = [UIColor grayColor];
     scrollView.scrollEnabled = YES;
     scrollView.contentSize = CGSizeMake(704, 1750);
     scrollView.clipsToBounds = YES;
     scrollView.delegate = self;
-    
-    UIImageView* myImageViewer;// = [[UIImageView alloc] init];
-    float y_cord=0;
-    for(int i=0;i<10;i++){
-        myImageViewer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"file-view-shelves_noicons.png"]];
-        myImageViewer.frame = CGRectMake(0, y_cord+i*175, 704, 175);
-        myImageViewer.center = CGPointMake(704/2, (y_cord+(i+1)*175)/2);
-        [scrollView addSubview:myImageViewer];
-        [myImageViewer release];
-        y_cord+=175;
-    }  
-    /*
-    toolbar = [[UIToolbar alloc] initWithFrame: CGRectMake( 0, 0, 700, 44)];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action: nil];
-    Button = [[UIBarButtonItem alloc] initWithTitle: @"Full Screen" style: UIBarButtonItemStyleDone target: self action: @selector(gotofullScreen)];
-    NSArray *buttonArray = [NSArray arrayWithObjects: flexibleSpace, Button, nil];
-    
-    [toolbar setItems: buttonArray];
-    
-    [Button release];
-    [flexibleSpace release];
-    
-    [self.view addSubview: toolbar];
-    toolbar.tintColor=navigationBar.tintColor;*/
         
+    UIImageView* myImageViewer;
+    float y_cord=0;
+    
+    NSLog(@"interface orientation = %d", isLandscape);
+        
+    if(isLandscape == 0){    
+        for(int i=0;i<10;i++){
+            myImageViewer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"file-view-shelves_noicons.png"]];
+            myImageViewer.frame = CGRectMake(0, y_cord+i*175, 704, 175);
+            myImageViewer.center = CGPointMake(704/2, (y_cord+(i+1)*175)/2);
+            [scrollView addSubview:myImageViewer];
+            [myImageViewer release];
+            y_cord+=175;
+        }  
+    }
+    else{
+        for(int i=0;i<11;i++){
+            myImageViewer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"file-view-shelves_noicons.png"]];
+            myImageViewer.frame = CGRectMake(0, y_cord+i*175, 775, 175);
+            myImageViewer.center = CGPointMake(775/2, (y_cord+(i+1)*175)/2);
+            [scrollView addSubview:myImageViewer];
+            [myImageViewer release];
+            y_cord+=175;
+        }
+    }
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -135,8 +137,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-	return YES;
+    isLandscape = (interfaceOrientation==3 || interfaceOrientation==4) ? 0 : 1;
+    [self viewDidLoad];
+    if(![foldername isEqualToString:@""])
+        [self reloadFiles];
+    return YES;
 }
 
 - (IBAction)previousButton:(id)sender {
@@ -191,9 +196,14 @@
 }
 
 -(void) reloadFiles{
-    self.manageFolderBtn.enabled = YES;
-    self.navigationBar.topItem.title = foldername;
-    NSLog(@"Folder Name : %@", foldername);
+    
+    NSLog(@"RELOAD FILES : %@",self.foldername);
+    
+    if(![foldername isEqualToString:@""]){
+        self.manageFolderBtn.enabled = YES;
+        self.navigationBar.topItem.title = foldername;
+        NSLog(@"Folder Name : %@", foldername);
+    }
     
     //remove all existing files n then add new ones
     for(FileIcon* obj in arrayoffileicons) [obj removeFromSuperview];

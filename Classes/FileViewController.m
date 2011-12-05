@@ -14,6 +14,8 @@
 #import "AddEventToFileViewController.h"
 #import "ViewFileEventsController.h"
 #import "AddContactToFileViewController.h"
+#import "FileHistoryTableViewController.h"
+#include "databaseManager.h"
 
 @implementation FileViewController
 //@synthesize dbManager;
@@ -21,7 +23,7 @@
 @synthesize fileWebView;
 @synthesize toolbar;
 @synthesize filename;
-@synthesize presentSession, picker,fileID;
+@synthesize presentSession, picker,fileID,openedDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -138,9 +140,10 @@
     
     fileWebView.scalesPageToFit=YES;
     
-   
+    NSLog(@"file name..%@",self.filename);
  
     NSString *urlAdd = [[NSBundle mainBundle] pathForResource:self.filename ofType: @"pdf"];
+    
     NSURL *ur = [NSURL fileURLWithPath:urlAdd]; 
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:ur]; 
     [fileWebView loadRequest:requestObj];
@@ -168,6 +171,28 @@
     seconds=decimal*3600 - minutes*60;
     //NSString *lon = [NSString stringWithFormat:@"%d %d %1.4f",degrees,minutes,seconds];
     NSString *lon = [[NSString alloc] initWithFormat:@"%g",newLocation.coordinate.longitude];
+    
+    databaseManager *dbManager=[[databaseManager alloc] init];
+    [dbManager updateNames];
+    dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
+    NSLog(@"path--- %@",dbManager.databasePath);
+    if(![dbManager.db open]){
+        NSLog(@"Could not open db.");
+        
+    }
+    else{
+        NSLog(@"database is open.");
+    }
+    
+    
+    NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select description from geotagTable where latitude='%@' and longitude='%@'",lat,lon]];
+    NSLog(@"%@", query);
+    //BOOL suc = [dbManager.db executeUpdate:query];
+    
+    FMResultSet *rs=[dbManager.db executeQuery:query];
+    
+  
+    
     [manager stopUpdatingLocation];
     
     GeoTagScreenView* myView = [[GeoTagScreenView alloc] initWithNibName:@"GeoTagScreenView" bundle:[NSBundle mainBundle]];
@@ -179,6 +204,12 @@
     [self presentModalViewController:myView.navigator animated:YES];
     [myView.myLatitude setText:lat];
     [myView.myLongitude setText:lon];
+    while([rs next]) {
+        NSString* description=[rs stringForColumn:@"description"];
+        myView.myTextView.text=description;
+    }
+    
+    
     
     
     
@@ -273,5 +304,18 @@
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
     [addText release];*/
+}
+
+- (IBAction)historyButton:(id)sender {
+   FileHistoryTableViewController *filehistory=[[FileHistoryTableViewController alloc] initWithNibName:@"FileHistoryTableViewController"bundle:[NSBundle mainBundle]];
+    filehistory.fileVC=self;
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:filehistory];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:nav animated:YES];
+    [filehistory release];
+    
+    
+    
 }
 @end

@@ -11,13 +11,15 @@
 
 #import "AppDelegate.h"
 
-@interface HelpViewController : UIViewController <SubstitutableDetailViewController>{
+@interface HelpViewController : UIViewController<SubstitutableDetailViewController>{
     UIWebView *myWebView;
     UINavigationBar *navigationBar;
-    UINavigationController *myNavigation;
+    UIBarButtonItem *fullScreenBtnOutlet;
 }
 
+- (IBAction)fullScreenBtn:(id)sender;
 @property (nonatomic, retain) IBOutlet UIWebView *myWebView;
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenBtnOutlet;
 
 @end

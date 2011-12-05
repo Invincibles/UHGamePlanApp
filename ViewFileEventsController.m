@@ -15,7 +15,7 @@
 
 @implementation ViewFileEventsController
 
-@synthesize eventsList, eventStore, defaultCalendar, myNavigationController, eventViewController,fileVC;
+@synthesize eventsList, eventStore, defaultCalendar, myNavigationController, eventViewController,fileVC, fileEventsList, fileEventStore;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +30,8 @@
 -(void)dealloc
 {
     [eventStore release];
+    [fileEventStore release];
+    [fileEventsList release];
     [eventsList release];
     [defaultCalendar release];
     [myNavigationController release];
@@ -61,6 +63,8 @@
     // Custom initialization
     self.title = @"File Events";
     
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEventAction:)];
     UIBarButtonItem *selectEventButton = [[UIBarButtonItem alloc] initWithTitle:@"Select Event" style:UIBarButtonItemStylePlain target:self action:@selector(selectEventAction:)];
     
@@ -73,7 +77,11 @@
     // Initialize an event store object with the init method. Initilize the array for events.
 	self.eventStore = [[EKEventStore alloc] init];
     
+    self.fileEventStore = [[EKEventStore alloc] init];
+    
 	self.eventsList = [[NSMutableArray alloc] initWithArray:0];
+    
+    self.fileEventsList = [[NSMutableArray alloc] initWithArray:0];
 	
 	// Get the default calendar from store.
 	self.defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
@@ -81,7 +89,11 @@
     //self.myNavigationController.delegate = self;
     
 	// Fetch today's event on selected calendar and put them into the eventsList array
+    [self.fileEventsList addObjectsFromArray:[self getEvents]];
+    
 	[self.eventsList addObjectsFromArray:[self getEventsOfFile]];
+    
+    
     
     //loop over with the number of eventID in the eventTable for the file and get those events into an an array in getEventOfFile method and then call that method above to copy that array values into eventsList
     /*
@@ -148,7 +160,7 @@
     static NSString *CellIdentifier = @"Cell";
 	
 	// Add disclosure triangle to cell
-	UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDisclosureIndicator;
+	//UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDetailDisclosureButton;
     
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -157,12 +169,14 @@
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-	cell.accessoryType = editableCellAccessoryType;
+	//cell.accessoryType = editableCellAccessoryType;
+    
     
 	// Get the event at the row selected and display it's title
   //  NSLog(@"%@ in cell",[[self.eventsList objectAtIndex:indexPath.row] title]);
 	cell.textLabel.text = [[self.eventsList objectAtIndex:indexPath.row] title];
-    
+    cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
+    //154,176,44
     return cell;
 }
 
@@ -281,6 +295,22 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
+-(NSArray *)getEvents{
+    
+	NSDate *startDate = [NSDate date];
+	
+	// endDate is 1 day = 60*60*24 seconds = 86400 seconds from startDate
+	NSDate *endDate = [NSDate distantFuture];
+	
+	// Create the predicate. Pass it the default calendar.
+	NSArray *calendarArray = [NSArray arrayWithObject:defaultCalendar];
+	NSPredicate *predicate = [self.eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:calendarArray]; 
+	
+	// Fetch all events that match the predicate.
+	NSArray *events = [self.fileEventStore eventsMatchingPredicate:predicate];
+    
+	return events;
+}
 
 
 -(NSMutableArray *)getEventsOfFile{
@@ -310,7 +340,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
    //should include file id in the querry below
-    
+    /*
     NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select count(*) as Count from eventTable where fid=%d",fileid]];
     NSLog(@"%@", query1);
     
@@ -321,17 +351,42 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
         rowcount=[rsCount intForColumn:@"Count"];
         NSLog(@"%d------rowcount",rowcount);  
     }
-    
-    
-    while([rs next]) {
+    */
+    rowcount = 0;
+    BOOL isPresent = FALSE;
+    while([rs next]) 
+    {
+        
         id=[rs stringForColumn:@"eventid"];
         NSLog(@"%@----->1",id);
-        EKEvent *event=[self.eventStore eventWithIdentifier:id];
-       // NSLog(@"%@ --- EVENT",event);
-        [events addObject:event];
-        
-  
-    }
+            
+        NSLog(@"count of total events - %d",[fileEventsList count]);
+            
+        for(EKEvent *myEvent in fileEventsList)
+        {
+            NSString *myEventID = [myEvent eventIdentifier];
+            NSLog(@"myEventID - %@",myEventID);
+            if([myEventID isEqualToString:id])
+            {
+                NSLog(@"myEvent eventIdentifier....%@",[myEvent eventIdentifier]);
+                isPresent = TRUE;
+                break;
+            }
+        }
+            
+        if(isPresent){
+            rowcount++;
+            EKEvent *event=[self.eventStore eventWithIdentifier:id];
+            [events addObject:event];
+        }
+        else{
+            NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where eventid = '%@' and fid = '%d'",id,fileid]];
+            NSLog(@"%@", query1);
+            BOOL suc2 = [dbManager.db executeUpdate:query1];
+        }
+        isPresent = FALSE;
+    }        
+    
     [dbManager.db close];
     
     [self.tableView reloadData];

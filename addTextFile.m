@@ -51,9 +51,15 @@
     NSLog(@"%@",now);
     description=textview.text;
     int fileid=self.delegate.fileVC.fileID;
+    NSDate *openedDate=self.delegate.fileVC.openedDate;
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into anotationTable (fid,description,annotationdate) values (%d,'%@','%@')",fileid,description,now]];
+    
+    NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET description='%@' WHERE fid='%d' and openeddate='%@'",description,fileid,openedDate]];
+    
     NSLog(@"%@", query);
+    NSLog(@"%@", query1);
     BOOL suc = [dbManager.db executeUpdate:query];
+    BOOL suc1 = [dbManager.db executeUpdate:query1];
     if(suc)
         NSLog(@"insert is successful.");
     else
@@ -85,10 +91,10 @@
 
 - (void)viewDidLoad
 {
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"done" style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
     self.title=@"Add Notes";
     self.navigationItem.rightBarButtonItem = doneButton;
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNote)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNote)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     [doneButton release];
     [super viewDidLoad];

@@ -31,7 +31,7 @@
         
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
         
-        self.navigationItem.rightBarButtonItem = cancelButton;
+        self.navigationItem.leftBarButtonItem = cancelButton;
         
         [cancelButton release];
         
@@ -67,6 +67,9 @@
 {
     [super viewDidLoad];
     self.title = @"File Picker";
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -130,6 +133,7 @@
     
     // Configure the cell...
     cell.textLabel.text = [filesList objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
     
     return cell;
 }

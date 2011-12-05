@@ -4,31 +4,20 @@
 #include "databaseManager.h"
 #import "FMResultSet.h"
 #import "FullMapViewController.h"
+#include "AnnotatedFilesTableViewController.h"
 
 @implementation SecondDetailViewController
+@synthesize fullScreenBtnOutlet;
+@synthesize navigationBar;
 
-@synthesize navigationBar,mapView,arrayOfLocations;
+@synthesize mapView,arrayOfLocations,annotatedFTVC,latitude,longitude,anotationDescription;
 
 #pragma mark -
 #pragma mark View lifecycle
 
--(void)fullView
-{
-    FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-    [self presentModalViewController:nav animated:YES];
-}
-
+ 
 -(void)viewDidLoad{
     
-    //UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(fullView)];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Full Screen" style:UIBarButtonItemStylePlain target:self action:@selector(fullView)];
-    
-    self.title=@"Map";
-    self.navigationItem.rightBarButtonItem = doneButton;
-    [doneButton release];
      arrayOfLocations = [[NSMutableArray alloc] initWithCapacity:1];
      CLLocationCoordinate2D location;
    
@@ -48,9 +37,11 @@
     int no=0;
     while([rs next]) {
         NSString* lat=[rs stringForColumn:@"latitude"];
+        
         [arrayOfLocations addObject:lat];
       
          NSString* lon=[rs stringForColumn:@"longitude"];
+        
         [arrayOfLocations addObject:lon];
        NSString* description=[rs stringForColumn:@"description"];
         [arrayOfLocations addObject:description];
@@ -64,10 +55,13 @@
     int pos=0;
     for(int i=0;i<no;i++){
         location.latitude = [[arrayOfLocations objectAtIndex:pos] doubleValue];
+        latitude=[arrayOfLocations objectAtIndex:pos];
         pos++;
         location.longitude = [[arrayOfLocations objectAtIndex:pos] doubleValue];
+        longitude=[arrayOfLocations objectAtIndex:pos];
         pos++;
         NSString *description = [arrayOfLocations objectAtIndex:pos] ;
+        anotationDescription=description;
         pos++;
         MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:description andCoordinate:location];
         [self.mapView addAnnotation:newAnnotation];
@@ -95,9 +89,11 @@
 
 
 -(void) viewDidUnload {
+    [self setNavigationBar:nil];
+    [self setFullScreenBtnOutlet:nil];
 	[super viewDidUnload];
 	
-	self.navigationBar = nil;
+	//self.navigationBar = nil;
 }
 
 #pragma mark -
@@ -115,23 +111,80 @@
 }
 
 
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    
+{
+    
+   
+    NSLog(@"while setting...%@",annotatedFTVC.latitude);
+     NSLog(@"while setting...%@",latitude);
+    
+    annotatedFTVC.longitude=longitude;
+    
+    MKPinAnnotationView* pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"identifier"];
+    pinView.animatesDrop=YES;
+    pinView.canShowCallout=YES;
+    pinView.pinColor=MKPinAnnotationColorGreen;
+    
+    UIButton* button=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [button setTitle:annotation.title forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(getInfo) forControlEvents:UIControlEventTouchUpInside];
+    pinView.rightCalloutAccessoryView=button;
+    
+    //UIImageView* iconView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"help.png"]];
+    //pinView.leftCalloutAccessoryView=iconView;
+    //[iconView release];
+    return pinView;
+    
+    
+}
+-(void)getInfo
+{
+    NSLog(@"animation clicked");
+    AnnotatedFilesTableViewController *annotatedFilesTVC=[[AnnotatedFilesTableViewController alloc] initWithNibName:@"AnnotatedFilesTableViewController"bundle:[NSBundle mainBundle]];
+    annotatedFilesTVC.detailMVC=self;
+    annotatedFilesTVC.latitude=latitude;
+    annotatedFilesTVC.longitude=longitude;
+    annotatedFilesTVC.geoDescription= anotationDescription;
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:annotatedFilesTVC];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:nav animated:YES];
+    [annotatedFilesTVC release];
+    
+}
+
 #pragma mark -
 #pragma mark Rotation support
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+    // Return YES for supported orientations
+    return YES;//((interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || 
+            //(interfaceOrientation == UIInterfaceOrientationLandscapeRight));
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    if(UIDeviceOrientationIsPortrait(toInterfaceOrientation))
+        [fullScreenBtnOutlet setEnabled:NO];
+    else
+        [fullScreenBtnOutlet setEnabled:YES];
+}
 
 #pragma mark -
 #pragma mark Memory management
 
 - (void)dealloc {
     [arrayOfLocations release];
-    //[mapView release];
     [navigationBar release];
+    [fullScreenBtnOutlet release];
     [super dealloc];
 }	
 
 
+- (IBAction)fullScreenBtn:(id)sender {
+    
+    FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    [self presentModalViewController:nav animated:YES];
+}
 @end

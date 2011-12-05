@@ -22,5 +22,6 @@
 
 -(void) loadFolderList;
 - (IBAction)createNewFolder:(id)sender;
+- (IBAction)fileDownlaod:(id)sender;
 
 @end

@@ -20,13 +20,17 @@
     if (self) {
         // Initialization code
         primaryLabel = [[UILabel alloc] init];
+        primaryLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
         primaryLabel.textAlignment = UITextAlignmentLeft;
         primaryLabel.font = [UIFont systemFontOfSize:14];
         
         secondaryLabel = [[UILabel alloc] init];
+        secondaryLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
         secondaryLabel.textAlignment = UITextAlignmentLeft;
         secondaryLabel.font = [UIFont systemFontOfSize:20];
         
+        primaryLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
+        secondaryLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
        
         [self.contentView addSubview:primaryLabel];
         [self.contentView addSubview:secondaryLabel];

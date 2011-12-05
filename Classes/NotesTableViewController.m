@@ -119,6 +119,8 @@
 {
         [super viewDidLoad];
     
+     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    
     arrayOfNotes = [[NSMutableArray alloc] init];
     [self loadAnnoataions];
        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
@@ -249,15 +251,15 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     static NSString *CellIdentifier = @"AnnotationCell";
     
-    UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDisclosureIndicator;
+   // UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDisclosureIndicator;
     
     CustomCell *cell = (CustomCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [[[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
-    
-    cell.selectionStyle = UITableViewCellEditingStyleNone;
-    cell.accessoryType = editableCellAccessoryType;
+
+//    cell.selectionStyle = UITableViewCellEditingStyleNone;
+//    cell.accessoryType = editableCellAccessoryType;
      
    
         if(arrayOfNotes.count!=0)
@@ -266,7 +268,6 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
             NSLog(@"%@-----array pos",[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 1)]);
             cell.primaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 2)] ;
         }
-    
     
     
     return cell;

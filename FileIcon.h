@@ -16,8 +16,10 @@
     UILabel* fileNameLabel;
     UIButton* fileButton;
     int fileid; //this is to be shared by fileviewcontroller
+    NSDate *openedDate;
 }
 
+@property (nonatomic, retain) NSDate* openedDate;
 @property (nonatomic, retain) UIImageView* fileImage;
 @property (nonatomic, retain) UILabel* fileNameLabel;
 @property (nonatomic, retain) UIButton* fileButton;

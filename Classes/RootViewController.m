@@ -7,6 +7,7 @@
 #import "ShareFilesViewController.h"
 #import "ManagedContactViewController.h"
 #import "HelpViewController.h"
+#import "NewHelpViewController.h"
 
 #import "FolderListViewController.h"
 
@@ -26,8 +27,6 @@
     
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     
-    
-    
     // Set the content size for the popover: there are just two rows in the table view, so set to rowHeight*2.
     self.contentSizeForViewInPopover = CGSizeMake(310.0, self.tableView.rowHeight*2.0);
 }
@@ -46,12 +45,12 @@
     return YES;
 }
 
-
 - (void)splitViewController:(UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController:(UIPopoverController*)pc {
     
     // Keep references to the popover controller and the popover button, and tell the detail view controller to show the button.
     barButtonItem.title = @"Game Plan";
     self.popoverController = pc;
+    [pc setPopoverContentSize:CGSizeMake(320, 300)];
     self.rootPopoverButtonItem = barButtonItem;
     UIViewController <SubstitutableDetailViewController> *detailViewController = [splitViewController.viewControllers objectAtIndex:1];
     [detailViewController showRootPopoverButtonItem:rootPopoverButtonItem];
@@ -166,16 +165,17 @@
     }
     if(row == 4){
        SecondDetailViewController *newDetailViewController = [[SecondDetailViewController alloc] initWithNibName:@"SecondDetailView" bundle:nil];
-        UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:newDetailViewController];
-        nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-        detailViewController = nav;
+      
+        detailViewController = newDetailViewController;
     }
     if(row == 5){
-    
-        HelpViewController *newDetailViewController = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:[NSBundle mainBundle]];
-        //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newDetailViewController];
-        //nav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+        
+        NewHelpViewController *newHelpVC = [[NewHelpViewController alloc] initWithNibName:@"NewHelpViewController" bundle:nil];
+        detailViewController = newHelpVC;
+    /*
+        HelpViewController *newDetailViewController = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
         detailViewController = newDetailViewController;
+     */
         
     }
     // Update the split view controller's view controllers array.
@@ -192,18 +192,7 @@
     if (rootPopoverButtonItem != nil) {
         [detailViewController showRootPopoverButtonItem:self.rootPopoverButtonItem];
     }
-     /*   
-        if(row == 4){
-            UIViewController* vc = [[UIViewController alloc] init];
-            MKMapView* mapView = [[MKMapView alloc] init];
-            vc.view = mapView;
-            [self presentModalViewController:vc animated:YES];
-            
-            [mapView release];
-            [vc release];
-        }
-      */
-         
+        
     [detailViewController release];
     }
 }

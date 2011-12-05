@@ -37,9 +37,21 @@
     }
     
     int fileid=self.fileVC.fileID;
-    NSString* dt = [[NSString alloc] initWithString: @"11/11/2"];
+    NSDate* openedDate=self.fileVC.openedDate;
+      NSDate* dt=[NSDate date];
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into geotagTable (fid,latitude,longitude,description,geotagDate) values (%d,'%@','%@','%@','%@')",fileid,myLatitude.text,myLongitude.text,myTextView.text,dt]];
-    NSLog(@"%@",query);
+    
+    
+    
+    
+    
+    NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET geodescription='%@' WHERE fid='%d' and openeddate='%@'",myTextView.text,fileid,openedDate]];
+    
+    NSLog(@"%@", query);
+    NSLog(@"%@", query1);
+    BOOL suc1 = [dbManager.db executeUpdate:query1];
+    
+  
     BOOL suc = [dbManager.db executeUpdate:query];
     if(suc)
         NSLog(@"insert is successful.");
@@ -61,8 +73,8 @@
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneAction:)];
         
-        self.navigationItem.rightBarButtonItem = cancelButton;
-        self.navigationItem.leftBarButtonItem = doneButton;
+        self.navigationItem.rightBarButtonItem = doneButton;
+        self.navigationItem.leftBarButtonItem = cancelButton;
         
         [cancelButton release];
         [doneButton release];
@@ -91,6 +103,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -105,6 +118,7 @@
     [self setMyLatitude:nil];
     [self setMyLongitude:nil];
     [self setMyTextView:nil];
+    //[self setExampleTF:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

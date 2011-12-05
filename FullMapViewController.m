@@ -11,11 +11,13 @@
 #include "databaseManager.h"
 #import "FMResultSet.h"
 #import "FullMapViewController.h"
+#import "AnnotatedFilesTableViewController.h"
 
 @implementation FullMapViewController
-
+@synthesize anotationDescription;
 @synthesize arrayOfLocations;
-@synthesize mapView;
+@synthesize mapView,annotatedFTVC,pinView,latitude,longitude;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,10 +70,12 @@
     int no=0;
     while([rs next]) {
         NSString* lat=[rs stringForColumn:@"latitude"];
+        NSLog(@"%@...lat",lat);
         [arrayOfLocations addObject:lat];
         
         NSString* lon=[rs stringForColumn:@"longitude"];
         [arrayOfLocations addObject:lon];
+        NSLog(@"%@...lat",lon);
         NSString* description=[rs stringForColumn:@"description"];
         [arrayOfLocations addObject:description];
         NSLog(@"%@",lat);
@@ -83,11 +87,19 @@
     }
     int pos=0;
     for(int i=0;i<no;i++){
-        location.latitude = [[arrayOfLocations objectAtIndex:pos] doubleValue];
+          location.latitude = [[arrayOfLocations objectAtIndex:pos] doubleValue];
+          latitude=[arrayOfLocations objectAtIndex:pos];
         pos++;
-        location.longitude = [[arrayOfLocations objectAtIndex:pos] doubleValue];
+      location.longitude = [[arrayOfLocations objectAtIndex:pos] doubleValue];
+        
+        longitude=[arrayOfLocations objectAtIndex:pos];
         pos++;
         NSString *description = [arrayOfLocations objectAtIndex:pos] ;
+        anotationDescription=description;
+        
+      
+        
+        
         pos++;
         MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:description andCoordinate:location];
         [self.mapView addAnnotation:newAnnotation];
@@ -101,6 +113,47 @@
     
     [super viewDidLoad];
 }
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    
+{
+    annotatedFTVC=[[AnnotatedFilesTableViewController alloc]init];
+    annotatedFTVC.longitude=longitude;
+    annotatedFTVC.latitude=latitude;
+    pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"identifier"];
+    pinView.animatesDrop=YES;
+    pinView.canShowCallout=YES;
+    pinView.pinColor=MKPinAnnotationColorGreen;
+    UIButton* button=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [button setTitle:annotation.title forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(getInfo) forControlEvents:UIControlEventTouchUpInside];
+    pinView.rightCalloutAccessoryView=button;
+    
+    //UIImageView* iconView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"help.png"]];
+    //pinView.leftCalloutAccessoryView=iconView;
+    //[iconView release];
+    return pinView;
+                           
+     
+}
+-(void)getInfo
+{
+    NSLog(@"animation clicked");
+   AnnotatedFilesTableViewController *annotatedFilesTVC=[[AnnotatedFilesTableViewController alloc] initWithNibName:@"AnnotatedFilesTableViewController"bundle:[NSBundle mainBundle]];
+   annotatedFilesTVC.fullMapVC=self;
+    annotatedFilesTVC.geoDescription= anotationDescription;
+    annotatedFilesTVC.latitude=latitude;
+    annotatedFilesTVC.longitude=longitude;
+    
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:annotatedFilesTVC];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+   // pinView = annotatedFilesTVC.view;
+    [self presentModalViewController:nav animated:YES];
+    //[self.navigationController pushViewController:annotatedFilesTVC animated:YES];
+    [annotatedFilesTVC release]; 
+    
+}
+
 
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 {
@@ -119,13 +172,15 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-	return YES;
+    return YES;//((interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || 
+//            (interfaceOrientation == UIInterfaceOrientationLandscapeRight));
 }
 
 - (void)dealloc {
+    [pinView release];
     [mapView release];
     [super dealloc];
 }
