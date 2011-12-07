@@ -168,6 +168,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.text =[arrayOfFiles objectAtIndex:(2*(indexPath.row)+1)];
     

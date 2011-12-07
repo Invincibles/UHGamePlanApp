@@ -17,7 +17,6 @@
 		28AA66DD115C16800003B21C /* SecondDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA66D9115C16800003B21C /* SecondDetailViewController.m */; };
 		78050FF914833BFA00E376AD /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78050FF714833BFA00E376AD /* HelpViewController.xib */; };
 		78050FFC1483460D00E376AD /* userguide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 78050FFB1483460D00E376AD /* userguide.pdf */; };
-		78050FFE1483508C00E376AD /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 78050FFD1483508C00E376AD /* help.png */; };
 		7807DD951464736800FC78B9 /* GPEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7807DD941464736800FC78B9 /* GPEventViewController.m */; };
 		7807DDAA1464BDAA00FC78B9 /* back-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7807DDA91464BDAA00FC78B9 /* back-icon2.png */; };
 		782094D71464438B008F287B /* GeoTagScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782094D61464438B008F287B /* GeoTagScreenView.m */; };
@@ -26,6 +25,9 @@
 		785AC56514678CA700558DEF /* AddEventToFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785AC56314678CA700558DEF /* AddEventToFileViewController.xib */; };
 		785AC5711467999B00558DEF /* ViewFileEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56F1467999B00558DEF /* ViewFileEventsController.m */; };
 		785AC5721467999B00558DEF /* ViewFileEventsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785AC5701467999B00558DEF /* ViewFileEventsController.xib */; };
+		7891663A148EC277004B5C0D /* Calendar-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78916639148EC277004B5C0D /* Calendar-Tab-Bar.png */; };
+		7891663C148ED305004B5C0D /* help_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7891663B148ED305004B5C0D /* help_3.png */; };
+		7891663E148ED377004B5C0D /* watermark_logo_120611.png in Resources */ = {isa = PBXBuildFile; fileRef = 7891663D148ED377004B5C0D /* watermark_logo_120611.png */; };
 		78A306BC14502F0500C837B4 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A306BB14502F0500C837B4 /* AddressBookUI.framework */; };
 		78AE37011466083000F83544 /* DescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AE36FF1466083000F83544 /* DescriptionVC.m */; };
 		78AE37021466083000F83544 /* DescriptionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AE37001466083000F83544 /* DescriptionVC.xib */; };
@@ -44,11 +46,19 @@
 		78BF74C1146A50EB00E51D82 /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74C0146A50E900E51D82 /* BluetoothViewController.m */; };
 		78BF74C3146A50F900E51D82 /* BluetoothViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BF74C2146A50F800E51D82 /* BluetoothViewController.xib */; };
 		78C4CCEA145CDB9300C5C5E3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C4CCE9145CDB9300C5C5E3 /* GameKit.framework */; };
+		78C67CE6148EBE8700708703 /* Contacts-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CDD148EBE8700708703 /* Contacts-Tab-Bar.png */; };
+		78C67CE7148EBE8700708703 /* Download-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CDE148EBE8700708703 /* Download-Tab-Bar.png */; };
+		78C67CE8148EBE8700708703 /* Geo-tag-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CDF148EBE8700708703 /* Geo-tag-Tab-Bar.png */; };
+		78C67CE9148EBE8700708703 /* Globe-Icon-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CE0148EBE8700708703 /* Globe-Icon-Gray.png */; };
+		78C67CEA148EBE8700708703 /* Globe-Icon-Purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CE1148EBE8700708703 /* Globe-Icon-Purple.png */; };
+		78C67CEB148EBE8700708703 /* History-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CE2148EBE8700708703 /* History-Tab-Bar.png */; };
+		78C67CEC148EBE8700708703 /* Share-Files-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CE3148EBE8700708703 /* Share-Files-Tab-Bar.png */; };
+		78C67CED148EBE8700708703 /* View-Contacts-12-6-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CE4148EBE8700708703 /* View-Contacts-12-6-11.png */; };
+		78C67CF8148EBE9800708703 /* fullscreen_2_120611.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CEF148EBE9800708703 /* fullscreen_2_120611.png */; };
+		78C67CFC148EBE9800708703 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CF3148EBE9800708703 /* logo.png */; };
+		78C67CFF148EBE9800708703 /* watermark_120611.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C67CF6148EBE9800708703 /* watermark_120611.png */; };
 		78D3B3D714588396001A2C78 /* Edit-Contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3B3D514588396001A2C78 /* Edit-Contacts-icon.png */; };
 		78D3B3D814588396001A2C78 /* View-Contacts-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3B3D614588396001A2C78 /* View-Contacts-icon.png */; };
-		78D3B3F21458B052001A2C78 /* Add-Calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3B3EF1458B051001A2C78 /* Add-Calendar-icon.png */; };
-		78D3B3F31458B052001A2C78 /* Edit-Calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3B3F01458B051001A2C78 /* Edit-Calendar-icon.png */; };
-		78D3B3F41458B052001A2C78 /* View-Calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3B3F11458B051001A2C78 /* View-Calendar-icon.png */; };
 		78D3B3FE1458C688001A2C78 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D3B3FD1458C688001A2C78 /* MapKit.framework */; };
 		78D3B4011458CA8A001A2C78 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D3B4001458CA8A001A2C78 /* CoreLocation.framework */; };
 		78D3B40A1458E7CA001A2C78 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D3B4091458E7CA001A2C78 /* MapAnnotation.m */; };
@@ -67,17 +77,9 @@
 		78E7A89D1465E40D005D7F34 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7A89C1465E40D005D7F34 /* AddressBook.framework */; };
 		78E7A8B41465F7C1005D7F34 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E7A8B31465F7C0005D7F34 /* CustomCell.m */; };
 		78EA28AC146BB1E800AD7412 /* Add-Contacts-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A0146BB1E800AD7412 /* Add-Contacts-11-10-11.png */; };
-		78EA28AD146BB1E800AD7412 /* Calendar-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A1146BB1E800AD7412 /* Calendar-11-10-11.png */; };
-		78EA28AE146BB1E800AD7412 /* Contacts-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A2146BB1E800AD7412 /* Contacts-11-10-11.png */; };
-		78EA28AF146BB1E800AD7412 /* Delete-Contacts-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A3146BB1E800AD7412 /* Delete-Contacts-11-10-11.png */; };
 		78EA28B0146BB1E800AD7412 /* Event-Manager-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A4146BB1E800AD7412 /* Event-Manager-11-10-11.png */; };
 		78EA28B1146BB1E800AD7412 /* Geotag-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A5146BB1E800AD7412 /* Geotag-11-10-11.png */; };
 		78EA28B2146BB1E800AD7412 /* Manage-Contacts-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A6146BB1E800AD7412 /* Manage-Contacts-11-10-11.png */; };
-		78EA28B3146BB1E800AD7412 /* Manage-Folder-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A7146BB1E800AD7412 /* Manage-Folder-11-10-11.png */; };
-		78EA28B4146BB1E800AD7412 /* New-Folder-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A8146BB1E800AD7412 /* New-Folder-11-10-11.png */; };
-		78EA28B5146BB1E800AD7412 /* Share-Files-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28A9146BB1E800AD7412 /* Share-Files-11-10-11.png */; };
-		78EA28B6146BB1E800AD7412 /* View-Calendar-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28AA146BB1E800AD7412 /* View-Calendar-11-10-11.png */; };
-		78EA28B7146BB1E800AD7412 /* View-Edit-Contacts-11-10-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EA28AB146BB1E800AD7412 /* View-Edit-Contacts-11-10-11.png */; };
 		78F172FF1467512B00651A54 /* FullMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F172FD1467512A00651A54 /* FullMapViewController.m */; };
 		78F173001467512B00651A54 /* FullMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F172FE1467512A00651A54 /* FullMapViewController.xib */; };
 		78F6750E146330AF0026DE32 /* addTextFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F6750C146330AF0026DE32 /* addTextFile.m */; };
@@ -89,7 +91,6 @@
 		E4314A8B144FAA3400572B33 /* EventManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4314A89144FAA3400572B33 /* EventManagerViewController.xib */; };
 		E4314A95144FB29A00572B33 /* ManagedContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4314A93144FB29900572B33 /* ManagedContactViewController.m */; };
 		E4314A96144FB29A00572B33 /* ManagedContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4314A94144FB29900572B33 /* ManagedContactViewController.xib */; };
-		E4314A99144FBD5300572B33 /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314A98144FBD5300572B33 /* watermark.png */; };
 		E4314A9D144FC87D00572B33 /* RootViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4314A9C144FC87D00572B33 /* RootViewTableCell.m */; };
 		E4314AA7144FD19900572B33 /* celltexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314AA6144FD19900572B33 /* celltexture.png */; };
 		E4314AAD144FDE2F00572B33 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314AA9144FDE2F00572B33 /* calendar.png */; };
@@ -97,7 +98,6 @@
 		E4314AAF144FDE2F00572B33 /* geotag.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314AAB144FDE2F00572B33 /* geotag.png */; };
 		E4314AB0144FDE2F00572B33 /* sharefile.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314AAC144FDE2F00572B33 /* sharefile.png */; };
 		E4314ABC144FE6B200572B33 /* Add-Contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314AB9144FE6B200572B33 /* Add-Contacts.png */; };
-		E4314AC0144FE92F00572B33 /* file-view-shelves_withicon_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E4314ABF144FE92E00572B33 /* file-view-shelves_withicon_arrow.png */; };
 		E45FF66E14633C50003241CD /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E45FF66D14633C50003241CD /* FMDatabase.m */; };
 		E45FF67A14633D31003241CD /* databaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E45FF67914633D31003241CD /* databaseManager.m */; };
 		E46F25BF146211FE00C0E14F /* MyEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E46F25BE146211FE00C0E14F /* MyEventManager.m */; };
@@ -106,7 +106,6 @@
 		E495FD9D146B65EA004B3AD8 /* GPPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E495FD9A146B65EA004B3AD8 /* GPPersonViewController.m */; };
 		E495FD9E146B65EA004B3AD8 /* AddContactToFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E495FD9C146B65EA004B3AD8 /* AddContactToFileViewController.m */; };
 		E495FDA0146B67AC004B3AD8 /* new_addnote_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E495FD9F146B67AC004B3AD8 /* new_addnote_small_icon.png */; };
-		E495FDA4146B70A1004B3AD8 /* fs.png in Resources */ = {isa = PBXBuildFile; fileRef = E495FDA3146B70A1004B3AD8 /* fs.png */; };
 		E4AF57751463612D005D1775 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AF57741463612D005D1775 /* FMResultSet.m */; };
 		E4AF577814636192005D1775 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AF577714636192005D1775 /* libsqlite3.dylib */; };
 		E4CA0462144FF0AA00B45465 /* file-view-shelves_noicons.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CA0461144FF0AA00B45465 /* file-view-shelves_noicons.png */; };
@@ -129,31 +128,33 @@
 		28AA66D5115C16800003B21C /* FirstDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDetailViewController.m; sourceTree = "<group>"; };
 		28AA66D6115C16800003B21C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		28AA66D7115C16800003B21C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		28AA66D8115C16800003B21C /* SecondDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondDetailViewController.h; sourceTree = "<group>"; };
-		28AA66D9115C16800003B21C /* SecondDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondDetailViewController.m; sourceTree = "<group>"; };
+		28AA66D8115C16800003B21C /* SecondDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondDetailViewController.h; path = Classes/SecondDetailViewController.h; sourceTree = "<group>"; };
+		28AA66D9115C16800003B21C /* SecondDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondDetailViewController.m; path = Classes/SecondDetailViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GamePlanApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlanApp_Prefix.pch; sourceTree = "<group>"; };
 		78050FF714833BFA00E376AD /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = Classes/HelpViewController.xib; sourceTree = "<group>"; };
 		78050FFB1483460D00E376AD /* userguide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = userguide.pdf; sourceTree = "<group>"; };
-		78050FFD1483508C00E376AD /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		7807DD931464736700FC78B9 /* GPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPEventViewController.h; sourceTree = "<group>"; };
 		7807DD941464736800FC78B9 /* GPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPEventViewController.m; sourceTree = "<group>"; };
 		7807DDA91464BDAA00FC78B9 /* back-icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon2.png"; sourceTree = "<group>"; };
 		782094D61464438B008F287B /* GeoTagScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTagScreenView.m; sourceTree = "<group>"; };
 		782094D9146443A1008F287B /* GeoTagScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeoTagScreenView.xib; sourceTree = "<group>"; };
 		782094DA146443A1008F287B /* GeoTagScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTagScreenView.h; sourceTree = "<group>"; };
-		785AC56114678CA700558DEF /* AddEventToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddEventToFileViewController.h; path = ../AddEventToFileViewController.h; sourceTree = "<group>"; };
-		785AC56214678CA700558DEF /* AddEventToFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddEventToFileViewController.m; path = ../AddEventToFileViewController.m; sourceTree = "<group>"; };
+		785AC56114678CA700558DEF /* AddEventToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventToFileViewController.h; sourceTree = "<group>"; };
+		785AC56214678CA700558DEF /* AddEventToFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventToFileViewController.m; sourceTree = "<group>"; };
 		785AC56314678CA700558DEF /* AddEventToFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventToFileViewController.xib; sourceTree = "<group>"; };
-		785AC56E1467999B00558DEF /* ViewFileEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewFileEventsController.h; path = ../ViewFileEventsController.h; sourceTree = "<group>"; };
-		785AC56F1467999B00558DEF /* ViewFileEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewFileEventsController.m; path = ../ViewFileEventsController.m; sourceTree = "<group>"; };
+		785AC56E1467999B00558DEF /* ViewFileEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFileEventsController.h; sourceTree = "<group>"; };
+		785AC56F1467999B00558DEF /* ViewFileEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFileEventsController.m; sourceTree = "<group>"; };
 		785AC5701467999B00558DEF /* ViewFileEventsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewFileEventsController.xib; sourceTree = "<group>"; };
+		78916639148EC277004B5C0D /* Calendar-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-Tab-Bar.png"; sourceTree = "<group>"; };
+		7891663B148ED305004B5C0D /* help_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help_3.png; path = ../help_3.png; sourceTree = "<group>"; };
+		7891663D148ED377004B5C0D /* watermark_logo_120611.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark_logo_120611.png; sourceTree = "<group>"; };
 		78A306BB14502F0500C837B4 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		78AE36FE1466083000F83544 /* DescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionVC.h; sourceTree = "<group>"; };
-		78AE36FF1466083000F83544 /* DescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionVC.m; sourceTree = "<group>"; };
+		78AE36FE1466083000F83544 /* DescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptionVC.h; path = Classes/DescriptionVC.h; sourceTree = "<group>"; };
+		78AE36FF1466083000F83544 /* DescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescriptionVC.m; path = Classes/DescriptionVC.m; sourceTree = "<group>"; };
 		78AE37001466083000F83544 /* DescriptionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionVC.xib; path = Classes/DescriptionVC.xib; sourceTree = "<group>"; };
-		78BF7496146A3F9B00E51D82 /* FolderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderListViewController.h; sourceTree = "<group>"; };
-		78BF7497146A3F9B00E51D82 /* FolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderListViewController.m; sourceTree = "<group>"; };
+		78BF7496146A3F9B00E51D82 /* FolderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderListViewController.h; path = Classes/FolderListViewController.h; sourceTree = "<group>"; };
+		78BF7497146A3F9B00E51D82 /* FolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderListViewController.m; path = Classes/FolderListViewController.m; sourceTree = "<group>"; };
 		78BF7498146A3F9C00E51D82 /* FolderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FolderListViewController.xib; path = Classes/FolderListViewController.xib; sourceTree = "<group>"; };
 		78BF749F146A402300E51D82 /* CustomUIAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIAlert.h; sourceTree = "<group>"; };
 		78BF74A0146A402300E51D82 /* CustomUIAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIAlert.m; sourceTree = "<group>"; };
@@ -168,80 +169,78 @@
 		78BF74AE146A40E800E51D82 /* MyFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFileViewController.m; sourceTree = "<group>"; };
 		78BF74B6146A44D300E51D82 /* file-view-icon-witharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-view-icon-witharrow.png"; sourceTree = "<group>"; };
 		78BF74B8146A45C800E51D82 /* folder_icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_icon_small.png; sourceTree = "<group>"; };
-		78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFilesViewController.h; sourceTree = "<group>"; };
-		78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFilesViewController.m; sourceTree = "<group>"; };
+		78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareFilesViewController.h; path = Classes/ShareFilesViewController.h; sourceTree = "<group>"; };
+		78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareFilesViewController.m; path = Classes/ShareFilesViewController.m; sourceTree = "<group>"; };
 		78BF74BD146A488700E51D82 /* ShareFilesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareFilesViewController.xib; sourceTree = "<group>"; };
-		78BF74BF146A50E700E51D82 /* BluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothViewController.h; sourceTree = "<group>"; };
-		78BF74C0146A50E900E51D82 /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothViewController.m; sourceTree = "<group>"; };
+		78BF74BF146A50E700E51D82 /* BluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothViewController.h; path = Classes/BluetoothViewController.h; sourceTree = "<group>"; };
+		78BF74C0146A50E900E51D82 /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothViewController.m; path = Classes/BluetoothViewController.m; sourceTree = "<group>"; };
 		78BF74C2146A50F800E51D82 /* BluetoothViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BluetoothViewController.xib; path = Classes/BluetoothViewController.xib; sourceTree = "<group>"; };
 		78C4CCE9145CDB9300C5C5E3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		78C67CDD148EBE8700708703 /* Contacts-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contacts-Tab-Bar.png"; sourceTree = "<group>"; };
+		78C67CDE148EBE8700708703 /* Download-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download-Tab-Bar.png"; sourceTree = "<group>"; };
+		78C67CDF148EBE8700708703 /* Geo-tag-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Geo-tag-Tab-Bar.png"; sourceTree = "<group>"; };
+		78C67CE0148EBE8700708703 /* Globe-Icon-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Globe-Icon-Gray.png"; sourceTree = "<group>"; };
+		78C67CE1148EBE8700708703 /* Globe-Icon-Purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Globe-Icon-Purple.png"; sourceTree = "<group>"; };
+		78C67CE2148EBE8700708703 /* History-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "History-Tab-Bar.png"; sourceTree = "<group>"; };
+		78C67CE3148EBE8700708703 /* Share-Files-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Share-Files-Tab-Bar.png"; sourceTree = "<group>"; };
+		78C67CE4148EBE8700708703 /* View-Contacts-12-6-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "View-Contacts-12-6-11.png"; sourceTree = "<group>"; };
+		78C67CEF148EBE9800708703 /* fullscreen_2_120611.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullscreen_2_120611.png; sourceTree = "<group>"; };
+		78C67CF3148EBE9800708703 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		78C67CF6148EBE9800708703 /* watermark_120611.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark_120611.png; sourceTree = "<group>"; };
 		78D3B3D514588396001A2C78 /* Edit-Contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit-Contacts-icon.png"; sourceTree = "<group>"; };
 		78D3B3D614588396001A2C78 /* View-Contacts-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "View-Contacts-icon.png"; sourceTree = "<group>"; };
-		78D3B3EF1458B051001A2C78 /* Add-Calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add-Calendar-icon.png"; sourceTree = "<group>"; };
-		78D3B3F01458B051001A2C78 /* Edit-Calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit-Calendar-icon.png"; sourceTree = "<group>"; };
-		78D3B3F11458B051001A2C78 /* View-Calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "View-Calendar-icon.png"; sourceTree = "<group>"; };
 		78D3B3FD1458C688001A2C78 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		78D3B4001458CA8A001A2C78 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		78D3B4081458E7CA001A2C78 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapAnnotation.h; path = ../MapAnnotation.h; sourceTree = "<group>"; };
-		78D3B4091458E7CA001A2C78 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapAnnotation.m; path = ../MapAnnotation.m; sourceTree = "<group>"; };
-		78D65A771489D40C002DD395 /* HelpFullScreenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpFullScreenVC.h; path = ../HelpFullScreenVC.h; sourceTree = "<group>"; };
-		78D65A781489D40D002DD395 /* HelpFullScreenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpFullScreenVC.m; path = ../HelpFullScreenVC.m; sourceTree = "<group>"; };
+		78D3B4081458E7CA001A2C78 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		78D3B4091458E7CA001A2C78 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
+		78D65A771489D40C002DD395 /* HelpFullScreenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpFullScreenVC.h; sourceTree = "<group>"; };
+		78D65A781489D40D002DD395 /* HelpFullScreenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpFullScreenVC.m; sourceTree = "<group>"; };
 		78D65A791489D40D002DD395 /* HelpFullScreenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpFullScreenVC.xib; sourceTree = "<group>"; };
-		78E1DCFA148AB617000476BB /* AnnotatedFilesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotatedFilesTableViewController.h; path = ../AnnotatedFilesTableViewController.h; sourceTree = "<group>"; };
-		78E1DCFB148AB618000476BB /* AnnotatedFilesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotatedFilesTableViewController.m; path = ../AnnotatedFilesTableViewController.m; sourceTree = "<group>"; };
+		78E1DCFA148AB617000476BB /* AnnotatedFilesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotatedFilesTableViewController.h; sourceTree = "<group>"; };
+		78E1DCFB148AB618000476BB /* AnnotatedFilesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotatedFilesTableViewController.m; sourceTree = "<group>"; };
 		78E1DCFC148AB619000476BB /* AnnotatedFilesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnotatedFilesTableViewController.xib; sourceTree = "<group>"; };
 		78E1DD04148AE270000476BB /* FileHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHistoryTableViewController.h; sourceTree = "<group>"; };
 		78E1DD05148AE271000476BB /* FileHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHistoryTableViewController.m; sourceTree = "<group>"; };
 		78E1DD06148AE273000476BB /* FileHistoryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileHistoryTableViewController.xib; sourceTree = "<group>"; };
 		78E1DD0E148B1104000476BB /* GamePlanDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = GamePlanDB.sqlite; sourceTree = "<group>"; };
 		78E1DD10148B6B38000476BB /* popup_screen_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = popup_screen_1.jpg; sourceTree = "<group>"; };
-		78E1DD74148C21D1000476BB /* NewHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewHelpViewController.h; path = ../NewHelpViewController.h; sourceTree = "<group>"; };
-		78E1DD75148C21D2000476BB /* NewHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewHelpViewController.m; path = ../NewHelpViewController.m; sourceTree = "<group>"; };
+		78E1DD74148C21D1000476BB /* NewHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpViewController.h; sourceTree = "<group>"; };
+		78E1DD75148C21D2000476BB /* NewHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHelpViewController.m; sourceTree = "<group>"; };
 		78E1DD76148C21D3000476BB /* NewHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewHelpViewController.xib; sourceTree = "<group>"; };
-		78E7A8921465C2B8005D7F34 /* NotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesTableViewController.h; sourceTree = "<group>"; };
-		78E7A8931465C2B8005D7F34 /* NotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesTableViewController.m; sourceTree = "<group>"; };
+		78E7A8921465C2B8005D7F34 /* NotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesTableViewController.h; path = Classes/NotesTableViewController.h; sourceTree = "<group>"; };
+		78E7A8931465C2B8005D7F34 /* NotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesTableViewController.m; path = Classes/NotesTableViewController.m; sourceTree = "<group>"; };
 		78E7A8941465C2B8005D7F34 /* NotesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotesTableViewController.xib; path = Classes/NotesTableViewController.xib; sourceTree = "<group>"; };
 		78E7A89C1465E40D005D7F34 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		78E7A8B21465F7BF005D7F34 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		78E7A8B31465F7C0005D7F34 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		78E7A8B21465F7BF005D7F34 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCell.h; path = Classes/CustomCell.h; sourceTree = "<group>"; };
+		78E7A8B31465F7C0005D7F34 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCell.m; path = Classes/CustomCell.m; sourceTree = "<group>"; };
 		78EA28A0146BB1E800AD7412 /* Add-Contacts-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add-Contacts-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28A1146BB1E800AD7412 /* Calendar-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28A2146BB1E800AD7412 /* Contacts-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contacts-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28A3146BB1E800AD7412 /* Delete-Contacts-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delete-Contacts-11-10-11.png"; sourceTree = "<group>"; };
 		78EA28A4146BB1E800AD7412 /* Event-Manager-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Event-Manager-11-10-11.png"; sourceTree = "<group>"; };
 		78EA28A5146BB1E800AD7412 /* Geotag-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Geotag-11-10-11.png"; sourceTree = "<group>"; };
 		78EA28A6146BB1E800AD7412 /* Manage-Contacts-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Manage-Contacts-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28A7146BB1E800AD7412 /* Manage-Folder-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Manage-Folder-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28A8146BB1E800AD7412 /* New-Folder-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "New-Folder-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28A9146BB1E800AD7412 /* Share-Files-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Share-Files-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28AA146BB1E800AD7412 /* View-Calendar-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "View-Calendar-11-10-11.png"; sourceTree = "<group>"; };
-		78EA28AB146BB1E800AD7412 /* View-Edit-Contacts-11-10-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "View-Edit-Contacts-11-10-11.png"; sourceTree = "<group>"; };
-		78F172FC1467512A00651A54 /* FullMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullMapViewController.h; path = ../FullMapViewController.h; sourceTree = "<group>"; };
-		78F172FD1467512A00651A54 /* FullMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullMapViewController.m; path = ../FullMapViewController.m; sourceTree = "<group>"; };
+		78F172FC1467512A00651A54 /* FullMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullMapViewController.h; sourceTree = "<group>"; };
+		78F172FD1467512A00651A54 /* FullMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullMapViewController.m; sourceTree = "<group>"; };
 		78F172FE1467512A00651A54 /* FullMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullMapViewController.xib; sourceTree = "<group>"; };
-		78F6750B146330AF0026DE32 /* addTextFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = addTextFile.h; path = ../addTextFile.h; sourceTree = "<group>"; };
-		78F6750C146330AF0026DE32 /* addTextFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = addTextFile.m; path = ../addTextFile.m; sourceTree = "<group>"; };
+		78F6750B146330AF0026DE32 /* addTextFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addTextFile.h; sourceTree = "<group>"; };
+		78F6750C146330AF0026DE32 /* addTextFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addTextFile.m; sourceTree = "<group>"; };
 		78F6750D146330AF0026DE32 /* addTextFile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addTextFile.xib; sourceTree = "<group>"; };
 		7E9552E911766B410003D25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstDetailView.xib; sourceTree = "<group>"; };
 		7E9552EB11766B410003D25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		7E9552ED11766B410003D25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondDetailView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GamePlanApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GamePlanApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		E4314A87144FAA3400572B33 /* EventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManagerViewController.h; sourceTree = "<group>"; };
-		E4314A88144FAA3400572B33 /* EventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManagerViewController.m; sourceTree = "<group>"; };
+		E4314A87144FAA3400572B33 /* EventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManagerViewController.h; path = Classes/EventManagerViewController.h; sourceTree = "<group>"; };
+		E4314A88144FAA3400572B33 /* EventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventManagerViewController.m; path = Classes/EventManagerViewController.m; sourceTree = "<group>"; };
 		E4314A89144FAA3400572B33 /* EventManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventManagerViewController.xib; path = Classes/EventManagerViewController.xib; sourceTree = "<group>"; };
-		E4314A92144FB29900572B33 /* ManagedContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedContactViewController.h; sourceTree = "<group>"; };
-		E4314A93144FB29900572B33 /* ManagedContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedContactViewController.m; sourceTree = "<group>"; };
+		E4314A92144FB29900572B33 /* ManagedContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagedContactViewController.h; path = Classes/ManagedContactViewController.h; sourceTree = "<group>"; };
+		E4314A93144FB29900572B33 /* ManagedContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagedContactViewController.m; path = Classes/ManagedContactViewController.m; sourceTree = "<group>"; };
 		E4314A94144FB29900572B33 /* ManagedContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManagedContactViewController.xib; path = Classes/ManagedContactViewController.xib; sourceTree = "<group>"; };
-		E4314A98144FBD5300572B33 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark.png; sourceTree = "<group>"; };
 		E4314A9B144FC87D00572B33 /* RootViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewTableCell.h; sourceTree = "<group>"; };
 		E4314A9C144FC87D00572B33 /* RootViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewTableCell.m; sourceTree = "<group>"; };
-		E4314AA6144FD19900572B33 /* celltexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = celltexture.png; sourceTree = "<group>"; };
+		E4314AA6144FD19900572B33 /* celltexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = celltexture.png; path = ../celltexture.png; sourceTree = "<group>"; };
 		E4314AA9144FDE2F00572B33 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		E4314AAA144FDE2F00572B33 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 		E4314AAB144FDE2F00572B33 /* geotag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geotag.png; sourceTree = "<group>"; };
 		E4314AAC144FDE2F00572B33 /* sharefile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sharefile.png; sourceTree = "<group>"; };
 		E4314AB9144FE6B200572B33 /* Add-Contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add-Contacts.png"; sourceTree = "<group>"; };
-		E4314ABF144FE92E00572B33 /* file-view-shelves_withicon_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-view-shelves_withicon_arrow.png"; sourceTree = "<group>"; };
 		E45FF66C14633C50003241CD /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Classes/FMDatabase.h; sourceTree = "<group>"; };
 		E45FF66D14633C50003241CD /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Classes/FMDatabase.m; sourceTree = "<group>"; };
 		E45FF67814633D30003241CD /* databaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = databaseManager.h; path = Classes/databaseManager.h; sourceTree = "<group>"; };
@@ -252,16 +251,15 @@
 		E46F25C11462128000C0E14F /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		E495FD99146B65EA004B3AD8 /* GPPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPPersonViewController.h; path = Classes/GPPersonViewController.h; sourceTree = "<group>"; };
 		E495FD9A146B65EA004B3AD8 /* GPPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPPersonViewController.m; path = Classes/GPPersonViewController.m; sourceTree = "<group>"; };
-		E495FD9B146B65EA004B3AD8 /* AddContactToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactToFileViewController.h; sourceTree = "<group>"; };
-		E495FD9C146B65EA004B3AD8 /* AddContactToFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactToFileViewController.m; sourceTree = "<group>"; };
+		E495FD9B146B65EA004B3AD8 /* AddContactToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddContactToFileViewController.h; path = Classes/AddContactToFileViewController.h; sourceTree = "<group>"; };
+		E495FD9C146B65EA004B3AD8 /* AddContactToFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddContactToFileViewController.m; path = Classes/AddContactToFileViewController.m; sourceTree = "<group>"; };
 		E495FD9F146B67AC004B3AD8 /* new_addnote_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_addnote_small_icon.png; sourceTree = "<group>"; };
-		E495FDA3146B70A1004B3AD8 /* fs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fs.png; sourceTree = "<group>"; };
 		E4AF57731463612D005D1775 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = Classes/FMResultSet.h; sourceTree = "<group>"; };
 		E4AF57741463612D005D1775 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = Classes/FMResultSet.m; sourceTree = "<group>"; };
 		E4AF577714636192005D1775 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		E4CA0461144FF0AA00B45465 /* file-view-shelves_noicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-view-shelves_noicons.png"; sourceTree = "<group>"; };
-		E4CA04861450177900B45465 /* FileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileViewController.h; sourceTree = "<group>"; };
-		E4CA04871450177900B45465 /* FileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileViewController.m; sourceTree = "<group>"; };
+		E4CA04861450177900B45465 /* FileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileViewController.h; path = Classes/FileViewController.h; sourceTree = "<group>"; };
+		E4CA04871450177900B45465 /* FileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileViewController.m; path = Classes/FileViewController.m; sourceTree = "<group>"; };
 		E4CA04881450177A00B45465 /* FileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileViewController.xib; path = Classes/FileViewController.xib; sourceTree = "<group>"; };
 		E4CA048B14501F4E00B45465 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
 		E4CA0491145029A200B45465 /* test1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test1.pdf; sourceTree = "<group>"; };
@@ -291,54 +289,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Main Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E495FD9B146B65EA004B3AD8 /* AddContactToFileViewController.h */,
-				E495FD9C146B65EA004B3AD8 /* AddContactToFileViewController.m */,
-				78E1DCFA148AB617000476BB /* AnnotatedFilesTableViewController.h */,
-				78E1DCFB148AB618000476BB /* AnnotatedFilesTableViewController.m */,
-				78BF74BF146A50E700E51D82 /* BluetoothViewController.h */,
-				78BF74C0146A50E900E51D82 /* BluetoothViewController.m */,
-				78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */,
-				78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */,
-				78BF7496146A3F9B00E51D82 /* FolderListViewController.h */,
-				78BF7497146A3F9B00E51D82 /* FolderListViewController.m */,
-				78E7A8921465C2B8005D7F34 /* NotesTableViewController.h */,
-				78E7A8931465C2B8005D7F34 /* NotesTableViewController.m */,
-				E4CA04861450177900B45465 /* FileViewController.h */,
-				E4CA04871450177900B45465 /* FileViewController.m */,
 				28AA66D6115C16800003B21C /* RootViewController.h */,
 				28AA66D7115C16800003B21C /* RootViewController.m */,
-				785AC56114678CA700558DEF /* AddEventToFileViewController.h */,
-				785AC56214678CA700558DEF /* AddEventToFileViewController.m */,
-				785AC56E1467999B00558DEF /* ViewFileEventsController.h */,
-				785AC56F1467999B00558DEF /* ViewFileEventsController.m */,
-				78F172FC1467512A00651A54 /* FullMapViewController.h */,
-				78F172FD1467512A00651A54 /* FullMapViewController.m */,
-				78F6750B146330AF0026DE32 /* addTextFile.h */,
-				78F6750C146330AF0026DE32 /* addTextFile.m */,
-				78D3B4081458E7CA001A2C78 /* MapAnnotation.h */,
-				78D3B4091458E7CA001A2C78 /* MapAnnotation.m */,
-				78E7A8B21465F7BF005D7F34 /* CustomCell.h */,
-				78E7A8B31465F7C0005D7F34 /* CustomCell.m */,
-				E4314A92144FB29900572B33 /* ManagedContactViewController.h */,
-				E4314A93144FB29900572B33 /* ManagedContactViewController.m */,
 				28AA66D4115C16800003B21C /* FirstDetailViewController.h */,
 				28AA66D5115C16800003B21C /* FirstDetailViewController.m */,
-				E4314A87144FAA3400572B33 /* EventManagerViewController.h */,
-				E4314A88144FAA3400572B33 /* EventManagerViewController.m */,
-				28AA66D8115C16800003B21C /* SecondDetailViewController.h */,
-				28AA66D9115C16800003B21C /* SecondDetailViewController.m */,
 				28AA66D2115C16800003B21C /* AppDelegate.h */,
 				28AA66D3115C16800003B21C /* AppDelegate.m */,
-				78AE36FE1466083000F83544 /* DescriptionVC.h */,
-				78AE36FF1466083000F83544 /* DescriptionVC.m */,
-				78D65A771489D40C002DD395 /* HelpFullScreenVC.h */,
-				78D65A781489D40D002DD395 /* HelpFullScreenVC.m */,
-				78E1DD74148C21D1000476BB /* NewHelpViewController.h */,
-				78E1DD75148C21D2000476BB /* NewHelpViewController.m */,
 			);
+			name = "Main Classes";
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -353,24 +314,23 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				78E1DD04148AE270000476BB /* FileHistoryTableViewController.h */,
-				78E1DD05148AE271000476BB /* FileHistoryTableViewController.m */,
-				78E1DD06148AE273000476BB /* FileHistoryTableViewController.xib */,
-				78E1DCFC148AB619000476BB /* AnnotatedFilesTableViewController.xib */,
+				080E96DDFE201D6D7F000001 /* Main Classes */,
+				7807DDAC1464BEC200FC78B9 /* Database */,
+				78916646148EE06B004B5C0D /* Custom Classes */,
+				78916645148EE057004B5C0D /* Help Classes */,
+				78916644148EE04C004B5C0D /* Map Classes */,
+				78916643148EE03C004B5C0D /* File Classes */,
+				78916642148EE029004B5C0D /* Calendar Classes */,
+				78916641148EDFFC004B5C0D /* Contact Classes */,
+				E4CA049B14502B6200B45465 /* Files */,
+				78C67CDA148EBE6300708703 /* UHGamePlan Images */,
 				78C4CCE9145CDB9300C5C5E3 /* GameKit.framework */,
 				78E7A89C1465E40D005D7F34 /* AddressBook.framework */,
-				7807DDAC1464BEC200FC78B9 /* Database */,
 				E46F25C01462128000C0E14F /* EventKit.framework */,
 				E46F25C11462128000C0E14F /* EventKitUI.framework */,
-				E46F25BC146211D400C0E14F /* MyCustomScreens */,
 				78D3B4001458CA8A001A2C78 /* CoreLocation.framework */,
 				78D3B3FD1458C688001A2C78 /* MapKit.framework */,
 				78A306BB14502F0500C837B4 /* AddressBookUI.framework */,
-				E4CA049B14502B6200B45465 /* Files */,
-				78EA289E146BB1BC00AD7412 /* New Images */,
-				E4314A97144FBD2A00572B33 /* Images */,
-				E4314A9A144FC5C700572B33 /* Custom Classes */,
-				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -391,6 +351,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78E1DCFC148AB619000476BB /* AnnotatedFilesTableViewController.xib */,
 				78E1DD76148C21D3000476BB /* NewHelpViewController.xib */,
 				78D65A791489D40D002DD395 /* HelpFullScreenVC.xib */,
 				78050FF714833BFA00E376AD /* HelpViewController.xib */,
@@ -440,57 +401,83 @@
 			name = Database;
 			sourceTree = "<group>";
 		};
-		78EA289E146BB1BC00AD7412 /* New Images */ = {
+		78916641148EDFFC004B5C0D /* Contact Classes */ = {
 			isa = PBXGroup;
 			children = (
-				78E1DD10148B6B38000476BB /* popup_screen_1.jpg */,
-				78050FFD1483508C00E376AD /* help.png */,
-				78EA28A0146BB1E800AD7412 /* Add-Contacts-11-10-11.png */,
-				78EA28A1146BB1E800AD7412 /* Calendar-11-10-11.png */,
-				78EA28A2146BB1E800AD7412 /* Contacts-11-10-11.png */,
-				78EA28A3146BB1E800AD7412 /* Delete-Contacts-11-10-11.png */,
-				78EA28A4146BB1E800AD7412 /* Event-Manager-11-10-11.png */,
-				78EA28A5146BB1E800AD7412 /* Geotag-11-10-11.png */,
-				78EA28A6146BB1E800AD7412 /* Manage-Contacts-11-10-11.png */,
-				78EA28A7146BB1E800AD7412 /* Manage-Folder-11-10-11.png */,
-				78EA28A8146BB1E800AD7412 /* New-Folder-11-10-11.png */,
-				78EA28A9146BB1E800AD7412 /* Share-Files-11-10-11.png */,
-				78EA28AA146BB1E800AD7412 /* View-Calendar-11-10-11.png */,
-				78EA28AB146BB1E800AD7412 /* View-Edit-Contacts-11-10-11.png */,
+				E4314A92144FB29900572B33 /* ManagedContactViewController.h */,
+				E4314A93144FB29900572B33 /* ManagedContactViewController.m */,
 			);
-			name = "New Images";
+			name = "Contact Classes";
 			sourceTree = "<group>";
 		};
-		E4314A97144FBD2A00572B33 /* Images */ = {
+		78916642148EE029004B5C0D /* Calendar Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E495FDA3146B70A1004B3AD8 /* fs.png */,
-				E495FD9F146B67AC004B3AD8 /* new_addnote_small_icon.png */,
-				78BF74B8146A45C800E51D82 /* folder_icon_small.png */,
-				78BF74B6146A44D300E51D82 /* file-view-icon-witharrow.png */,
-				7807DDA91464BDAA00FC78B9 /* back-icon2.png */,
-				78D3B3EF1458B051001A2C78 /* Add-Calendar-icon.png */,
-				78D3B3F01458B051001A2C78 /* Edit-Calendar-icon.png */,
-				78D3B3F11458B051001A2C78 /* View-Calendar-icon.png */,
-				78D3B3D514588396001A2C78 /* Edit-Contacts-icon.png */,
-				78D3B3D614588396001A2C78 /* View-Contacts-icon.png */,
-				E4CA0461144FF0AA00B45465 /* file-view-shelves_noicons.png */,
-				E4314ABF144FE92E00572B33 /* file-view-shelves_withicon_arrow.png */,
-				E4314AB9144FE6B200572B33 /* Add-Contacts.png */,
-				E4314AA8144FDE2F00572B33 /* icons */,
-				E4314AA6144FD19900572B33 /* celltexture.png */,
-				E4314A98144FBD5300572B33 /* watermark.png */,
+				E4314A87144FAA3400572B33 /* EventManagerViewController.h */,
+				E4314A88144FAA3400572B33 /* EventManagerViewController.m */,
+				E46F25BD146211FE00C0E14F /* MyEventManager.h */,
+				E46F25BE146211FE00C0E14F /* MyEventManager.m */,
 			);
-			name = Images;
+			name = "Calendar Classes";
 			sourceTree = "<group>";
 		};
-		E4314A9A144FC5C700572B33 /* Custom Classes */ = {
+		78916643148EE03C004B5C0D /* File Classes */ = {
+			isa = PBXGroup;
+			children = (
+				78BF7496146A3F9B00E51D82 /* FolderListViewController.h */,
+				78BF7497146A3F9B00E51D82 /* FolderListViewController.m */,
+				78BF74AD146A40E800E51D82 /* MyFileViewController.h */,
+				78BF74AE146A40E800E51D82 /* MyFileViewController.m */,
+				78BF74A8146A40D300E51D82 /* GPFilePicker.h */,
+				78BF74A9146A40D300E51D82 /* GPFilePicker.m */,
+				78BF74AA146A40D300E51D82 /* GPFilePicker.xib */,
+				E4CA04861450177900B45465 /* FileViewController.h */,
+				E4CA04871450177900B45465 /* FileViewController.m */,
+				7891664C148EE20E004B5C0D /* File History */,
+				7891664B148EE1D8004B5C0D /* Notes On File */,
+				7891664A148EE1CC004B5C0D /* Share File */,
+				78916649148EE1AB004B5C0D /* GeoTag File */,
+				78916648148EE19F004B5C0D /* Tag Events */,
+				78916647148EE190004B5C0D /* Tag Contacts */,
+			);
+			name = "File Classes";
+			sourceTree = "<group>";
+		};
+		78916644148EE04C004B5C0D /* Map Classes */ = {
+			isa = PBXGroup;
+			children = (
+				28AA66D8115C16800003B21C /* SecondDetailViewController.h */,
+				28AA66D9115C16800003B21C /* SecondDetailViewController.m */,
+				78F172FC1467512A00651A54 /* FullMapViewController.h */,
+				78F172FD1467512A00651A54 /* FullMapViewController.m */,
+				78D3B4081458E7CA001A2C78 /* MapAnnotation.h */,
+				78D3B4091458E7CA001A2C78 /* MapAnnotation.m */,
+				78E1DCFA148AB617000476BB /* AnnotatedFilesTableViewController.h */,
+				78E1DCFB148AB618000476BB /* AnnotatedFilesTableViewController.m */,
+			);
+			name = "Map Classes";
+			sourceTree = "<group>";
+		};
+		78916645148EE057004B5C0D /* Help Classes */ = {
+			isa = PBXGroup;
+			children = (
+				78E1DD74148C21D1000476BB /* NewHelpViewController.h */,
+				78E1DD75148C21D2000476BB /* NewHelpViewController.m */,
+				78D65A771489D40C002DD395 /* HelpFullScreenVC.h */,
+				78D65A781489D40D002DD395 /* HelpFullScreenVC.m */,
+			);
+			name = "Help Classes";
+			sourceTree = "<group>";
+		};
+		78916646148EE06B004B5C0D /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
 				78BF74A2146A403800E51D82 /* File.h */,
 				78BF74A3146A403800E51D82 /* File.m */,
 				78BF74A4146A403800E51D82 /* FileIcon.h */,
 				78BF74A5146A403800E51D82 /* FileIcon.m */,
+				78E7A8B21465F7BF005D7F34 /* CustomCell.h */,
+				78E7A8B31465F7C0005D7F34 /* CustomCell.m */,
 				78BF749F146A402300E51D82 /* CustomUIAlert.h */,
 				78BF74A0146A402300E51D82 /* CustomUIAlert.m */,
 				E4314A9B144FC87D00572B33 /* RootViewTableCell.h */,
@@ -499,35 +486,150 @@
 			name = "Custom Classes";
 			sourceTree = "<group>";
 		};
-		E4314AA8144FDE2F00572B33 /* icons */ = {
+		78916647148EE190004B5C0D /* Tag Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				E4314AA9144FDE2F00572B33 /* calendar.png */,
-				E4314AAA144FDE2F00572B33 /* contact.png */,
-				E4314AAB144FDE2F00572B33 /* geotag.png */,
-				E4314AAC144FDE2F00572B33 /* sharefile.png */,
-			);
-			path = icons;
-			sourceTree = "<group>";
-		};
-		E46F25BC146211D400C0E14F /* MyCustomScreens */ = {
-			isa = PBXGroup;
-			children = (
+				E495FD9B146B65EA004B3AD8 /* AddContactToFileViewController.h */,
+				E495FD9C146B65EA004B3AD8 /* AddContactToFileViewController.m */,
 				E495FD99146B65EA004B3AD8 /* GPPersonViewController.h */,
 				E495FD9A146B65EA004B3AD8 /* GPPersonViewController.m */,
-				78BF74AD146A40E800E51D82 /* MyFileViewController.h */,
-				78BF74AE146A40E800E51D82 /* MyFileViewController.m */,
-				78BF74A8146A40D300E51D82 /* GPFilePicker.h */,
-				78BF74A9146A40D300E51D82 /* GPFilePicker.m */,
-				78BF74AA146A40D300E51D82 /* GPFilePicker.xib */,
-				782094DA146443A1008F287B /* GeoTagScreenView.h */,
-				782094D61464438B008F287B /* GeoTagScreenView.m */,
-				E46F25BD146211FE00C0E14F /* MyEventManager.h */,
-				E46F25BE146211FE00C0E14F /* MyEventManager.m */,
+			);
+			name = "Tag Contacts";
+			sourceTree = "<group>";
+		};
+		78916648148EE19F004B5C0D /* Tag Events */ = {
+			isa = PBXGroup;
+			children = (
+				785AC56E1467999B00558DEF /* ViewFileEventsController.h */,
+				785AC56F1467999B00558DEF /* ViewFileEventsController.m */,
+				785AC56114678CA700558DEF /* AddEventToFileViewController.h */,
+				785AC56214678CA700558DEF /* AddEventToFileViewController.m */,
 				7807DD931464736700FC78B9 /* GPEventViewController.h */,
 				7807DD941464736800FC78B9 /* GPEventViewController.m */,
 			);
-			name = MyCustomScreens;
+			name = "Tag Events";
+			sourceTree = "<group>";
+		};
+		78916649148EE1AB004B5C0D /* GeoTag File */ = {
+			isa = PBXGroup;
+			children = (
+				782094DA146443A1008F287B /* GeoTagScreenView.h */,
+				782094D61464438B008F287B /* GeoTagScreenView.m */,
+			);
+			name = "GeoTag File";
+			sourceTree = "<group>";
+		};
+		7891664A148EE1CC004B5C0D /* Share File */ = {
+			isa = PBXGroup;
+			children = (
+				78BF74BF146A50E700E51D82 /* BluetoothViewController.h */,
+				78BF74C0146A50E900E51D82 /* BluetoothViewController.m */,
+				78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */,
+				78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */,
+			);
+			name = "Share File";
+			sourceTree = "<group>";
+		};
+		7891664B148EE1D8004B5C0D /* Notes On File */ = {
+			isa = PBXGroup;
+			children = (
+				78E7A8921465C2B8005D7F34 /* NotesTableViewController.h */,
+				78E7A8931465C2B8005D7F34 /* NotesTableViewController.m */,
+				78AE36FE1466083000F83544 /* DescriptionVC.h */,
+				78AE36FF1466083000F83544 /* DescriptionVC.m */,
+				78F6750B146330AF0026DE32 /* addTextFile.h */,
+				78F6750C146330AF0026DE32 /* addTextFile.m */,
+			);
+			name = "Notes On File";
+			sourceTree = "<group>";
+		};
+		7891664C148EE20E004B5C0D /* File History */ = {
+			isa = PBXGroup;
+			children = (
+				78E1DD04148AE270000476BB /* FileHistoryTableViewController.h */,
+				78E1DD05148AE271000476BB /* FileHistoryTableViewController.m */,
+				78E1DD06148AE273000476BB /* FileHistoryTableViewController.xib */,
+			);
+			name = "File History";
+			sourceTree = "<group>";
+		};
+		7891664D148EEA21004B5C0D /* File Tool Bar Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7807DDA91464BDAA00FC78B9 /* back-icon2.png */,
+				E495FD9F146B67AC004B3AD8 /* new_addnote_small_icon.png */,
+				78C67CE0148EBE8700708703 /* Globe-Icon-Gray.png */,
+				78C67CE1148EBE8700708703 /* Globe-Icon-Purple.png */,
+				78C67CDE148EBE8700708703 /* Download-Tab-Bar.png */,
+				78916639148EC277004B5C0D /* Calendar-Tab-Bar.png */,
+				78C67CDD148EBE8700708703 /* Contacts-Tab-Bar.png */,
+				78C67CDF148EBE8700708703 /* Geo-tag-Tab-Bar.png */,
+				78C67CE2148EBE8700708703 /* History-Tab-Bar.png */,
+				78C67CE3148EBE8700708703 /* Share-Files-Tab-Bar.png */,
+			);
+			name = "File Tool Bar Buttons";
+			sourceTree = "<group>";
+		};
+		7891664E148EEA5F004B5C0D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				78EA28A4146BB1E800AD7412 /* Event-Manager-11-10-11.png */,
+				78C67CE4148EBE8700708703 /* View-Contacts-12-6-11.png */,
+				78BF74B8146A45C800E51D82 /* folder_icon_small.png */,
+				78BF74B6146A44D300E51D82 /* file-view-icon-witharrow.png */,
+				78D3B3D514588396001A2C78 /* Edit-Contacts-icon.png */,
+				78D3B3D614588396001A2C78 /* View-Contacts-icon.png */,
+				E4CA0461144FF0AA00B45465 /* file-view-shelves_noicons.png */,
+				E4314AB9144FE6B200572B33 /* Add-Contacts.png */,
+				78C67CEF148EBE9800708703 /* fullscreen_2_120611.png */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		7891664F148EEA74004B5C0D /* Logo & Watermark */ = {
+			isa = PBXGroup;
+			children = (
+				78C67CF6148EBE9800708703 /* watermark_120611.png */,
+				7891663D148ED377004B5C0D /* watermark_logo_120611.png */,
+				78C67CF3148EBE9800708703 /* logo.png */,
+			);
+			name = "Logo & Watermark";
+			sourceTree = "<group>";
+		};
+		78C67CDA148EBE6300708703 /* UHGamePlan Images */ = {
+			isa = PBXGroup;
+			children = (
+				78EA289E146BB1BC00AD7412 /* New Images */,
+				7891664F148EEA74004B5C0D /* Logo & Watermark */,
+				7891664E148EEA5F004B5C0D /* Other */,
+				7891664D148EEA21004B5C0D /* File Tool Bar Buttons */,
+				E4314AA8144FDE2F00572B33 /* icons */,
+			);
+			name = "UHGamePlan Images";
+			sourceTree = "<group>";
+		};
+		78EA289E146BB1BC00AD7412 /* New Images */ = {
+			isa = PBXGroup;
+			children = (
+				78E1DD10148B6B38000476BB /* popup_screen_1.jpg */,
+				78EA28A0146BB1E800AD7412 /* Add-Contacts-11-10-11.png */,
+				78EA28A5146BB1E800AD7412 /* Geotag-11-10-11.png */,
+				78EA28A6146BB1E800AD7412 /* Manage-Contacts-11-10-11.png */,
+			);
+			name = "New Images";
+			sourceTree = "<group>";
+		};
+		E4314AA8144FDE2F00572B33 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				7891663B148ED305004B5C0D /* help_3.png */,
+				E4314AA9144FDE2F00572B33 /* calendar.png */,
+				E4314AAA144FDE2F00572B33 /* contact.png */,
+				E4314AAB144FDE2F00572B33 /* geotag.png */,
+				E4314AA6144FD19900572B33 /* celltexture.png */,
+				E4314AAC144FDE2F00572B33 /* sharefile.png */,
+			);
+			path = icons;
 			sourceTree = "<group>";
 		};
 		E4CA049B14502B6200B45465 /* Files */ = {
@@ -597,14 +699,12 @@
 				7E9552F011766B410003D25C /* SecondDetailView.xib in Resources */,
 				E4314A8B144FAA3400572B33 /* EventManagerViewController.xib in Resources */,
 				E4314A96144FB29A00572B33 /* ManagedContactViewController.xib in Resources */,
-				E4314A99144FBD5300572B33 /* watermark.png in Resources */,
 				E4314AA7144FD19900572B33 /* celltexture.png in Resources */,
 				E4314AAD144FDE2F00572B33 /* calendar.png in Resources */,
 				E4314AAE144FDE2F00572B33 /* contact.png in Resources */,
 				E4314AAF144FDE2F00572B33 /* geotag.png in Resources */,
 				E4314AB0144FDE2F00572B33 /* sharefile.png in Resources */,
 				E4314ABC144FE6B200572B33 /* Add-Contacts.png in Resources */,
-				E4314AC0144FE92F00572B33 /* file-view-shelves_withicon_arrow.png in Resources */,
 				E4CA0462144FF0AA00B45465 /* file-view-shelves_noicons.png in Resources */,
 				E4CA048A1450177A00B45465 /* FileViewController.xib in Resources */,
 				E4CA048C14501F4E00B45465 /* test.pdf in Resources */,
@@ -613,9 +713,6 @@
 				E4CA0496145029A200B45465 /* test3.pdf in Resources */,
 				78D3B3D714588396001A2C78 /* Edit-Contacts-icon.png in Resources */,
 				78D3B3D814588396001A2C78 /* View-Contacts-icon.png in Resources */,
-				78D3B3F21458B052001A2C78 /* Add-Calendar-icon.png in Resources */,
-				78D3B3F31458B052001A2C78 /* Edit-Calendar-icon.png in Resources */,
-				78D3B3F41458B052001A2C78 /* View-Calendar-icon.png in Resources */,
 				78F6750F146330AF0026DE32 /* addTextFile.xib in Resources */,
 				782094DB146443A1008F287B /* GeoTagScreenView.xib in Resources */,
 				7807DDAA1464BDAA00FC78B9 /* back-icon2.png in Resources */,
@@ -631,28 +728,32 @@
 				78BF74BE146A488700E51D82 /* ShareFilesViewController.xib in Resources */,
 				78BF74C3146A50F900E51D82 /* BluetoothViewController.xib in Resources */,
 				E495FDA0146B67AC004B3AD8 /* new_addnote_small_icon.png in Resources */,
-				E495FDA4146B70A1004B3AD8 /* fs.png in Resources */,
 				78EA28AC146BB1E800AD7412 /* Add-Contacts-11-10-11.png in Resources */,
-				78EA28AD146BB1E800AD7412 /* Calendar-11-10-11.png in Resources */,
-				78EA28AE146BB1E800AD7412 /* Contacts-11-10-11.png in Resources */,
-				78EA28AF146BB1E800AD7412 /* Delete-Contacts-11-10-11.png in Resources */,
 				78EA28B0146BB1E800AD7412 /* Event-Manager-11-10-11.png in Resources */,
 				78EA28B1146BB1E800AD7412 /* Geotag-11-10-11.png in Resources */,
 				78EA28B2146BB1E800AD7412 /* Manage-Contacts-11-10-11.png in Resources */,
-				78EA28B3146BB1E800AD7412 /* Manage-Folder-11-10-11.png in Resources */,
-				78EA28B4146BB1E800AD7412 /* New-Folder-11-10-11.png in Resources */,
-				78EA28B5146BB1E800AD7412 /* Share-Files-11-10-11.png in Resources */,
-				78EA28B6146BB1E800AD7412 /* View-Calendar-11-10-11.png in Resources */,
-				78EA28B7146BB1E800AD7412 /* View-Edit-Contacts-11-10-11.png in Resources */,
 				78050FF914833BFA00E376AD /* HelpViewController.xib in Resources */,
 				78050FFC1483460D00E376AD /* userguide.pdf in Resources */,
-				78050FFE1483508C00E376AD /* help.png in Resources */,
 				78D65A7B1489D40D002DD395 /* HelpFullScreenVC.xib in Resources */,
 				78E1DCFE148AB61A000476BB /* AnnotatedFilesTableViewController.xib in Resources */,
 				78E1DD08148AE274000476BB /* FileHistoryTableViewController.xib in Resources */,
 				78E1DD0F148B1104000476BB /* GamePlanDB.sqlite in Resources */,
 				78E1DD11148B6B38000476BB /* popup_screen_1.jpg in Resources */,
 				78E1DD78148C21D4000476BB /* NewHelpViewController.xib in Resources */,
+				78C67CE6148EBE8700708703 /* Contacts-Tab-Bar.png in Resources */,
+				78C67CE7148EBE8700708703 /* Download-Tab-Bar.png in Resources */,
+				78C67CE8148EBE8700708703 /* Geo-tag-Tab-Bar.png in Resources */,
+				78C67CE9148EBE8700708703 /* Globe-Icon-Gray.png in Resources */,
+				78C67CEA148EBE8700708703 /* Globe-Icon-Purple.png in Resources */,
+				78C67CEB148EBE8700708703 /* History-Tab-Bar.png in Resources */,
+				78C67CEC148EBE8700708703 /* Share-Files-Tab-Bar.png in Resources */,
+				78C67CED148EBE8700708703 /* View-Contacts-12-6-11.png in Resources */,
+				78C67CF8148EBE9800708703 /* fullscreen_2_120611.png in Resources */,
+				78C67CFC148EBE9800708703 /* logo.png in Resources */,
+				78C67CFF148EBE9800708703 /* watermark_120611.png in Resources */,
+				7891663A148EC277004B5C0D /* Calendar-Tab-Bar.png in Resources */,
+				7891663C148ED305004B5C0D /* help_3.png in Resources */,
+				7891663E148ED377004B5C0D /* watermark_logo_120611.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

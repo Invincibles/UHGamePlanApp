@@ -77,7 +77,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">watermark.png</string>
+							<string key="NSResourceName">watermark_logo_120611.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="74236912">
@@ -90,7 +90,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">View-Edit-Contacts-11-10-11.png</string>
+							<string key="NSResourceName">View-Contacts-12-6-11.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="589418364">
@@ -174,7 +174,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{507, 150}, {90, 100}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:237</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<float key="IBUIAlpha">0.10000000149011612</float>
@@ -410,14 +409,14 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>Add-Contacts-11-10-11.png</string>
 				<string>Manage-Contacts-11-10-11.png</string>
-				<string>View-Edit-Contacts-11-10-11.png</string>
-				<string>watermark.png</string>
+				<string>View-Contacts-12-6-11.png</string>
+				<string>watermark_logo_120611.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{93, 108}</string>
 				<string>{118, 108}</string>
-				<string>{130, 108}</string>
+				<string>{118, 108}</string>
 				<string>{350, 350}</string>
 			</object>
 		</object>

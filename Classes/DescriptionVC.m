@@ -18,7 +18,7 @@
 {
    
     [self.delegate loadAnnoataions];
-   [self.delegate.tableView reloadData];
+    [self.delegate.tableView reloadData];
     [self dismissModalViewControllerAnimated:YES];
 }
 /* update */

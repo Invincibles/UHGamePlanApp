@@ -117,7 +117,7 @@
 
 - (void)viewDidLoad
 {
-        [super viewDidLoad];
+    [super viewDidLoad];
     
      self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     
@@ -257,11 +257,9 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     if (cell == nil) {
 		cell = [[[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
-
-//    cell.selectionStyle = UITableViewCellEditingStyleNone;
-//    cell.accessoryType = editableCellAccessoryType;
-     
-   
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
         if(arrayOfNotes.count!=0)
         {
     cell.secondaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 1)];

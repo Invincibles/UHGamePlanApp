@@ -16,6 +16,8 @@
     UILabel *myLongitude;
     UITextView *myTextView;
 
+    IBOutlet UITextField *myLatitudeTF;
+    IBOutlet UITextField *myLongitudeTF;
 }
 @property (nonatomic, retain) UINavigationController* navigator;
 @property (nonatomic, retain) IBOutlet UILabel *myLatitude;

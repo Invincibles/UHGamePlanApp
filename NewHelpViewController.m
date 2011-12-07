@@ -82,6 +82,7 @@
     [myWebView release];
     [super dealloc];
 }
+
 - (IBAction)fullScreenAction:(id)sender {
     
     HelpFullScreenVC *fullScreenVC = [[HelpFullScreenVC alloc] initWithNibName:@"HelpFullScreenVC" bundle:[NSBundle mainBundle]];

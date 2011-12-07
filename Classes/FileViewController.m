@@ -202,6 +202,8 @@
     myView.navigator.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentModalViewController:myView.navigator animated:YES];
+    
+
     [myView.myLatitude setText:lat];
     [myView.myLongitude setText:lon];
     while([rs next]) {
@@ -253,7 +255,6 @@
 
 - (IBAction)geotagButton:(id)sender {
     
-    //fileID=10;
     lManager = [[CLLocationManager alloc] init];
     lManager.delegate=self;
     lManager.distanceFilter=kCLHeadingFilterNone;

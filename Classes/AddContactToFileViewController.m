@@ -124,20 +124,6 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -(void) loadContactsList
 {
     //remove exisiting contacts
@@ -258,6 +244,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     ABRecordRef person1 = ABAddressBookGetPersonWithRecordID(addressBook, (ABRecordID)[[contactIDList objectAtIndex:indexPath.row] intValue]);
     

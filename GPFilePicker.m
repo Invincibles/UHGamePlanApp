@@ -131,6 +131,8 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     // Configure the cell...
     cell.textLabel.text = [filesList objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];

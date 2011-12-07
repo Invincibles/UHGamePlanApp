@@ -159,21 +159,16 @@
 {
     static NSString *CellIdentifier = @"Cell";
 	
-	// Add disclosure triangle to cell
-	//UITableViewCellAccessoryType editableCellAccessoryType =UITableViewCellAccessoryDetailDisclosureButton;
-    
-	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
-	
-	//cell.accessoryType = editableCellAccessoryType;
-    
-    
+
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
 	// Get the event at the row selected and display it's title
-  //  NSLog(@"%@ in cell",[[self.eventsList objectAtIndex:indexPath.row] title]);
+    
 	cell.textLabel.text = [[self.eventsList objectAtIndex:indexPath.row] title];
     cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
     //154,176,44

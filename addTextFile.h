@@ -14,11 +14,8 @@
 @interface addTextFile : UIViewController<UITextViewDelegate> {
     
     NSString *description; 
-  
-   
     IBOutlet UITextView *textview;
     
-   
 }
 
 @property(nonatomic,retain)NSString* description;

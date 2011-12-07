@@ -175,7 +175,7 @@
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-	//cell.accessoryType = editableCellAccessoryType;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
 	// Get the event at the row selected and display it's title
 	cell.textLabel.text = [[self.eventsList objectAtIndex:indexPath.row] title];

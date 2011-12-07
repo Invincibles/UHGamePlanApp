@@ -129,7 +129,7 @@
     [self setMyLatitude:nil];
     [self setMyLongitude:nil];
     [self setMyTextView:nil];
-    //[self setExampleTF:nil];
+    //[self setExampleTF:niil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

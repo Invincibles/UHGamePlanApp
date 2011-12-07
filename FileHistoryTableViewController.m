@@ -194,7 +194,7 @@
 	}
     
   
-    
+    cell.selectionStyle = UITableViewCellEditingStyleNone;
     
     if(arrayOfHistory.count!=0)
     {

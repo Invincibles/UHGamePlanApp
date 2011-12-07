@@ -262,6 +262,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    NSLog(@"Greetings!!!!!!");
 }
 
 - (void)viewDidDisappear:(BOOL)animated

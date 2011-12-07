@@ -13,20 +13,24 @@
     IBOutlet MKMapView *mapView;
     NSMutableArray* arrayOfLocations;
     UINavigationBar *navigationBar;
-    UIBarButtonItem *fullScreenBtnOutlet;
+   // UIBarButtonItem *fullScreenBtnOutlet;
     NSString* anotationDescription;
     NSString* latitude;
     NSString* longitude;
     AnnotatedFilesTableViewController* annotatedFTVC;
+    UIBarButtonItem *fullScreenBtn;
 }
 @property(nonatomic,retain)NSString* latitude;
 @property(nonatomic,retain)NSString* longitude;
 @property(nonatomic,retain)NSString* anotationDescription;
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
-- (IBAction)fullScreenBtn:(id)sender;
+/*- (IBAction)fullScreenBtn:(id)sender;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenBtnOutlet;
+ */
 @property(nonatomic,retain)AnnotatedFilesTableViewController* annotatedFTVC;
-//@property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenBtn;
+- (IBAction)fullScreen:(id)sender;
+
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSMutableArray* arrayOfLocations;
 

@@ -12,7 +12,7 @@
 #import <EventKitUI/EventKitUI.h>
 
 @class FileViewController;
-@interface ViewFileEventsController : UITableViewController<EKEventEditViewDelegate,UITableViewDelegate>
+@interface ViewFileEventsController : UITableViewController<EKEventEditViewDelegate>
 {
     UINavigationController *myNavigationController;
     EKEventViewController *eventViewController;

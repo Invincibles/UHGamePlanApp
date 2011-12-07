@@ -7,7 +7,8 @@
 #include "AnnotatedFilesTableViewController.h"
 
 @implementation SecondDetailViewController
-@synthesize fullScreenBtnOutlet;
+@synthesize fullScreenBtn;
+//@synthesize fullScreenBtnOutlet;
 @synthesize navigationBar;
 
 @synthesize mapView,arrayOfLocations,annotatedFTVC,latitude,longitude,anotationDescription;
@@ -90,7 +91,8 @@
 
 -(void) viewDidUnload {
     [self setNavigationBar:nil];
-    [self setFullScreenBtnOutlet:nil];
+   // [self setFullScreenBtnOutlet:nil];
+    [self setFullScreenBtn:nil];
 	[super viewDidUnload];
 	
 	//self.navigationBar = nil;
@@ -164,9 +166,9 @@
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIDeviceOrientationIsPortrait(toInterfaceOrientation))
-        [fullScreenBtnOutlet setEnabled:NO];
+        [fullScreenBtn setEnabled:NO];
     else
-        [fullScreenBtnOutlet setEnabled:YES];
+        [fullScreenBtn setEnabled:YES];
 }
 
 #pragma mark -
@@ -175,13 +177,21 @@
 - (void)dealloc {
     [arrayOfLocations release];
     [navigationBar release];
-    [fullScreenBtnOutlet release];
+    //[fullScreenBtnOutlet release];
+    [fullScreenBtn release];
     [super dealloc];
 }	
 
-
+/*
 - (IBAction)fullScreenBtn:(id)sender {
     
+    FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    [self presentModalViewController:nav animated:YES];
+}
+*/- (IBAction)fullScreen:(id)sender {
+    NSLog(@"Coming....");
     FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
     nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];

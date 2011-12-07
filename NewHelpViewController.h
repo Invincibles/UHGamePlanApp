@@ -12,13 +12,13 @@
 
 @interface NewHelpViewController : UIViewController<SubstitutableDetailViewController> {
     UINavigationBar *navigationBar;
-    UIBarButtonItem *fullScreenOutlet;
     UIWebView *myWebView;
+    UIBarButtonItem *fullScreenOutlet;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
-- (IBAction)fullScreenAction:(id)sender;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenOutlet;
 @property (nonatomic, retain) IBOutlet UIWebView *myWebView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenOutlet;
+- (IBAction)fullScreenAction:(id)sender;
 
 @end

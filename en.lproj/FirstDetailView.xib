@@ -53,7 +53,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">watermark.png</string>
+							<string key="NSResourceName">watermark_logo_120611.png</string>
 						</object>
 					</object>
 				</object>
@@ -190,7 +190,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">watermark.png</string>
+			<string key="NS.key.0">watermark_logo_120611.png</string>
 			<string key="NS.object.0">{350, 350}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">534</string>
