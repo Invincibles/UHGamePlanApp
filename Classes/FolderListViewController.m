@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "RootViewTableCell.h"
 #import "ShareFilesViewController.h"
+#import "GPNewFilePicker.h"
 
 #import "File.h"
 #import "CustomUIAlert.h"
@@ -67,12 +68,14 @@
         [folderList addObject:myfile];
     }
     [dbmanager.db close];
+    [dbmanager release];
 }
 
 -(void) dealloc
 {
     [folderList release];
     [fileView release];
+    [downloadBtn release];
     [super dealloc];
 }
 
@@ -95,11 +98,15 @@
     else
         isFileSelected = FALSE;
     
+    downloadBtn.enabled = NO;
+    
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
 }
 
 - (void)viewDidUnload
 {
+    [downloadBtn release];
+    downloadBtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -258,6 +265,12 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)fileDownlaod:(id)sender {
+    
+    GPNewFilePicker *picknewfile = [[GPNewFilePicker alloc] initWithNibName:@"GPNewFilePicker" bundle:[NSBundle mainBundle]];
+    picknewfile.navigator.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:picknewfile.navigator animated:YES];
+    [picknewfile release];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -365,6 +378,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
         */
         
         NSLog(@"in did select row at index : %d",indexPath.row);
+        
+        downloadBtn.enabled = YES;
         
         NSLog(@"Folder Name : %@",[NSString stringWithString:[[folderList objectAtIndex:indexPath.row] foldername]]);
         

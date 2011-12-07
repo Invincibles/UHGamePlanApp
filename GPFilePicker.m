@@ -38,10 +38,10 @@
         filesList = [[NSMutableArray alloc] initWithCapacity:1];
         
         //get all files from main bundle's Files folder
-        [filesList addObject:@"test1.pdf"];
-        [filesList addObject:@"test2.pdf"];
-        [filesList addObject:@"test3.pdf"];
-        [filesList addObject:@"test.pdf"];
+        //[filesList addObject:@"test1.pdf"];
+        //[filesList addObject:@"test2.pdf"];
+        //[filesList addObject:@"test3.pdf"];
+        //[filesList addObject:@"test.pdf"];
     }
     return self;
 }
@@ -61,6 +61,33 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(void) loadFilesList
+{
+    databaseManager* dbmanager = [[databaseManager alloc] init];
+    [dbmanager updateNames];
+    dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
+    if(![dbmanager.db open]){
+        NSLog(@"Error: Could not connect to database.");
+        return;
+    }
+    
+    FMResultSet* rs = [dbmanager.db executeQuery:@"select * from filelist"];
+    
+    if(rs == nil){
+        NSLog(@"Error: result set is nil.");
+        return;
+    }
+    
+    [filesList removeAllObjects];
+    
+    while ([rs next]) {
+        [filesList addObject:[rs stringForColumn:@"filename"]];
+    }
+    
+    [dbmanager.db close];
+    [dbmanager release];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -69,6 +96,8 @@
     self.title = @"File Picker";
     
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    
+    [self loadFilesList];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

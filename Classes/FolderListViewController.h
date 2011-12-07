@@ -18,6 +18,7 @@
     RootViewController* root;
     BOOL isFileSelected;
     int isSharedFilePortrait;
+    IBOutlet UIBarButtonItem *downloadBtn;
 }
 
 @property (nonatomic, retain) ShareFilesViewController* fileView;

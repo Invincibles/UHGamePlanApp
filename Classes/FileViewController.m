@@ -146,6 +146,12 @@
  
     NSString *urlAdd = [[NSBundle mainBundle] pathForResource:self.filename ofType: @"pdf"];
     
+    if(urlAdd == nil){
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        urlAdd = [NSString stringWithFormat:@"%@/%@.pdf",documentsDirectory,self.filename];
+    }
+    
     NSURL *ur = [NSURL fileURLWithPath:urlAdd]; 
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:ur]; 
     [fileWebView loadRequest:requestObj];

@@ -21,4 +21,6 @@
 @property (nonatomic, retain) NSMutableArray* filesList;
 @property (nonatomic, retain) MyFileViewController* delegate;
 
+-(void) loadFilesList;
+
 @end
