@@ -17,7 +17,7 @@
 
 @implementation FolderListViewController
 
-@synthesize fileView,folderList;
+@synthesize fileView,folderList,root, isFileSelected, isSharedFilePortrait;
 @synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,6 +27,7 @@
         // Custom initialization
         //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
         folderList = [[NSMutableArray alloc] initWithCapacity:1];
+        isSharedFilePortrait = 0;
     /*    
         //load all the folders here
         File* file1 = [[File alloc] init:1 _filename:@"" _isfolder:1 _foldername:@"Folder 1" _date:@"2011-11-06"];
@@ -87,9 +88,14 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];   
-    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    [super viewDidLoad];
     
+    if(isSharedFilePortrait)
+        isFileSelected = TRUE;
+    else
+        isFileSelected = FALSE;
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
 }
 
 - (void)viewDidUnload
@@ -262,7 +268,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"Greetings!!!!!!");
+    if(!isFileSelected)
+        [root loadHomePage];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

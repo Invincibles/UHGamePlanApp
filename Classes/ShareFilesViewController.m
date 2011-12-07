@@ -15,6 +15,7 @@
 #import "databaseManager.h"
 #import "GPFilePicker.h"
 #import "MyFileViewController.h"
+#import "FolderListViewController.h"
 
 @implementation ShareFilesViewController
 
@@ -24,7 +25,7 @@
 @synthesize toolbar;
 @synthesize Button;
 @synthesize numberOfFiles;
-@synthesize foldername,arrayoffileicons,fileslist,isLandscape;
+@synthesize foldername,arrayoffileicons,fileslist,isLandscape, folderListView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -94,7 +95,7 @@
     float y_cord=0;
     
     NSLog(@"interface orientation = %d", isLandscape);
-        
+
     if(isLandscape == 0){    
         for(int i=0;i<10;i++){
             myImageViewer = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"file-view-shelves_noicons.png"]];
@@ -137,7 +138,9 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    NSLog(@"interface orientation = %d",interfaceOrientation);
     isLandscape = (interfaceOrientation==3 || interfaceOrientation==4) ? 0 : 1;
+    
     [self viewDidLoad];
     if(![foldername isEqualToString:@""])
         [self reloadFiles];
@@ -198,11 +201,11 @@
 -(void) reloadFiles{
     
     NSLog(@"RELOAD FILES : %@",self.foldername);
-    
-    if(![foldername isEqualToString:@""]){
+    self.manageFolderBtn.enabled = NO;
+    if(!([foldername isEqualToString:@""] || ([foldername isEqualToString:@"(null)"]) || (foldername == NULL))){
         self.manageFolderBtn.enabled = YES;
         self.navigationBar.topItem.title = foldername;
-        NSLog(@"Folder Name : %@", foldername);
+        NSLog(@"-----> Folder Name : '%@'", foldername);
     }
     
     //remove all existing files n then add new ones

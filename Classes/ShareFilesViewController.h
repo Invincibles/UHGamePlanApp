@@ -10,6 +10,9 @@
 #import "RootViewController.h"
 
 #import "AppDelegate.h"
+
+@class FolderListViewController;
+
 @interface ShareFilesViewController : UIViewController <SubstitutableDetailViewController, UIScrollViewDelegate> {
     
     UIToolbar *toolbar;
@@ -25,8 +28,8 @@
     NSMutableArray* arrayoffileicons;
     UIScrollView *scrollView;
     UIBarButtonItem *manageFolderBtn;
-    
     int isLandscpae;
+    FolderListViewController *folderListView;
 }
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *manageFolderBtn;
 
@@ -38,10 +41,11 @@
 @property (nonatomic, retain) IBOutlet UILabel *numberOfFiles;
 @property (nonatomic, retain) NSString* foldername;
 @property (nonatomic, retain) NSMutableArray* fileslist;
-//@property (nonatomic) int fileCount;
 @property (nonatomic, retain) NSMutableArray* arrayoffileicons;
 
 @property (nonatomic) int isLandscape;
+
+@property (nonatomic, assign) FolderListViewController *folderListView;
 
 - (IBAction)previousButton:(id)sender;
 - (IBAction)nextButton:(id)sender;

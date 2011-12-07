@@ -433,6 +433,8 @@
 				78BF74AA146A40D300E51D82 /* GPFilePicker.xib */,
 				E4CA04861450177900B45465 /* FileViewController.h */,
 				E4CA04871450177900B45465 /* FileViewController.m */,
+				78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */,
+				78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */,
 				7891664C148EE20E004B5C0D /* File History */,
 				7891664B148EE1D8004B5C0D /* Notes On File */,
 				7891664A148EE1CC004B5C0D /* Share File */,
@@ -524,8 +526,6 @@
 			children = (
 				78BF74BF146A50E700E51D82 /* BluetoothViewController.h */,
 				78BF74C0146A50E900E51D82 /* BluetoothViewController.m */,
-				78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */,
-				78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */,
 			);
 			name = "Share File";
 			sourceTree = "<group>";

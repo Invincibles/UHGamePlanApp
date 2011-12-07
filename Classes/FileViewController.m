@@ -16,6 +16,8 @@
 #import "AddContactToFileViewController.h"
 #import "FileHistoryTableViewController.h"
 #include "databaseManager.h"
+#include "ShareFilesViewController.h"
+#include "FolderListViewController.h"
 
 @implementation FileViewController
 //@synthesize dbManager;
@@ -23,7 +25,7 @@
 @synthesize fileWebView;
 @synthesize toolbar;
 @synthesize filename;
-@synthesize presentSession, picker,fileID,openedDate;
+@synthesize presentSession, picker,fileID,openedDate, sharedFiles;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -236,6 +238,7 @@
 }
 
 - (IBAction)backButton:(id)sender {
+    sharedFiles.folderListView.isFileSelected = FALSE;
     [self dismissModalViewControllerAnimated:YES];
 }
 

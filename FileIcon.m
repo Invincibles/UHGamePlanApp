@@ -9,7 +9,9 @@
 #import "FileIcon.h"
 #import "FileViewController.h"
 #import "databaseManager.h"
-
+#import "FolderListViewController.h"
+#import "ShareFilesViewController.h"
+#import "FolderListViewController.h"
 
 @implementation FileIcon
 
@@ -17,6 +19,7 @@
 
 -(void) aMethod:(id)sender
 {
+    
     NSLog(@"%@ is clicked. fid - %d",fileNameLabel.text,fileid);
     
     // added for history
@@ -44,10 +47,10 @@
      else
      NSLog(@"insert failed.");
      
-     [dbManager.db close];
-    
-    
+    [dbManager.db close];
+    mydelegate.folderListView.isFileSelected = TRUE;
     FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
+    fvc.sharedFiles = mydelegate;
     fvc.fileID = self.fileid;
     fvc.openedDate=self.openedDate;
     NSArray *split = [fileNameLabel.text componentsSeparatedByString:@"."];
