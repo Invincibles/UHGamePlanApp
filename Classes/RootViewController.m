@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     
-    [super viewDidLoad111];
+    [super viewDidLoad];
     
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     
