@@ -219,11 +219,14 @@
 -(void) reloadFiles{
     
     NSLog(@"RELOAD FILES : %@",self.foldername);
-    self.manageFolderOutlet.enabled = NO;
+    [self.manageFolderBtn setEnabled:NO];
     if(!([foldername isEqualToString:@""] || ([foldername isEqualToString:@"(null)"]) || (foldername == NULL))){
-        self.manageFolderOutlet.enabled = YES;
+        [self.manageFolderBtn setEnabled:YES];
         self.navigationBar.topItem.title = foldername;
         NSLog(@"-----> Folder Name : '%@'", foldername);
+    }else{
+        [self.manageFolderBtn setEnabled:NO];
+        self.navigationBar.topItem.title = foldername;
     }
     
     //remove all existing files n then add new ones

@@ -259,6 +259,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [query1 release];
         [self loadFolderList];
         [dbManager release];
+        
+        fileView.foldername = @"";
+        [fileView reloadFiles];
+        [fileView reloadInputViews];
     }
 }
 
@@ -293,8 +297,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if(!isFileSelected)
-        [root loadHomePage];
+    //if(!isFileSelected)
+        //[root loadHomePage];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

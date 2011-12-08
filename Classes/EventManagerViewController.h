@@ -20,12 +20,8 @@
 }
 @property (nonatomic, retain) UINavigationController *mynav;
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
-<<<<<<< HEAD
-
 //Method to Add an Event - called when clicked on the icon in the details view
-=======
 @property (nonatomic, retain) KalViewController *calendar;
->>>>>>> 1e49b79f50e5b7d24b20cac1319fca8438552d04
 - (IBAction)addEvent:(id)sender;
 - (IBAction)viewCalendar:(id)sender;
 @end
