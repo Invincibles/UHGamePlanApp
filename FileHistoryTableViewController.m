@@ -54,20 +54,21 @@
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
-        
+        [dbManager release];
+        return;
     }
     else{
         NSLog(@"database is open.");
     }
     int fileid=self.fileVC.fileID;
     
-    NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select openeddate,description,geodescription from filehistory where fid='%d'",fileid]];
+    NSString* query = [NSString stringWithFormat:@"select openeddate,description,geodescription from filehistory where fid='%d'",fileid];
     NSLog(@"%@", query);
     //BOOL suc = [dbManager.db executeUpdate:query];
     
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
-    NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select count(*) as Count from filehistory where fid='%d'",fileid]];
+    NSString* query1 = [NSString stringWithFormat:@"select count(*) as Count from filehistory where fid='%d'",fileid];
     NSLog(@"%@", query1);
     FMResultSet *rsCount=[dbManager.db executeQuery:query1];
     
@@ -79,11 +80,7 @@
     
     int no=0;
     while([rs next]) {
-       
-        
-        
-        
-            
+    
         date=[rs stringForColumn:@"openeddate"];
         NSLog(@"%@ ----- date",date);
         [arrayOfHistory addObject:date];
@@ -99,24 +96,12 @@
         if(geodescription==NULL)
             geodescription=@"NOT TAGGED";
         [arrayOfHistory addObject:geodescription];
-        
-     
-        
-        
-        
         no++;
     }
     [dbManager.db close];
+    [dbManager release];
     
     [self.tableView reloadData];
-    [query1 release];
-    
-    
-    
-    
-    
-    
-    
     
 }
 

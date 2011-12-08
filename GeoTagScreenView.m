@@ -23,28 +23,29 @@
 
 -(void) doneAction:(id)sender
 {
-  
-    databaseManager *dbManager=[[databaseManager alloc] init];
-    [dbManager updateNames];
-    dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path--- %@",dbManager.databasePath);
-    if(![dbManager.db open]){
-        NSLog(@"Could not open db.");
-        return;
-    }
-    else{
-        NSLog(@"database is open.");
-    }
-    
+
     BOOL descriptionGiven = FALSE;
     
     descriptionGiven = [myTextView hasText];
     
     int fileid=self.fileVC.fileID;
     NSDate* openedDate=self.fileVC.openedDate;
-      NSDate* dt=[NSDate date];
+    NSDate* dt=[NSDate date];
     
     if(descriptionGiven){
+        
+        databaseManager *dbManager=[[databaseManager alloc] init];
+        [dbManager updateNames];
+        dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
+        NSLog(@"path--- %@",dbManager.databasePath);
+        if(![dbManager.db open]){
+            NSLog(@"Could not open db.");
+            [dbManager release];
+            return;
+        }
+        else{
+            NSLog(@"database is open.");
+        }
         NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into geotagTable (fid,latitude,longitude,description,geotagDate) values (%d,'%@','%@','%@','%@')",fileid,myLatitude.text,myLongitude.text,myTextView.text,dt]];
         
         NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET geodescription='%@' WHERE fid='%d' and openeddate='%@'",myTextView.text,fileid,openedDate]];
@@ -55,19 +56,21 @@
         
         
         BOOL suc = [dbManager.db executeUpdate:query];
-        if(suc)
+        if(suc && suc1)
             NSLog(@"insert is successful.");
         else
             NSLog(@"insert failed.");
         
+        [query release];
+        [query1 release];
         [dbManager.db close];
+        [dbManager release];
         [self dismissModalViewControllerAnimated:YES];
     }
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Description" message:@"Please Enter Description" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
-        
         [alert release];
     }
      

@@ -358,7 +358,7 @@
     
     editController.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     
-    
+    [editController release];
 }
 
 -(void) cancelEventAction:(id)sender

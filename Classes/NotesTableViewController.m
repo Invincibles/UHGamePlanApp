@@ -68,7 +68,8 @@
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
-        
+        [dbManager release];
+        return;
     }
     else{
         NSLog(@"database is open.");
@@ -110,9 +111,12 @@
         no++;
     }
     [dbManager.db close];
+    [dbManager release];
+    [query1 release];
+    [query release];
     
     [self.tableView reloadData];
-    [query1 release];
+
 }
 
 - (void)viewDidLoad
@@ -176,6 +180,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         else
             NSLog(@"delete failed.");
 
+        
+        [dbManager.db close];
+        [dbManager release];
+        [query release];
         
         [self loadAnnoataions];
         

@@ -53,6 +53,10 @@
    else
     NSLog(@"update failed.");
     
+    [query release];
+    [dbManager.db close];
+    [dbManager release];
+    
     [self cancelAction];
       
 }

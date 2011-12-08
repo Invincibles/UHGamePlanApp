@@ -14,6 +14,8 @@
 #import "databaseManager.h"
 #import "BluetoothViewController.h"
 #import "addTextFile.h"
+
+@class ShareFilesViewController;
 @interface FileViewController : UIViewController <SubstitutableDetailViewController,CLLocationManagerDelegate>  {
     
     GKSession *presentSession;
@@ -26,6 +28,7 @@
     BOOL ispotrait;
     CLLocationManager *lManager;
     NSDate *openedDate;
+    ShareFilesViewController* sharedFiles;
 }
 //@property(nonatomic,retain)databaseManager *dbManager;
 @property(nonatomic,retain)NSDate* openedDate;
@@ -36,6 +39,8 @@
 @property(nonatomic,retain)NSString *filename;
 @property(nonatomic,retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, retain) IBOutlet UIWebView *fileWebView;
+@property (nonatomic, assign) ShareFilesViewController* sharedFiles;
+
 - (IBAction)backButton:(id)sender;
 - (IBAction)calenderButton:(id)sender;
 - (IBAction)geotagButton:(id)sender;

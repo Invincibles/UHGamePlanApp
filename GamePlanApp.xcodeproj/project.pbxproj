@@ -21,8 +21,6 @@
 		7807DDAA1464BDAA00FC78B9 /* back-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7807DDA91464BDAA00FC78B9 /* back-icon2.png */; };
 		782094D71464438B008F287B /* GeoTagScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782094D61464438B008F287B /* GeoTagScreenView.m */; };
 		782094DB146443A1008F287B /* GeoTagScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782094D9146443A1008F287B /* GeoTagScreenView.xib */; };
-		7832CC9A148F440E00477658 /* Manage-Folder-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7832CC99148F440E00477658 /* Manage-Folder-Tab-Bar.png */; };
-		7832CC9D148F442300477658 /* New-Folder-Tab-Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7832CC9C148F442300477658 /* New-Folder-Tab-Bar.png */; };
 		785AC56414678CA700558DEF /* AddEventToFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56214678CA700558DEF /* AddEventToFileViewController.m */; };
 		785AC56514678CA700558DEF /* AddEventToFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785AC56314678CA700558DEF /* AddEventToFileViewController.xib */; };
 		785AC5711467999B00558DEF /* ViewFileEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56F1467999B00558DEF /* ViewFileEventsController.m */; };
@@ -92,6 +90,8 @@
 		7E9552EE11766B410003D25C /* FirstDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E9552E811766B410003D25C /* FirstDetailView.xib */; };
 		7E9552EF11766B410003D25C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E9552EA11766B410003D25C /* MainWindow.xib */; };
 		7E9552F011766B410003D25C /* SecondDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E9552EC11766B410003D25C /* SecondDetailView.xib */; };
+		C9A3F299148FED8100D72B27 /* GPNewFilePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3F297148FED8100D72B27 /* GPNewFilePicker.m */; };
+		C9A3F29A148FED8100D72B27 /* GPNewFilePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3F298148FED8100D72B27 /* GPNewFilePicker.xib */; };
 		E4314A8A144FAA3400572B33 /* EventManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4314A88144FAA3400572B33 /* EventManagerViewController.m */; };
 		E4314A8B144FAA3400572B33 /* EventManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4314A89144FAA3400572B33 /* EventManagerViewController.xib */; };
 		E4314A95144FB29A00572B33 /* ManagedContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4314A93144FB29900572B33 /* ManagedContactViewController.m */; };
@@ -255,6 +255,9 @@
 		7E9552EB11766B410003D25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		7E9552ED11766B410003D25C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondDetailView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* GamePlanApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GamePlanApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C9A3F296148FED8100D72B27 /* GPNewFilePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPNewFilePicker.h; sourceTree = "<group>"; };
+		C9A3F297148FED8100D72B27 /* GPNewFilePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPNewFilePicker.m; sourceTree = "<group>"; };
+		C9A3F298148FED8100D72B27 /* GPNewFilePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPNewFilePicker.xib; sourceTree = "<group>"; };
 		E4314A87144FAA3400572B33 /* EventManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManagerViewController.h; path = Classes/EventManagerViewController.h; sourceTree = "<group>"; };
 		E4314A88144FAA3400572B33 /* EventManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventManagerViewController.m; path = Classes/EventManagerViewController.m; sourceTree = "<group>"; };
 		E4314A89144FAA3400572B33 /* EventManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventManagerViewController.xib; path = Classes/EventManagerViewController.xib; sourceTree = "<group>"; };
@@ -466,6 +469,9 @@
 				78BF74AA146A40D300E51D82 /* GPFilePicker.xib */,
 				E4CA04861450177900B45465 /* FileViewController.h */,
 				E4CA04871450177900B45465 /* FileViewController.m */,
+				78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */,
+				78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */,
+				C9A3F294148FED4500D72B27 /* Download File */,
 				7891664C148EE20E004B5C0D /* File History */,
 				7891664B148EE1D8004B5C0D /* Notes On File */,
 				7891664A148EE1CC004B5C0D /* Share File */,
@@ -557,8 +563,6 @@
 			children = (
 				78BF74BF146A50E700E51D82 /* BluetoothViewController.h */,
 				78BF74C0146A50E900E51D82 /* BluetoothViewController.m */,
-				78BF74BA146A484E00E51D82 /* ShareFilesViewController.h */,
-				78BF74BB146A484E00E51D82 /* ShareFilesViewController.m */,
 			);
 			name = "Share File";
 			sourceTree = "<group>";
@@ -660,6 +664,16 @@
 				78EA28A6146BB1E800AD7412 /* Manage-Contacts-11-10-11.png */,
 			);
 			name = "New Images";
+			sourceTree = "<group>";
+		};
+		C9A3F294148FED4500D72B27 /* Download File */ = {
+			isa = PBXGroup;
+			children = (
+				C9A3F296148FED8100D72B27 /* GPNewFilePicker.h */,
+				C9A3F297148FED8100D72B27 /* GPNewFilePicker.m */,
+				C9A3F298148FED8100D72B27 /* GPNewFilePicker.xib */,
+			);
+			name = "Download File";
 			sourceTree = "<group>";
 		};
 		E4314AA8144FDE2F00572B33 /* icons */ = {
@@ -814,9 +828,7 @@
 				7891663A148EC277004B5C0D /* Calendar-Tab-Bar.png in Resources */,
 				7891663C148ED305004B5C0D /* help_3.png in Resources */,
 				7891663E148ED377004B5C0D /* watermark_logo_120611.png in Resources */,
-				7832CC9A148F440E00477658 /* Manage-Folder-Tab-Bar.png in Resources */,
-				7832CC9D148F442300477658 /* New-Folder-Tab-Bar.png in Resources */,
-				78965F8D1490167B001D07D9 /* Kal.bundle in Resources */,
+				C9A3F29A148FED8100D72B27 /* GPNewFilePicker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,7 +876,7 @@
 				78E1DCFD148AB61A000476BB /* AnnotatedFilesTableViewController.m in Sources */,
 				78E1DD07148AE274000476BB /* FileHistoryTableViewController.m in Sources */,
 				78E1DD77148C21D4000476BB /* NewHelpViewController.m in Sources */,
-				78965F9A14901D4A001D07D9 /* EventKitDataSource.m in Sources */,
+				C9A3F299148FED8100D72B27 /* GPNewFilePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

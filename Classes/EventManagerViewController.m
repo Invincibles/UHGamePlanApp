@@ -82,6 +82,7 @@
     MyEventManager *myObj = [[MyEventManager alloc] init];
     myObj.navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:myObj.navigationController animated:YES];
+    [myObj release];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

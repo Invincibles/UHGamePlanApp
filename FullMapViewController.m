@@ -45,6 +45,9 @@
 
 - (void)viewDidLoad
 {
+    
+        [super viewDidLoad];
+    
    // UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(cancel)];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     
@@ -60,6 +63,7 @@
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
+        [dbManager release];
         return;
     }
     else{
@@ -81,9 +85,6 @@
         NSLog(@"%@",lat);
         NSLog(@"%@",lon);
         no++;
-        
-        
-        
     }
     int pos=0;
     for(int i=0;i<no;i++){
@@ -96,22 +97,16 @@
         pos++;
         NSString *description = [arrayOfLocations objectAtIndex:pos] ;
         anotationDescription=description;
-        
-      
-        
-        
+
         pos++;
         MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:description andCoordinate:location];
         [self.mapView addAnnotation:newAnnotation];
+        [newAnnotation release];
     }
-   // MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:@"Buckingham Palace" andCoordinate:location];
-  //  [self.mapView addAnnotation:newAnnotation];
     
-    
-    NSLog(@"out");
-    
-    
-    [super viewDidLoad];
+    [dbManager.db close];
+    [dbManager release];
+
 }
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    

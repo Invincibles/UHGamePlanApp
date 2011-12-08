@@ -9,7 +9,9 @@
 #import "FileIcon.h"
 #import "FileViewController.h"
 #import "databaseManager.h"
-
+#import "FolderListViewController.h"
+#import "ShareFilesViewController.h"
+#import "FolderListViewController.h"
 
 @implementation FileIcon
 
@@ -17,6 +19,7 @@
 
 -(void) aMethod:(id)sender
 {
+    
     NSLog(@"%@ is clicked. fid - %d",fileNameLabel.text,fileid);
     
     // added for history
@@ -26,8 +29,9 @@
      dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
      NSLog(@"path ---- %@",dbManager.databasePath);
      if(![dbManager.db open]){
-     NSLog(@"Could not open db.");
-     return;
+         NSLog(@"Could not open db.");
+         [dbManager release];
+         return;
      }
      else{
      NSLog(@"database is open.");
@@ -36,7 +40,7 @@
     
      //NSLog(@"%@",now);
      
-     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into filehistory (fid,openeddate) values (%d,'%@')",fileid,openedDate]];
+     NSString* query = [NSString stringWithFormat:@"insert into filehistory (fid,openeddate) values (%d,'%@')",fileid,openedDate];
      NSLog(@"%@", query);
      BOOL suc = [dbManager.db executeUpdate:query];
      if(suc)
@@ -44,10 +48,11 @@
      else
      NSLog(@"insert failed.");
      
-     [dbManager.db close];
-    
-    
+    [dbManager.db close];
+    [dbManager release];
+    mydelegate.folderListView.isFileSelected = TRUE;
     FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
+    fvc.sharedFiles = mydelegate;
     fvc.fileID = self.fileid;
     fvc.openedDate=self.openedDate;
     NSArray *split = [fileNameLabel.text componentsSeparatedByString:@"."];

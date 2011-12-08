@@ -262,7 +262,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         NSLog(@"path--- %@",dbManager.databasePath);
         if(![dbManager.db open]){
             NSLog(@"Could not open db.");
-            
+            [dbManager release];
+            return;
         }
         else{
             NSLog(@"database is open.");
@@ -277,7 +278,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         else
             NSLog(@"delete failed.");
         
-        
+        [query release];
+        [dbManager.db close];
+        [dbManager release];
         
     }
     [self viewDidLoad];
@@ -310,9 +313,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(NSMutableArray *)getEventsOfFile{
     
-    NSLog(@"coming---");
-   
-   NSMutableArray *events=[[NSMutableArray alloc] init]; 
+    NSMutableArray *events=[[NSMutableArray alloc] init]; 
     
     NSString* id;
     databaseManager *dbManager=[[databaseManager alloc] init];
@@ -321,7 +322,9 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
-        
+        [dbManager release];
+        [events release];
+        return nil;
     }
     else{
         NSLog(@"database is open.");
@@ -329,33 +332,15 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
     int fileid=self.fileVC.fileID;
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select eventid from eventTable where fid='%d'",fileid]];
-    NSLog(@"%@", query);
-    //BOOL suc = [dbManager.db executeUpdate:query];
+    BOOL isPresent = FALSE;
     
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
-   //should include file id in the querry below
-    /*
-    NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select count(*) as Count from eventTable where fid=%d",fileid]];
-    NSLog(@"%@", query1);
-    
-    FMResultSet *rsCount=[dbManager.db executeQuery:query1];
-    
-    while([rsCount next])
-    {
-        rowcount=[rsCount intForColumn:@"Count"];
-        NSLog(@"%d------rowcount",rowcount);  
-    }
-    */
     rowcount = 0;
-    BOOL isPresent = FALSE;
     while([rs next]) 
     {
         
         id=[rs stringForColumn:@"eventid"];
-        NSLog(@"%@----->1",id);
-            
-        NSLog(@"count of total events - %d",[fileEventsList count]);
             
         for(EKEvent *myEvent in fileEventsList)
         {
@@ -363,7 +348,6 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
             NSLog(@"myEventID - %@",myEventID);
             if([myEventID isEqualToString:id])
             {
-                NSLog(@"myEvent eventIdentifier....%@",[myEvent eventIdentifier]);
                 isPresent = TRUE;
                 break;
             }
@@ -377,12 +361,15 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
         else{
             NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where eventid = '%@' and fid = '%d'",id,fileid]];
             NSLog(@"%@", query1);
-            BOOL suc2 = [dbManager.db executeUpdate:query1];
+            [dbManager.db executeUpdate:query1];
+            [query1 release];
         }
         isPresent = FALSE;
     }        
     
+    [query release];
     [dbManager.db close];
+    [dbManager release];
     
     [self.tableView reloadData];
     
@@ -404,6 +391,10 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     addEventVC.delegate = self;
     [self presentModalViewController:nav animated:YES];
     [addEventVC release]; 
+}
+
+-(void) eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action{
+    
 }
 
 @end

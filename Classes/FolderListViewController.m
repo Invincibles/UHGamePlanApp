@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "RootViewTableCell.h"
 #import "ShareFilesViewController.h"
+#import "GPNewFilePicker.h"
 
 #import "File.h"
 #import "CustomUIAlert.h"
@@ -17,7 +18,7 @@
 
 @implementation FolderListViewController
 
-@synthesize fileView,folderList;
+@synthesize fileView,folderList,root, isFileSelected, isSharedFilePortrait;
 @synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,6 +28,7 @@
         // Custom initialization
         //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
         folderList = [[NSMutableArray alloc] initWithCapacity:1];
+        isSharedFilePortrait = 0;
     /*    
         //load all the folders here
         File* file1 = [[File alloc] init:1 _filename:@"" _isfolder:1 _foldername:@"Folder 1" _date:@"2011-11-06"];
@@ -49,6 +51,7 @@
     NSLog(@"path - %@",dbmanager.databasePath);
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         return;
     }
     
@@ -56,6 +59,7 @@
     
     if(rs == nil){
         NSLog(@"Error: result set is nil.");
+        [dbmanager release];
         return;
     }
     
@@ -66,12 +70,14 @@
         [folderList addObject:myfile];
     }
     [dbmanager.db close];
+    [dbmanager release];
 }
 
 -(void) dealloc
 {
     [folderList release];
     [fileView release];
+    [downloadBtn release];
     [super dealloc];
 }
 
@@ -87,13 +93,22 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];   
-    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+    [super viewDidLoad];
     
+    if(isSharedFilePortrait)
+        isFileSelected = TRUE;
+    else
+        isFileSelected = FALSE;
+    
+    downloadBtn.enabled = NO;
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
 }
 
 - (void)viewDidUnload
 {
+    [downloadBtn release];
+    downloadBtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -130,7 +145,7 @@
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd" ];
         NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-        
+        [dateFormatter release];
         //insert into database
         NSString* query = [NSString stringWithFormat:@"insert into filesystem (filename,isfolder,foldername,creationdate) values ('',1,'%@','%@')",newfoldername,dateString];
         
@@ -140,6 +155,7 @@
         //NSLog(@"path - %@",dbmanager.databasePath);
         if(![dbmanager.db open]){
             NSLog(@"Error: Could not connect to database.");
+            [dbmanager release];
             return;
         }
         
@@ -154,12 +170,11 @@
             NSLog(@"Error in creating file, please try again.");
         }
         [dbmanager.db close];
+        [dbmanager release];
         
         [self loadFolderList];
         
         [self.tableView reloadData];
-        
-        [dateFormatter release];
     }
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView 
@@ -200,40 +215,49 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         NSLog(@"%@", query1);
         FMResultSet *rs=[dbManager.db executeQuery:query1];
         
+        NSString *query;
+        
         while([rs next])
         {
          int fileID=[rs intForColumn:@"fid"]; 
-        NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where fid='%d'",fileID]];
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where fid='%d'",fileID]];
             NSLog(@"%@", query);
-             BOOL suc = [dbManager.db executeUpdate:query];
-        NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where fid='%d'",fileID]];
-            NSLog(@"%@", query1);
-             BOOL suc1 = [dbManager.db executeUpdate:query1];
-            NSString* query2 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from geotagTable where fid='%d'",fileID]];
-            NSLog(@"%@", query2);
-             BOOL suc2 = [dbManager.db executeUpdate:query2];
-            NSString* query3 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filehistory where fid='%d'",fileID]];
-            NSLog(@"%@", query3);
-             BOOL suc3 = [dbManager.db executeUpdate:query3];
-            NSString* query4 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where fid='%d'",fileID]];
-            NSLog(@"%@", query4);
-             BOOL suc4 = [dbManager.db executeUpdate:query4];
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from geotagTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filehistory where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
         }
         
+        NSString* query2 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filesystem where foldername='%@'",[[folderList objectAtIndex:rownumber] foldername ]]];
+        NSLog(@"%@", query2);
         
-        NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filesystem where foldername='%@'",[[folderList objectAtIndex:rownumber] foldername ]]];
-        NSLog(@"%@", query);
-        
-        
-        
-        BOOL suc = [dbManager.db executeUpdate:query];
-        if(suc)
+        if([dbManager.db executeUpdate:query2])
             NSLog(@"delete is successful.");
         else
             NSLog(@"delete failed.");
         
+        [query2 release];
+        [query1 release];
         [self loadFolderList];
-        
+        [dbManager release];
     }
 }
 
@@ -252,6 +276,12 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)fileDownlaod:(id)sender {
+    
+    GPNewFilePicker *picknewfile = [[GPNewFilePicker alloc] initWithNibName:@"GPNewFilePicker" bundle:[NSBundle mainBundle]];
+    picknewfile.navigator.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:picknewfile.navigator animated:YES];
+    [picknewfile release];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -262,7 +292,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"Greetings!!!!!!");
+    if(!isFileSelected)
+        [root loadHomePage];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -358,6 +389,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
         */
         
         NSLog(@"in did select row at index : %d",indexPath.row);
+        
+        downloadBtn.enabled = YES;
         
         NSLog(@"Folder Name : %@",[NSString stringWithString:[[folderList objectAtIndex:indexPath.row] foldername]]);
         

@@ -21,4 +21,6 @@
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) UIBarButtonItem *rootPopoverButtonItem;
 
+-(void) loadHomePage;
+
 @end

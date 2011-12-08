@@ -41,20 +41,21 @@
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
-        
+        [dbManager release];
+        return;
     }
     else{
         NSLog(@"database is open.");
     }
     
     NSLog(@"in ..%@",latitude);
-    NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select fid,filename from filesystem where fid in(select fid from geotagTable where latitude='%@' and longitude='%@')",latitude,longitude]];
+    NSString* query = [NSString stringWithFormat:@"select fid,filename from filesystem where fid in(select fid from geotagTable where latitude='%@' and longitude='%@')",latitude,longitude];
     NSLog(@"full   %@", query);
     //BOOL suc = [dbManager.db executeUpdate:query];
     
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
-    NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select count(distinct fid) as Count from geotagTable where latitude='%@'and longitude='%@'",latitude,longitude]];
+    NSString* query1 = [NSString stringWithFormat:@"select count(distinct fid) as Count from geotagTable where latitude='%@'and longitude='%@'",latitude,longitude];
     NSLog(@"%@", query1);
     FMResultSet *rsCount=[dbManager.db executeQuery:query1];
     
@@ -77,11 +78,9 @@
       no++;
     }
     [dbManager.db close];
+    [dbManager release];
     
     [self.tableView reloadData];
-    [query1 release];
-
-    
 }
 
 #pragma mark - View lifecycle
@@ -222,7 +221,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int fileid=[arrayOfFiles objectAtIndex:(indexPath.row)];
+    int fileid=[[arrayOfFiles objectAtIndex:(indexPath.row)] intValue];
     
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
@@ -230,6 +229,7 @@
     NSLog(@"path ---- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
+        [dbManager release];
         return;
     }
     else{
@@ -239,7 +239,7 @@
     
     //NSLog(@"%@",now);
     
-    NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into filehistory (fid,openeddate) values (%d,'%@')",fileid,openedDate]];
+    NSString* query = [NSString stringWithFormat:@"insert into filehistory (fid,openeddate) values (%d,'%@')",fileid,openedDate];
     NSLog(@"%@", query);
     BOOL suc = [dbManager.db executeUpdate:query];
     if(suc)
@@ -248,7 +248,7 @@
         NSLog(@"insert failed.");
     
     [dbManager.db close];
-    
+    [dbManager release];
     
     FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
     fvc.fileID =fileid;
@@ -260,17 +260,6 @@
   
     [self presentModalViewController:fvc animated:YES];
     [fvc release];
-    
-    
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
 }
 
 @end

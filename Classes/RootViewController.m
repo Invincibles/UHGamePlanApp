@@ -129,6 +129,32 @@
     return cell;
 }
 
+-(void) loadHomePage{
+    
+    UIViewController <SubstitutableDetailViewController> *detailViewController = nil;
+    
+    FirstDetailViewController *newDetailViewController = [[FirstDetailViewController alloc] initWithNibName:@"FirstDetailView" bundle:[NSBundle mainBundle]];
+    detailViewController = newDetailViewController;
+    
+    // Update the split view controller's view controllers array.
+    NSArray *viewControllers = [[NSArray alloc] initWithObjects:self.navigationController, detailViewController, nil];
+    splitViewController.viewControllers = viewControllers;
+    [viewControllers release];
+    
+    // Dismiss the popover if it's present.
+    if (popoverController != nil) {
+        [popoverController dismissPopoverAnimated:YES];
+    }
+    
+    // Configure the new view controller's popover button (after the view has been displayed and its toolbar/navigation bar has been created).
+    if (rootPopoverButtonItem != nil) {
+        [detailViewController showRootPopoverButtonItem:self.rootPopoverButtonItem];
+    }
+    
+    [detailViewController release];
+    
+}
+
 #pragma mark -
 #pragma mark Table view selection
 
@@ -156,9 +182,11 @@
     if(row == 3){
         
         FolderListViewController *folderList = [[FolderListViewController alloc] init];
+        folderList.root = self;
         [self.navigationController pushViewController:folderList animated:YES];
         
         ShareFilesViewController *newDetailViewController = [[ShareFilesViewController alloc] initWithNibName:@"ShareFilesViewController" bundle:nil];
+        newDetailViewController.folderListView = folderList;
         detailViewController = newDetailViewController;
         folderList.fileView = newDetailViewController;
         [folderList release];
