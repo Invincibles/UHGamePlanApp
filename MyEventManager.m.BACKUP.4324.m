@@ -184,6 +184,10 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 6afa3ef54c9d27126f2d3d04a8c6e3b5726adf10
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

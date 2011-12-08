@@ -39,7 +39,6 @@
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path ---- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
         [dbManager release];
@@ -49,16 +48,12 @@
         NSLog(@"database is open.");
     }
     NSDate *now = [NSDate date];
-    NSLog(@"%@",now);
     description=textview.text;
     int fileid=self.delegate.fileVC.fileID;
     NSDate *openedDate=self.delegate.fileVC.openedDate;
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into anotationTable (fid,description,annotationdate) values (%d,'%@','%@')",fileid,description,now]];
     
     NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET description='%@' WHERE fid='%d' and openeddate='%@'",description,fileid,openedDate]];
-    
-    NSLog(@"%@", query);
-    NSLog(@"%@", query1);
     BOOL suc = [dbManager.db executeUpdate:query];
     BOOL suc1 = [dbManager.db executeUpdate:query1];
     if(suc && suc1)
@@ -83,9 +78,6 @@
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     description=textView.text;
-        //if(![textAnotated isEqualToString:@""]){
-      //  description=textAnotated;  
-    //}
     
 }
 

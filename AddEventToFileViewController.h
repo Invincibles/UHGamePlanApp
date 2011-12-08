@@ -16,11 +16,15 @@
 @interface AddEventToFileViewController : UITableViewController<UINavigationBarDelegate, UITableViewDelegate, 
 EKEventEditViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 {
+    //eventStore stores all the events in the default iPad Calendar
     EKEventStore *eventStore;
+    //eventsList contains all the event id's of the events in the calendar
     NSMutableArray *eventsList;
     EKCalendar *defaultCalendar;
     GPEventViewController *eventViewController;
+    //the unique id of an event
     NSString *eventIdentifier;
+    //controller which allows the user to edit an event
     EKEventEditViewController *eventEditController;
     NSString *eventID;
 }

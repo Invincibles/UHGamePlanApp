@@ -89,14 +89,11 @@
     
     NSString* id =self.addVC.eventID;
     int fileid=self.addVC.delegate.fileVC.fileID;
-   
-    NSLog(@"%d---gp fileid",fileid);
     
     UIBarButtonItem* afBtn = [[UIBarButtonItem alloc] initWithTitle:@"Add To File" style:UIBarButtonItemStylePlain target:self action:@selector(addToFile:)];
     self.navigationItem.rightBarButtonItem = afBtn;
     
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select eventid from eventTable where eventid='%@' and fid='%d'",id,fileid]];
-    NSLog(@"%@", query);
     
     FMResultSet *rs=[dbManager.db executeQuery:query];
     

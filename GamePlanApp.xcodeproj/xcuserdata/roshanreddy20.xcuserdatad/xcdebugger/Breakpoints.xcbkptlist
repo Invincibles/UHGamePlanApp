@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/DescriptionVC.m"
-         timestampString = "342256905.470279"
+         timestampString = "345022339.225476"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "42"
-         endingLineNumber = "42"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
          landmarkName = "-updateAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/DescriptionVC.m"
-         timestampString = "342256905.470279"
+         timestampString = "345022339.225476"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
          landmarkName = "-updateAction:"
          landmarkType = "5">
       </FileBreakpoint>

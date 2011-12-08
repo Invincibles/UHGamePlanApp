@@ -21,7 +21,7 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
--(void) doneAction:(id)sender
+-(void) doneAction:(id)sender  // when we enter the description of the place a row is inserted into the table with the latitude,longitude and the place description
 {
 
     BOOL descriptionGiven = FALSE;
@@ -32,7 +32,7 @@
     NSDate* openedDate=self.fileVC.openedDate;
     NSDate* dt=[NSDate date];
     
-    if(descriptionGiven){
+    if(descriptionGiven){   // if description is given
         
         databaseManager *dbManager=[[databaseManager alloc] init];
         [dbManager updateNames];
@@ -46,15 +46,12 @@
         else{
             NSLog(@"database is open.");
         }
+        // below querry is used to insert a row into geotagtable with a description,latitute,longitude for that particular file
         NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into geotagTable (fid,latitude,longitude,description,geotagDate) values (%d,'%@','%@','%@','%@')",fileid,myLatitude.text,myLongitude.text,myTextView.text,dt]];
         
         NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET geodescription='%@' WHERE fid='%d' and openeddate='%@'",myTextView.text,fileid,openedDate]];
-        
-        NSLog(@"%@", query);
-        NSLog(@"%@", query1);
+    
         BOOL suc1 = [dbManager.db executeUpdate:query1];
-        
-        
         BOOL suc = [dbManager.db executeUpdate:query];
         if(suc && suc1)
             NSLog(@"insert is successful.");
@@ -67,7 +64,7 @@
         [dbManager release];
         [self dismissModalViewControllerAnimated:YES];
     }
-    else
+    else  // if the description is not given then it should pop up an alert 
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Description" message:@"Please Enter Description" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];

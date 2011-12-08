@@ -9,28 +9,22 @@
 
 @interface SecondDetailViewController : UIViewController <SubstitutableDetailViewController, MKMapViewDelegate> {
     
-    //UINavigationBar *navigationBar;
-    IBOutlet MKMapView *mapView;
-    NSMutableArray* arrayOfLocations;
+    IBOutlet MKMapView *mapView;   //this mapview is used to display the map
+    NSMutableArray* arrayOfLocations;// this array is used to store the array of locations 
     UINavigationBar *navigationBar;
-   // UIBarButtonItem *fullScreenBtnOutlet;
     NSString* anotationDescription;
     NSString* latitude;
     NSString* longitude;
-    AnnotatedFilesTableViewController* annotatedFTVC;
+    AnnotatedFilesTableViewController* annotatedFTVC;// instance of annotatedFilesTableviecontroller
     UIBarButtonItem *fullScreenBtn;
 }
 @property(nonatomic,retain)NSString* latitude;
 @property(nonatomic,retain)NSString* longitude;
 @property(nonatomic,retain)NSString* anotationDescription;
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
-/*- (IBAction)fullScreenBtn:(id)sender;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenBtnOutlet;
- */
 @property(nonatomic,retain)AnnotatedFilesTableViewController* annotatedFTVC;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *fullScreenBtn;
 - (IBAction)fullScreen:(id)sender;
-
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSMutableArray* arrayOfLocations;
 

@@ -231,6 +231,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    //calling the controller where you can tag a file to taht event
     eventViewController = [[GPEventViewController alloc] initWithNibName:@"nil" bundle:nil];
     
     
@@ -246,7 +247,6 @@
     eventViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     eventViewController.addVC = self;
-    //eventViewController.delegate = self.delegate;
     [self.navigationController pushViewController:eventViewController animated:YES];
     
     [eventViewController release];
@@ -305,9 +305,6 @@
 -(NSArray *)getEventsFromNow{
     
 	NSDate *startDate = [NSDate date];
-	
-	// endDate is 1 day = 60*60*24 seconds = 86400 seconds from startDate
-	//NSDate *endDate = [NSDate distantFuture];
 	
 	// Create the predicate. Pass it the default calendar.
 	NSArray *calendarArray = [NSArray arrayWithObject:defaultCalendar];

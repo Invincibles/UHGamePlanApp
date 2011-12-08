@@ -14,7 +14,7 @@
 {
     FileViewController *fileVC;
     int rowcount; 
-    NSMutableArray* arrayOfHistory;
+    NSMutableArray* arrayOfHistory; // this array used to store the history
 }
 @property(nonatomic,retain)FileViewController *fileVC;
 @property(nonatomic,retain)NSMutableArray* arrayOfHistory;

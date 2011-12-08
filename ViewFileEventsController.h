@@ -16,9 +16,13 @@
 {
     UINavigationController *myNavigationController;
     EKEventViewController *eventViewController;
+    //eventStore corresponding to the events of a file
     EKEventStore *eventStore;
+    //eventStore corresponding to all the events of the calendar
     EKEventStore *fileEventStore;
+    //events corresponding to a file
     NSMutableArray *eventsList;
+    //eventsList contains all the event id's of the events in the calendar
     NSMutableArray *fileEventsList;
     EKCalendar *defaultCalendar;
      int rowcount;
@@ -32,7 +36,9 @@
 @property (nonatomic, retain) EKEventViewController *eventViewController;
 @property(nonatomic,retain)FileViewController *fileVC;
 
+////fetches all the events in a particular date range
 -(NSArray *)getEvents;
+//fetches all the events corresponding to a file
 -(NSMutableArray *)getEventsOfFile;
 
 @end

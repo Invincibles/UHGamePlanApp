@@ -13,8 +13,8 @@
 @class AnnotatedFilesTableViewController;
 @interface FullMapViewController : UIViewController<MKMapViewDelegate> //, SubstitutableDetailViewController>
 {
-  NSMutableArray* arrayOfLocations;  
-    MKMapView *mapView;
+  NSMutableArray* arrayOfLocations;  // this array is used to store the array of locations 
+    MKMapView *mapView;//this mapview is used to display the map
     NSString* anotationDescription;
     AnnotatedFilesTableViewController *annotatedFTVC;
     MKPinAnnotationView* pinView;
