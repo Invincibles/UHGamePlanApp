@@ -19,14 +19,17 @@
     UILabel *textLabel;
     UIProgressView *progressBar;
     
+    NSString* transferedfile;
     NSInteger _numberOfChunks;
     NSInteger _currentChunkId;
     NSMutableData *_receivedDataChunks;
     BOOL receiveFile;
+    IBOutlet UIButton *connectBtn;
 }
 @property (nonatomic, retain) IBOutlet UIProgressView *progressBar;
 @property (nonatomic, retain) IBOutlet UILabel *textLabel;
-@property(retain) GKSession *mySession;
+@property (retain) GKSession *mySession;
+@property (nonatomic, retain) NSString* transferedfile;
 
 - (IBAction)connectDisconnectBtn:(id)sender;
 - (IBAction)sendFileButton:(id)sender;

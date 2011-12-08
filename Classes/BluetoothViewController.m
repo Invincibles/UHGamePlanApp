@@ -7,16 +7,18 @@
 //
 
 #import "BluetoothViewController.h"
+#import "databaseManager.h"
 
 @implementation BluetoothViewController
 @synthesize progressBar;
-@synthesize textLabel, mySession;
+@synthesize textLabel, mySession, transferedfile;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        transferedfile = [[NSString alloc] initWithString:@""];
     }
     return self;
 }
@@ -56,6 +58,8 @@
 {
     [self setTextLabel:nil];
     [self setProgressBar:nil];
+    [connectBtn release];
+    connectBtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -63,9 +67,11 @@
 
 
 - (void)dealloc {
+    [transferedfile release];
     [mySession release];
     [textLabel release];
     [progressBar release];
+    [connectBtn release];
     [super dealloc];
 }
 
@@ -120,23 +126,29 @@
     // Read the bytes in data and perform an application-specific action.
     
     //*************************//
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Recieve File?" message:@"Do you want to recieve this File?" delegate:self cancelButtonTitle:@"Deny" otherButtonTitles:@"Accept"] autorelease];
-    [alert show];
-    
-    if(receiveFile){
-        //recieve file code goes here
-    }
-    else
-    {
-        //call the disconnect button
-    }
+//    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Recieve File?" message:@"Do you want to recieve this File?" delegate:self cancelButtonTitle:@"Deny" otherButtonTitles:@"Accept"] autorelease];
+//    [alert show];
+//    [alert release];
+//    if(receiveFile){
+//        //recieve file code goes here
+//    }
+//    else
+//    {
+//        //call the disconnect button
+//    }
     
     //**************************//
     if (_numberOfChunks == -1) {
         _currentChunkId = 0;
         [progressBar setProgress:0.0f];
         NSString* fileInfo = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        _numberOfChunks = [fileInfo integerValue];
+        NSLog(@"%@",fileInfo);
+        NSRange commapos = [fileInfo rangeOfString:@","];
+        _numberOfChunks = [[fileInfo substringToIndex:commapos.location] integerValue];
+        transferedfile = [[NSString alloc] initWithString:[fileInfo substringFromIndex:commapos.location+1]];
+        
+        NSLog(@"numbe rof chunks - %d, file name = %@",_numberOfChunks, transferedfile);
+        
         _receivedDataChunks = [NSMutableData new];
         [fileInfo release];
     }
@@ -150,17 +162,46 @@
             NSFileManager* filemgr = [NSFileManager defaultManager];
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSString *destPath = [documentsDirectory stringByAppendingPathComponent:@"copiedFile.pdf"];
+            NSString *destPath = [documentsDirectory stringByAppendingPathComponent:transferedfile];
             
             NSLog(@"writing to path - %@",destPath);
             
             bool suc = [filemgr createFileAtPath:destPath contents:_receivedDataChunks attributes:nil];
             
-            if(suc == YES)
-                NSLog(@"file copied successfully.");
-            else
+            if(suc == YES){
+
+                if(![filemgr fileExistsAtPath:transferedfile]){
+                    databaseManager* dbmanager = [[databaseManager alloc] init];
+                    [dbmanager updateNames];
+                    dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
+                    if(![dbmanager.db open]){
+                        NSLog(@"Error: Could not connect to database.");
+                        [dbmanager release];
+                        return;
+                    }
+                    
+                    NSString* query = [NSString stringWithFormat:@"insert into filelist (filename) values ('%@')",transferedfile];
+                    NSLog(@"query string : %@",query);
+                    
+                    bool suc = [dbmanager.db executeUpdate:query];
+                    
+                    if(suc)
+                        NSLog(@"insert to database is succesful.");
+                    else
+                        NSLog(@"insert to database failed.");
+                    
+                    [dbmanager.db close];
+                    [dbmanager release];
+                }
+                
+                UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success" message:@"File Recieved Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [success show];
+                [success release];
+                
+            }
+            else{
                 NSLog(@"file transfer failed.");
-            
+            }
             [_receivedDataChunks release];
             _receivedDataChunks = nil;
             _numberOfChunks = -1;
@@ -200,6 +241,7 @@
     }
 }
 
+/*
 -(void) divideFileToChunks
 {
     
@@ -222,11 +264,11 @@
         offset += thisChunkSize;
     } while (offset < length);
     
-    /*
-     this is for grouping packets
-     [data appendBytes:packet1 length:[packet1 length]];
-     here data is nsmutabledata, packet1 is nsdata
-     */
+    
+    // this is for grouping packets
+    // [data appendBytes:packet1 length:[packet1 length]];
+    // here data is nsmutabledata, packet1 is nsdata
+     
     NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:@"test10.pdf"];
     
     NSLog(@"full path : %@",fullPath);
@@ -249,7 +291,7 @@
     
     [recData release];
 }
-
+*/
 - (NSArray *)dataChunks:(NSData *)orgData {
     NSUInteger length = [orgData length];
     NSUInteger chunkSize = 60 * 1024;
@@ -269,20 +311,33 @@
 - (IBAction)sendFileButton:(id)sender {
     [progressBar setProgress:0.0f];
     
+    NSRange dotpos = [transferedfile rangeOfString:@"."];
+    
     //push a controller here
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"pdf"];
+    NSString* path = [[NSBundle mainBundle] pathForResource:[transferedfile substringToIndex:dotpos.location] ofType:[transferedfile substringFromIndex:dotpos.location+1]];
+    
+    if(path == nil){
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        path = [NSString stringWithFormat:@"%@/%@",documentsDirectory,transferedfile];
+    }
+    
+    NSLog(@"%@",path);
+    
     NSData* fileData = [[NSData alloc] initWithContentsOfFile:path];
     NSLog(@"size of file - %d bytes",[fileData length]);
     NSArray *dataArray = [self dataChunks:fileData];
     NSError *err = nil;
     int noOfChunks = [dataArray count];
-    NSString *fileInfo = [NSString stringWithFormat:@"%d", [dataArray count]];
+    NSString *fileInfo = [NSString stringWithFormat:@"%d,%@", [dataArray count],transferedfile];
+    NSLog(@"fileinfo - %@",fileInfo);
+    
     [mySession sendData:[fileInfo dataUsingEncoding:NSUTF8StringEncoding] toPeers:myPeers withDataMode:GKSendDataReliable error:nil];
     
     int c=0;
     
     for (NSData *dataToBeSent in dataArray) {
-        if (![mySession sendData:fileData toPeers:myPeers withDataMode:GKSendDataReliable error:&err]) {
+        if (![mySession sendData:dataToBeSent toPeers:myPeers withDataMode:GKSendDataReliable error:&err]) {
             if (err != nil) {
                 NSLog(@"coming here....");
                 break;
@@ -298,21 +353,29 @@
     }
     else
     {
-        NSLog(@"File transferred successfully.");
+        UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success" message:@"File Transferred Successfully." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [success show];
+        [success release];
     }
 
 }
 
-
 - (IBAction)connectDisconnectBtn:(id)sender {
     
-    if(myPicker != nil)
-    {
-        [myPicker show];
+    if([connectBtn.titleLabel.text isEqualToString:@"Connect"]){
+        if(myPicker != nil)
+        {
+            [myPicker show];
+            [connectBtn setTitle:@"Disconnect" forState:UIControlStateNormal];
+        }
+        else
+        {
+            NSLog(@"myPicker is nil, no peers to pick.");
+        }
     }
-    else
-    {
-        NSLog(@"myPicker is nil, no peers to pick.");
+    else{
+        [mySession disconnectFromAllPeers];
+        [connectBtn setTitle:@"Connect" forState:UIControlStateNormal];
     }
     
 }

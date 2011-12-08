@@ -177,6 +177,7 @@
         [self.tableView reloadData];
     }
 }
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView 
 		   editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
