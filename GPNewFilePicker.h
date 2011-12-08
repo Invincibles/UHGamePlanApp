@@ -6,6 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This view controller pops up when we press the download button.
+ This reads the filename and the url from where to get the files.
+ */
+
 #import <UIKit/UIKit.h>
 
 @interface GPNewFilePicker : UIViewController {

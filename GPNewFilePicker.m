@@ -75,6 +75,8 @@
     [errorMsg release];
     [super dealloc];
 }
+
+//this button is pressed when we hit the get file button
 - (IBAction)getFileAction:(id)sender {
     
     //validate the text fields first
@@ -129,6 +131,7 @@
         if(suc){
             [self dismissModalViewControllerAnimated:YES];
             
+            //after downloading the file, we add it to the list of files available in the app
             databaseManager* dbmanager = [[databaseManager alloc] init];
             [dbmanager updateNames];
             dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];

@@ -307,7 +307,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    //if(!isFileSelected)
+    if(!isFileSelected) [fileView.manageFolderBtn setEnabled:NO];
         //[root loadHomePage];
 }
 
