@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ The root view has a custom cell that has an image and text associated with it, inorder to accomplish this we created a custom cell which contains an image and a label
+ */
+
 #import <UIKit/UIKit.h>
 
 

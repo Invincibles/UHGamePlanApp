@@ -6,6 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ 
+ This class is representation of each file thumbnail that appears when we click the folders. It has three parts, image, label and button. The image is a default image, label contains the filename, button is placed over it to listen to the click actions on the file icon.
+ */
+
 #import <UIKit/UIKit.h>
 
 @class ShareFilesViewController;

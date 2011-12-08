@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ For reading a folder name from user, instead of creating a uiviewcontroller, we tried to use this customized version of UIAlertView, this prompts and requests for a folder name.
+ */
+
 #import <Foundation/Foundation.h>
 
 @interface CustomUIAlert : UIAlertView
