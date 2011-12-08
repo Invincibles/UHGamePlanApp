@@ -274,12 +274,15 @@
 - (IBAction)shareButton:(id)sender {
     
     BluetoothViewController *bluetoothVC = [[BluetoothViewController alloc] initWithNibName:@"BluetoothViewController" bundle:[NSBundle mainBundle]];
+    bluetoothVC.transferedfile = [NSString stringWithFormat:@"%@.pdf",filename];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:bluetoothVC];
     
     nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
-    nav.view.superview.frame = CGRectMake(312, 242, 400, 211);
+    
+    //nav.view.superview.frame = CGRectMake(312, 242, 400, 211);
+    
     [bluetoothVC release];
     
 }

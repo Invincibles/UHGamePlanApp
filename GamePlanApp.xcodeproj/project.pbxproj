@@ -21,6 +21,10 @@
 		7807DDAA1464BDAA00FC78B9 /* back-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7807DDA91464BDAA00FC78B9 /* back-icon2.png */; };
 		782094D71464438B008F287B /* GeoTagScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782094D61464438B008F287B /* GeoTagScreenView.m */; };
 		782094DB146443A1008F287B /* GeoTagScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782094D9146443A1008F287B /* GeoTagScreenView.xib */; };
+		7829F70B149071EB00B0467F /* FolderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829F708149071EB00B0467F /* FolderListViewController.m */; };
+		7829F70C149071EB00B0467F /* FolderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7829F709149071EB00B0467F /* FolderListViewController.xib */; };
+		7829F70F1490730200B0467F /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7829F70D1490730100B0467F /* EventKit.framework */; };
+		7829F7101490730200B0467F /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7829F70E1490730100B0467F /* EventKitUI.framework */; };
 		785AC56414678CA700558DEF /* AddEventToFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56214678CA700558DEF /* AddEventToFileViewController.m */; };
 		785AC56514678CA700558DEF /* AddEventToFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785AC56314678CA700558DEF /* AddEventToFileViewController.xib */; };
 		785AC5711467999B00558DEF /* ViewFileEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56F1467999B00558DEF /* ViewFileEventsController.m */; };
@@ -31,8 +35,8 @@
 		78A306BC14502F0500C837B4 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A306BB14502F0500C837B4 /* AddressBookUI.framework */; };
 		78AE37011466083000F83544 /* DescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AE36FF1466083000F83544 /* DescriptionVC.m */; };
 		78AE37021466083000F83544 /* DescriptionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AE37001466083000F83544 /* DescriptionVC.xib */; };
-		78BF7499146A3F9C00E51D82 /* FolderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF7497146A3F9B00E51D82 /* FolderListViewController.m */; };
-		78BF749A146A3F9C00E51D82 /* FolderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BF7498146A3F9C00E51D82 /* FolderListViewController.xib */; };
+		78B918DE1490A6B600B55CFD /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B918DD1490A6B600B55CFD /* EventKitDataSource.m */; };
+		78B918E11490A6FF00B55CFD /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B918DB1490A61B00B55CFD /* libKal.a */; };
 		78BF74A1146A402300E51D82 /* CustomUIAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74A0146A402300E51D82 /* CustomUIAlert.m */; };
 		78BF74A6146A403800E51D82 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74A3146A403800E51D82 /* File.m */; };
 		78BF74A7146A403800E51D82 /* FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74A5146A403800E51D82 /* FileIcon.m */; };
@@ -103,8 +107,6 @@
 		E45FF66E14633C50003241CD /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = E45FF66D14633C50003241CD /* FMDatabase.m */; };
 		E45FF67A14633D31003241CD /* databaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E45FF67914633D31003241CD /* databaseManager.m */; };
 		E46F25BF146211FE00C0E14F /* MyEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E46F25BE146211FE00C0E14F /* MyEventManager.m */; };
-		E46F25C21462128000C0E14F /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46F25C01462128000C0E14F /* EventKit.framework */; };
-		E46F25C31462128000C0E14F /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46F25C11462128000C0E14F /* EventKitUI.framework */; };
 		E495FD9D146B65EA004B3AD8 /* GPPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E495FD9A146B65EA004B3AD8 /* GPPersonViewController.m */; };
 		E495FD9E146B65EA004B3AD8 /* AddContactToFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E495FD9C146B65EA004B3AD8 /* AddContactToFileViewController.m */; };
 		E495FDA0146B67AC004B3AD8 /* new_addnote_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E495FD9F146B67AC004B3AD8 /* new_addnote_small_icon.png */; };
@@ -118,6 +120,23 @@
 		E4CA0495145029A200B45465 /* test2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E4CA0492145029A200B45465 /* test2.pdf */; };
 		E4CA0496145029A200B45465 /* test3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E4CA0493145029A200B45465 /* test3.pdf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		78B918DA1490A61B00B55CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78B918D61490A61B00B55CFD /* Kal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Kal;
+		};
+		78B918DF1490A6F700B55CFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78B918D61490A61B00B55CFD /* Kal.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Kal;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -142,6 +161,13 @@
 		782094D61464438B008F287B /* GeoTagScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTagScreenView.m; sourceTree = "<group>"; };
 		782094D9146443A1008F287B /* GeoTagScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeoTagScreenView.xib; sourceTree = "<group>"; };
 		782094DA146443A1008F287B /* GeoTagScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTagScreenView.h; sourceTree = "<group>"; };
+		7829F708149071EB00B0467F /* FolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderListViewController.m; sourceTree = "<group>"; };
+		7829F709149071EB00B0467F /* FolderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderListViewController.xib; sourceTree = "<group>"; };
+		7829F70A149071EB00B0467F /* FolderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderListViewController.h; sourceTree = "<group>"; };
+		7829F70D1490730100B0467F /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		7829F70E1490730100B0467F /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		7832CC99148F440E00477658 /* Manage-Folder-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Manage-Folder-Tab-Bar.png"; sourceTree = "<group>"; };
+		7832CC9C148F442300477658 /* New-Folder-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "New-Folder-Tab-Bar.png"; sourceTree = "<group>"; };
 		785AC56114678CA700558DEF /* AddEventToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventToFileViewController.h; sourceTree = "<group>"; };
 		785AC56214678CA700558DEF /* AddEventToFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventToFileViewController.m; sourceTree = "<group>"; };
 		785AC56314678CA700558DEF /* AddEventToFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventToFileViewController.xib; sourceTree = "<group>"; };
@@ -151,13 +177,14 @@
 		78916639148EC277004B5C0D /* Calendar-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-Tab-Bar.png"; sourceTree = "<group>"; };
 		7891663B148ED305004B5C0D /* help_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help_3.png; path = ../help_3.png; sourceTree = "<group>"; };
 		7891663D148ED377004B5C0D /* watermark_logo_120611.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark_logo_120611.png; sourceTree = "<group>"; };
+		78965F8C1490167B001D07D9 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = ../../Desktop/Kal/src/Kal.bundle; sourceTree = "<group>"; };
 		78A306BB14502F0500C837B4 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		78AE36FE1466083000F83544 /* DescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptionVC.h; path = Classes/DescriptionVC.h; sourceTree = "<group>"; };
 		78AE36FF1466083000F83544 /* DescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescriptionVC.m; path = Classes/DescriptionVC.m; sourceTree = "<group>"; };
 		78AE37001466083000F83544 /* DescriptionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionVC.xib; path = Classes/DescriptionVC.xib; sourceTree = "<group>"; };
-		78BF7496146A3F9B00E51D82 /* FolderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderListViewController.h; path = Classes/FolderListViewController.h; sourceTree = "<group>"; };
-		78BF7497146A3F9B00E51D82 /* FolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderListViewController.m; path = Classes/FolderListViewController.m; sourceTree = "<group>"; };
-		78BF7498146A3F9C00E51D82 /* FolderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FolderListViewController.xib; path = Classes/FolderListViewController.xib; sourceTree = "<group>"; };
+		78B918D61490A61B00B55CFD /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../../Desktop/Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
+		78B918DC1490A6B600B55CFD /* EventKitDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventKitDataSource.h; path = ../../Desktop/Kal/Examples/NativeCal/Classes/EventKitDataSource.h; sourceTree = "<group>"; };
+		78B918DD1490A6B600B55CFD /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventKitDataSource.m; path = ../../Desktop/Kal/Examples/NativeCal/Classes/EventKitDataSource.m; sourceTree = "<group>"; };
 		78BF749F146A402300E51D82 /* CustomUIAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIAlert.h; sourceTree = "<group>"; };
 		78BF74A0146A402300E51D82 /* CustomUIAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIAlert.m; sourceTree = "<group>"; };
 		78BF74A2146A403800E51D82 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
@@ -252,8 +279,6 @@
 		E45FF67914633D31003241CD /* databaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = databaseManager.m; path = Classes/databaseManager.m; sourceTree = "<group>"; };
 		E46F25BD146211FE00C0E14F /* MyEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventManager.h; sourceTree = "<group>"; };
 		E46F25BE146211FE00C0E14F /* MyEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventManager.m; sourceTree = "<group>"; };
-		E46F25C01462128000C0E14F /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		E46F25C11462128000C0E14F /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		E495FD99146B65EA004B3AD8 /* GPPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPPersonViewController.h; path = Classes/GPPersonViewController.h; sourceTree = "<group>"; };
 		E495FD9A146B65EA004B3AD8 /* GPPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPPersonViewController.m; path = Classes/GPPersonViewController.m; sourceTree = "<group>"; };
 		E495FD9B146B65EA004B3AD8 /* AddContactToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddContactToFileViewController.h; path = Classes/AddContactToFileViewController.h; sourceTree = "<group>"; };
@@ -277,10 +302,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B918E11490A6FF00B55CFD /* libKal.a in Frameworks */,
+				7829F70F1490730200B0467F /* EventKit.framework in Frameworks */,
+				7829F7101490730200B0467F /* EventKitUI.framework in Frameworks */,
 				78E7A89D1465E40D005D7F34 /* AddressBook.framework in Frameworks */,
 				E4AF577814636192005D1775 /* libsqlite3.dylib in Frameworks */,
-				E46F25C21462128000C0E14F /* EventKit.framework in Frameworks */,
-				E46F25C31462128000C0E14F /* EventKitUI.framework in Frameworks */,
 				78C4CCEA145CDB9300C5C5E3 /* GameKit.framework in Frameworks */,
 				78D3B4011458CA8A001A2C78 /* CoreLocation.framework in Frameworks */,
 				78D3B3FE1458C688001A2C78 /* MapKit.framework in Frameworks */,
@@ -319,20 +345,22 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				7829F70D1490730100B0467F /* EventKit.framework */,
+				7829F70E1490730100B0467F /* EventKitUI.framework */,
+				78B918D61490A61B00B55CFD /* Kal.xcodeproj */,
+				78965F8C1490167B001D07D9 /* Kal.bundle */,
 				080E96DDFE201D6D7F000001 /* Main Classes */,
 				7807DDAC1464BEC200FC78B9 /* Database */,
 				78916646148EE06B004B5C0D /* Custom Classes */,
-				78916645148EE057004B5C0D /* Help Classes */,
-				78916644148EE04C004B5C0D /* Map Classes */,
-				78916643148EE03C004B5C0D /* File Classes */,
-				78916642148EE029004B5C0D /* Calendar Classes */,
 				78916641148EDFFC004B5C0D /* Contact Classes */,
-				E4CA049B14502B6200B45465 /* Files */,
+				78916642148EE029004B5C0D /* Calendar Classes */,
+				78916643148EE03C004B5C0D /* File Classes */,
+				78916644148EE04C004B5C0D /* Map Classes */,
+				78916645148EE057004B5C0D /* Help Classes */,
 				78C67CDA148EBE6300708703 /* UHGamePlan Images */,
+				E4CA049B14502B6200B45465 /* Files */,
 				78C4CCE9145CDB9300C5C5E3 /* GameKit.framework */,
 				78E7A89C1465E40D005D7F34 /* AddressBook.framework */,
-				E46F25C01462128000C0E14F /* EventKit.framework */,
-				E46F25C11462128000C0E14F /* EventKitUI.framework */,
 				78D3B4001458CA8A001A2C78 /* CoreLocation.framework */,
 				78D3B3FD1458C688001A2C78 /* MapKit.framework */,
 				78A306BB14502F0500C837B4 /* AddressBookUI.framework */,
@@ -360,7 +388,6 @@
 				78E1DD76148C21D3000476BB /* NewHelpViewController.xib */,
 				78D65A791489D40D002DD395 /* HelpFullScreenVC.xib */,
 				78050FF714833BFA00E376AD /* HelpViewController.xib */,
-				78BF7498146A3F9C00E51D82 /* FolderListViewController.xib */,
 				78BF74C2146A50F800E51D82 /* BluetoothViewController.xib */,
 				78BF74BD146A488700E51D82 /* ShareFilesViewController.xib */,
 				78F172FE1467512A00651A54 /* FullMapViewController.xib */,
@@ -422,6 +449,8 @@
 				E4314A88144FAA3400572B33 /* EventManagerViewController.m */,
 				E46F25BD146211FE00C0E14F /* MyEventManager.h */,
 				E46F25BE146211FE00C0E14F /* MyEventManager.m */,
+				78B918DC1490A6B600B55CFD /* EventKitDataSource.h */,
+				78B918DD1490A6B600B55CFD /* EventKitDataSource.m */,
 			);
 			name = "Calendar Classes";
 			sourceTree = "<group>";
@@ -429,8 +458,9 @@
 		78916643148EE03C004B5C0D /* File Classes */ = {
 			isa = PBXGroup;
 			children = (
-				78BF7496146A3F9B00E51D82 /* FolderListViewController.h */,
-				78BF7497146A3F9B00E51D82 /* FolderListViewController.m */,
+				7829F708149071EB00B0467F /* FolderListViewController.m */,
+				7829F709149071EB00B0467F /* FolderListViewController.xib */,
+				7829F70A149071EB00B0467F /* FolderListViewController.h */,
 				78BF74AD146A40E800E51D82 /* MyFileViewController.h */,
 				78BF74AE146A40E800E51D82 /* MyFileViewController.m */,
 				78BF74A8146A40D300E51D82 /* GPFilePicker.h */,
@@ -562,6 +592,8 @@
 		7891664D148EEA21004B5C0D /* File Tool Bar Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				7832CC9C148F442300477658 /* New-Folder-Tab-Bar.png */,
+				7832CC99148F440E00477658 /* Manage-Folder-Tab-Bar.png */,
 				7807DDA91464BDAA00FC78B9 /* back-icon2.png */,
 				E495FD9F146B67AC004B3AD8 /* new_addnote_small_icon.png */,
 				78C67CE0148EBE8700708703 /* Globe-Icon-Gray.png */,
@@ -600,6 +632,14 @@
 				78C67CF3148EBE9800708703 /* logo.png */,
 			);
 			name = "Logo & Watermark";
+			sourceTree = "<group>";
+		};
+		78B918D71490A61B00B55CFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78B918DB1490A61B00B55CFD /* libKal.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		78C67CDA148EBE6300708703 /* UHGamePlan Images */ = {
@@ -674,6 +714,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				78B918E01490A6F700B55CFD /* PBXTargetDependency */,
 			);
 			name = GamePlanApp;
 			productName = MultipleDetailViews;
@@ -698,12 +739,28 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 78B918D71490A61B00B55CFD /* Products */;
+					ProjectRef = 78B918D61490A61B00B55CFD /* Kal.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* GamePlanApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		78B918DB1490A61B00B55CFD /* libKal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKal.a;
+			remoteRef = 78B918DA1490A61B00B55CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -737,7 +794,6 @@
 				78F173001467512B00651A54 /* FullMapViewController.xib in Resources */,
 				785AC56514678CA700558DEF /* AddEventToFileViewController.xib in Resources */,
 				785AC5721467999B00558DEF /* ViewFileEventsController.xib in Resources */,
-				78BF749A146A3F9C00E51D82 /* FolderListViewController.xib in Resources */,
 				78BF74AC146A40D300E51D82 /* GPFilePicker.xib in Resources */,
 				78BF74B7146A44D300E51D82 /* file-view-icon-witharrow.png in Resources */,
 				78BF74B9146A45C800E51D82 /* folder_icon_small.png in Resources */,
@@ -771,6 +827,7 @@
 				7891663C148ED305004B5C0D /* help_3.png in Resources */,
 				7891663E148ED377004B5C0D /* watermark_logo_120611.png in Resources */,
 				C9A3F29A148FED8100D72B27 /* GPNewFilePicker.xib in Resources */,
+				7829F70C149071EB00B0467F /* FolderListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,7 +861,6 @@
 				78F172FF1467512B00651A54 /* FullMapViewController.m in Sources */,
 				785AC56414678CA700558DEF /* AddEventToFileViewController.m in Sources */,
 				785AC5711467999B00558DEF /* ViewFileEventsController.m in Sources */,
-				78BF7499146A3F9C00E51D82 /* FolderListViewController.m in Sources */,
 				78BF74A1146A402300E51D82 /* CustomUIAlert.m in Sources */,
 				78BF74A6146A403800E51D82 /* File.m in Sources */,
 				78BF74A7146A403800E51D82 /* FileIcon.m in Sources */,
@@ -819,10 +875,20 @@
 				78E1DD07148AE274000476BB /* FileHistoryTableViewController.m in Sources */,
 				78E1DD77148C21D4000476BB /* NewHelpViewController.m in Sources */,
 				C9A3F299148FED8100D72B27 /* GPNewFilePicker.m in Sources */,
+				7829F70B149071EB00B0467F /* FolderListViewController.m in Sources */,
+				78B918DE1490A6B600B55CFD /* EventKitDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		78B918E01490A6F700B55CFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kal;
+			targetProxy = 78B918DF1490A6F700B55CFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7E9552E811766B410003D25C /* FirstDetailView.xib */ = {
@@ -892,6 +958,12 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../desktop/Kal/src;
+				LIBRARY_SEARCH_PATHS = /Users/kowshik/Projects/UHGamePlanApp/;
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -907,7 +979,13 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../desktop/Kal/src;
+				LIBRARY_SEARCH_PATHS = /Users/kowshik/Projects/UHGamePlanApp/;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;
 				TARGETED_DEVICE_FAMILY = 2;

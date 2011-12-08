@@ -8,9 +8,15 @@
 
 #import "EventManagerViewController.h"
 #import "MyEventManager.h"
+#import "EventKitDataSource.h"
+#import "KalViewController.h"
+#import "Kal.h"
+
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 
 @implementation EventManagerViewController
-@synthesize navigationBar;
+@synthesize navigationBar,calendar,mynav;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -24,7 +30,7 @@
 
 - (void)dealloc
 {
-    
+    [calendar release];
     [navigationBar release];
     [super dealloc];
 }
@@ -73,12 +79,52 @@
 	return YES;
 }
 
+
 - (IBAction)addEvent:(id)sender {
     //MyEventManager will show all the events created
     MyEventManager *myObj = [[MyEventManager alloc] init];
     myObj.navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:myObj.navigationController animated:YES];
     [myObj release];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Display a details screen for the selected event/row.
+    EKEventViewController *vc = [[[EKEventViewController alloc] init] autorelease];
+    vc.event = [dataSource eventAtIndexPath:indexPath];
+    vc.allowsEditing = NO;
+    [mynav pushViewController:vc animated:YES];
+}
+
+- (IBAction)viewCalendar:(id)sender {
+    NSLog(@"coming here....");
+    calendar = [[[KalViewController alloc] init] autorelease];
+   // MyCalendarView *calView = [[MyCalendarView alloc] init];
+   
+    calendar.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelCalendar)] autorelease];
+    
+     calendar.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStylePlain target:self action:@selector(showAndSelectToday)] autorelease];
+    calendar.delegate = self;
+    dataSource = [[EventKitDataSource alloc] init];
+    calendar.dataSource = dataSource;
+    
+    mynav = [[UINavigationController alloc] initWithRootViewController:calendar];
+    
+    mynav.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentModalViewController:mynav animated:YES];
+
+}
+
+- (void)showAndSelectToday
+{
+    [calendar showAndSelectDate:[NSDate date]];
+}
+
+-(void)cancelCalendar
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

@@ -28,7 +28,7 @@
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     
     // Set the content size for the popover: there are just two rows in the table view, so set to rowHeight*2.
-    self.contentSizeForViewInPopover = CGSizeMake(310.0, self.tableView.rowHeight*2.0);
+    //self.contentSizeForViewInPopover = CGSizeMake(310.0, self.tableView.rowHeight*2.0);
 }
 
 -(void) viewDidUnload {
