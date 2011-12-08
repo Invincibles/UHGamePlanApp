@@ -268,20 +268,20 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
-- (IBAction)createNewFolder:(id)sender
-{
-    //read filename from user
-    CustomUIAlert* myAlert = [[CustomUIAlert alloc] initWithTitle:@"Create Folder" message:@"Please Enter a Folder Name" delegate:self cancelButtonTitle:@"Cancel" okButtonTitle:@"Ok"];
-    [myAlert show];
-    [myAlert release];
-}
-
-- (IBAction)fileDownlaod:(id)sender {
+- (IBAction)downloadAction:(id)sender {
     
     GPNewFilePicker *picknewfile = [[GPNewFilePicker alloc] initWithNibName:@"GPNewFilePicker" bundle:[NSBundle mainBundle]];
     picknewfile.navigator.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:picknewfile.navigator animated:YES];
     [picknewfile release];
+}
+
+- (IBAction)newFolderAction:(id)sender {
+    
+    //read filename from user
+    CustomUIAlert* myAlert = [[CustomUIAlert alloc] initWithTitle:@"Create Folder" message:@"Please Enter a Folder Name" delegate:self cancelButtonTitle:@"Cancel" okButtonTitle:@"Ok"];
+    [myAlert show];
+    [myAlert release];
     
 }
 

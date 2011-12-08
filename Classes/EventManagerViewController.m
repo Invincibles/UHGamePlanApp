@@ -16,7 +16,7 @@
 #import <EventKitUI/EventKitUI.h>
 
 @implementation EventManagerViewController
-@synthesize navigationBar,calendar,mynav;
+@synthesize navigationBar,mynav;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,7 +30,7 @@
 
 - (void)dealloc
 {
-    [calendar release];
+    //[calendar release];
     [navigationBar release];
     [super dealloc];
 }
@@ -85,6 +85,7 @@
     [myObj release];
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Display a details screen for the selected event/row.
@@ -95,29 +96,29 @@
 }
 
 - (IBAction)viewCalendar:(id)sender {
-    NSLog(@"coming here....");
     calendar = [[[KalViewController alloc] init] autorelease];
-   // MyCalendarView *calView = [[MyCalendarView alloc] init];
    
     calendar.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelCalendar)] autorelease];
     
      calendar.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStylePlain target:self action:@selector(showAndSelectToday)] autorelease];
     calendar.delegate = self;
-    dataSource = [[EventKitDataSource alloc] init];
+   // dataSource = [[EventKitDataSource alloc] init];
     calendar.dataSource = dataSource;
     
     mynav = [[UINavigationController alloc] initWithRootViewController:calendar];
-    
+    mynav.navigationBar.tintColor =[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     mynav.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentModalViewController:mynav animated:YES];
 
 }
+ 
 
 - (void)showAndSelectToday
 {
     [calendar showAndSelectDate:[NSDate date]];
 }
+ 
 
 -(void)cancelCalendar
 {

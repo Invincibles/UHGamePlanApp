@@ -21,6 +21,7 @@
 
 @synthesize navigationBar;
 @synthesize manageFolderBtn;
+@synthesize manageFolderOutlet;
 @synthesize scrollView;
 @synthesize toolbar;
 @synthesize Button;
@@ -36,6 +37,7 @@
         self.arrayoffileicons = [[NSMutableArray alloc] initWithCapacity:1];
         self.fileslist = [[NSMutableArray alloc] initWithCapacity:1];
         self.manageFolderBtn.enabled = NO;
+        self.manageFolderOutlet.enabled = NO;
     }
     return self;
 }
@@ -58,6 +60,7 @@
     [numberOfFiles release];
     [scrollView release];
     [manageFolderBtn release];
+    [manageFolderOutlet release];
     [super dealloc];
 }
 
@@ -131,6 +134,7 @@
     [numberOfFiles release];
     numberOfFiles = nil;
     [self setManageFolderBtn:nil];
+    [self setManageFolderOutlet:nil];
    [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -201,12 +205,23 @@
     [dbmanager release];
 }
 
+- (IBAction)manageFolderAction:(id)sender {
+    MyFileViewController* fileVC = [[MyFileViewController alloc] init];
+    fileVC.delegate = self;
+    fileVC.foldername = self.foldername;
+    fileVC.myNav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:fileVC.myNav animated:YES];
+    [fileVC release];
+
+}
+
+
 -(void) reloadFiles{
     
     NSLog(@"RELOAD FILES : %@",self.foldername);
-    self.manageFolderBtn.enabled = NO;
+    self.manageFolderOutlet.enabled = NO;
     if(!([foldername isEqualToString:@""] || ([foldername isEqualToString:@"(null)"]) || (foldername == NULL))){
-        self.manageFolderBtn.enabled = YES;
+        self.manageFolderOutlet.enabled = YES;
         self.navigationBar.topItem.title = foldername;
         NSLog(@"-----> Folder Name : '%@'", foldername);
     }
@@ -238,35 +253,4 @@
     }
     [self reloadInputViews];
 }
-
-/*
-- (IBAction)file1:(id)sender {
-    FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
-    fvc.filename=@"test";
-    [self presentModalViewController:fvc animated:YES];
-    [fvc release];
-}
-
-- (IBAction)file2:(id)sender {
-    FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
-    fvc.filename=@"test1";
-    [self presentModalViewController:fvc animated:YES];
-    [fvc release];
-}
-
-- (IBAction)file3:(id)sender {
-    FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
-    fvc.filename=@"test2";
-    [self presentModalViewController:fvc animated:YES];
-    [fvc release];
-}
-
-- (IBAction)file4:(id)sender {
-    FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
-    fvc.filename=@"test3";
-    [self presentModalViewController:fvc animated:YES];
-    [fvc release];
-}
-*/
-
 @end

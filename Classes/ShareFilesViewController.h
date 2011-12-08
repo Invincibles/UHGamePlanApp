@@ -24,14 +24,15 @@
     
     NSString* foldername;
     NSMutableArray* fileslist;
-    //int fileCount;
     NSMutableArray* arrayoffileicons;
     UIScrollView *scrollView;
     UIBarButtonItem *manageFolderBtn;
+    UIButton *manageFolderOutlet;
     int isLandscpae;
     FolderListViewController *folderListView;
 }
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *manageFolderBtn;
+@property (nonatomic, retain) IBOutlet UIButton *manageFolderOutlet;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
@@ -51,9 +52,6 @@
 - (IBAction)nextButton:(id)sender;
 - (void) reloadFiles;
 - (void) loadFilesList;
-//- (IBAction)file1:(id)sender;
-//- (IBAction)file2:(id)sender;
-//- (IBAction)file3:(id)sender;
-//- (IBAction)file4:(id)sender;
+- (IBAction)manageFolderAction:(id)sender;
 
 @end

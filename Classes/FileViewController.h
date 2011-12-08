@@ -42,12 +42,12 @@
 @property (nonatomic, assign) ShareFilesViewController* sharedFiles;
 
 - (IBAction)backButton:(id)sender;
-- (IBAction)calenderButton:(id)sender;
-- (IBAction)geotagButton:(id)sender;
-- (IBAction)shareButton:(id)sender;
-- (IBAction)contactButton:(id)sender;
-- (IBAction)noteButton:(id)sender;
 
-- (IBAction)historyButton:(id)sender;
+- (IBAction)calendarAction:(id)sender;
+- (IBAction)geoTagAction:(id)sender;
+- (IBAction)shareFileAction:(id)sender;
+- (IBAction)noteAction:(id)sender;
+- (IBAction)historyAction:(id)sender;
+- (IBAction)contactAction:(id)sender;
 
 @end

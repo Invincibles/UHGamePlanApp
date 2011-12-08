@@ -89,11 +89,6 @@
 	// Fetch today's event on selected calendar and put them into the eventsList array
 	[self.eventsList addObjectsFromArray:[self getEvents]];
     
-    //eventIdentifier=[self.eventsList objectAtIndex:0];
-    
-   // EKEvent* myEvent = [self.eventsList objectAtIndex:0];
-    //NSLog(@"%@",myEvent.eventIdentifier);
-    
 	[self.tableView reloadData];
     
     [super viewDidLoad];
@@ -194,10 +189,9 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
-//	cell.selectionStyle = UITableViewCellEditingStyleNone;
-//	cell.accessoryType = editableCellAccessoryType;
     
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
 	// Get the event at the row selected and display it's title
 	cell.textLabel.text = [[self.eventsList objectAtIndex:indexPath.row] title];

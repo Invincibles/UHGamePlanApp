@@ -246,33 +246,28 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)calenderButton:(id)sender {
+
+- (IBAction)calendarAction:(id)sender {
     
     
     ViewFileEventsController *viewFileEventVC=[[ViewFileEventsController alloc] initWithNibName:@"ViewFileEventsController"bundle:[NSBundle mainBundle]];
-   viewFileEventVC.fileVC=self;
+    viewFileEventVC.fileVC=self;
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:viewFileEventVC];
     nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
     [viewFileEventVC release]; 
-    
-
 }
 
-- (IBAction)geotagButton:(id)sender {
-    
+- (IBAction)geoTagAction:(id)sender {
     lManager = [[CLLocationManager alloc] init];
     lManager.delegate=self;
     lManager.distanceFilter=kCLHeadingFilterNone;
     lManager.desiredAccuracy=0.1;
     [lManager startUpdatingLocation];
-    
-
 }
 
-- (IBAction)shareButton:(id)sender {
-    
+- (IBAction)shareFileAction:(id)sender {
     BluetoothViewController *bluetoothVC = [[BluetoothViewController alloc] initWithNibName:@"BluetoothViewController" bundle:[NSBundle mainBundle]];
     bluetoothVC.transferedfile = [NSString stringWithFormat:@"%@.pdf",filename];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:bluetoothVC];
@@ -280,14 +275,33 @@
     nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
-    
-    //nav.view.superview.frame = CGRectMake(312, 242, 400, 211);
-    
     [bluetoothVC release];
-    
 }
 
-- (IBAction)contactButton:(id)sender {
+- (IBAction)noteAction:(id)sender {
+    
+    NotesTableViewController *notestableview=[[NotesTableViewController alloc] initWithNibName:@"NotesTableViewController"bundle:[NSBundle mainBundle]];
+    notestableview.fileVC=self;
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:notestableview];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:nav animated:YES];
+    [notestableview release];
+}
+
+- (IBAction)historyAction:(id)sender {
+    
+    FileHistoryTableViewController *filehistory=[[FileHistoryTableViewController alloc] initWithNibName:@"FileHistoryTableViewController"bundle:[NSBundle mainBundle]];
+    filehistory.fileVC=self;
+    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:filehistory];
+    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:nav animated:YES];
+    [filehistory release];
+}
+
+- (IBAction)contactAction:(id)sender {
+    
     AddContactToFileViewController* myContacts = [[AddContactToFileViewController alloc] init];
     NSLog(@"this is being set. %d", self.fileID);
     myContacts.currentFileID = self.fileID;
@@ -295,38 +309,5 @@
     [myContacts loadContactsList];
     [self presentModalViewController:myContacts.mynav animated:YES];
     [myContacts release];
-}
-
-- (IBAction)noteButton:(id)sender {
-    
-    //fileID=10;
-    NotesTableViewController *notestableview=[[NotesTableViewController alloc] initWithNibName:@"NotesTableViewController"bundle:[NSBundle mainBundle]];
-    notestableview.fileVC=self;
-      UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:notestableview];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-    nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:nav animated:YES];
-    [notestableview release];
-    
-   /* 
-    addTextFile *addText = [[addTextFile alloc] initWithNibName:@"addTextFile" bundle:[NSBundle mainBundle]];
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:addText];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-    nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:nav animated:YES];
-    [addText release];*/
-}
-
-- (IBAction)historyButton:(id)sender {
-   FileHistoryTableViewController *filehistory=[[FileHistoryTableViewController alloc] initWithNibName:@"FileHistoryTableViewController"bundle:[NSBundle mainBundle]];
-    filehistory.fileVC=self;
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:filehistory];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-    nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:nav animated:YES];
-    [filehistory release];
-    
-    
-    
 }
 @end

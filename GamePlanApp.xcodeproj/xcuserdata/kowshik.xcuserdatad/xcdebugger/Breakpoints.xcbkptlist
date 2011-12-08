@@ -126,7 +126,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "151"
          endingLineNumber = "151"
-         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+         landmarkName = "-tableView:editingStyleForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -629,11 +629,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Users/kowshik/Desktop/Kal/src/KalView.m"
-         timestampString = "345008372.541554"
+         timestampString = "345025868.448093"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
          landmarkName = "-addSubviewsToHeaderView:"
          landmarkType = "5">
       </FileBreakpoint>
