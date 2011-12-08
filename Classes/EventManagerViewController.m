@@ -53,6 +53,8 @@
     // e.g. self.myOutlet = nil;
 }
 
+//The two methods below are delegate methods called for the popover when the iPad is rotated
+
 - (void)showRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem {
     // Add the popover button to the left navigation item.
     [navigationBar.topItem setLeftBarButtonItem:barButtonItem animated:NO];
@@ -72,6 +74,7 @@
 }
 
 - (IBAction)addEvent:(id)sender {
+    //MyEventManager will show all the events created
     MyEventManager *myObj = [[MyEventManager alloc] init];
     myObj.navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:myObj.navigationController animated:YES];

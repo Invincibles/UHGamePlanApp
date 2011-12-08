@@ -175,55 +175,18 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //pushing the EKEventViewController which shows the details of the event
     eventViewController = [[EKEventViewController alloc] initWithNibName:@"nil" bundle:nil];
     
     eventViewController.event = [self.eventsList objectAtIndex:indexPath.row];
     
     eventViewController.allowsEditing = NO;
     
+    // Pass the selected object to the new view controller. 
     eventViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self.navigationController pushViewController:eventViewController animated:YES];
@@ -266,7 +229,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             return;
         }
         else{
-            NSLog(@"database is open.");
+            NSLog(@"Database is open.");
         }
         NSLog(@"%@---event id",[eventsList objectAtIndex:rownumber]);
         EKEvent *event = [eventsList objectAtIndex:rownumber];
@@ -310,7 +273,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 	return events;
 }
 
-
+//get all events corresponding to a file
 -(NSMutableArray *)getEventsOfFile{
     
     NSMutableArray *events=[[NSMutableArray alloc] init]; 
@@ -373,8 +336,6 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.tableView reloadData];
     
-
-    NSLog(@"%d = event count",events.count);
     return events;
 }
 
@@ -383,6 +344,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [self dismissModalViewControllerAnimated:YES];
 }
 
+//to select an event to tag to a file we call AddEventToFileViewController
 -(void)selectEventAction:(id)sender{
     AddEventToFileViewController *addEventVC=[[AddEventToFileViewController alloc] initWithNibName:@"AddEventToFileViewController"bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:addEventVC];

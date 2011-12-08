@@ -49,13 +49,13 @@
     //[self loadAnnoataions];
 }
 
--(void)cancelNote
+-(void)cancelNote  /// this function is used to cancel the note
 {
     
     [self dismissModalViewControllerAnimated:YES];
 }
 
--(void) loadAnnoataions
+-(void) loadAnnoataions         // this function is usd to store the anotations present in the database to the array
 {
     [arrayOfNotes removeAllObjects];
     
@@ -65,8 +65,7 @@
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path--- %@",dbManager.databasePath);
-    if(![dbManager.db open]){
+   if(![dbManager.db open]){
         NSLog(@"Could not open db.");
         [dbManager release];
         return;
@@ -75,39 +74,33 @@
         NSLog(@"database is open.");
     }
     int fileid=self.fileVC.fileID;
+    //belo querry is used to pull all the anotations related to that file int an array
 
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select annotationid,description,annotationdate from anotationTable where fid='%d'",fileid]];
-    NSLog(@"%@", query);
-    //BOOL suc = [dbManager.db executeUpdate:query];
-    
+  
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
     NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select count(*) as Count from anotationTable where fid='%d'",fileid]];
-    NSLog(@"%@", query1);
+  
     FMResultSet *rsCount=[dbManager.db executeQuery:query1];
     
     while([rsCount next])
     {
         rowcount=[rsCount intForColumn:@"Count"];
-        NSLog(@"%d------rowcount",rowcount);  
+          
     }
     
     int no=0;
-    while([rs next]) {
+    while([rs next]) {    //anotation,description and anotation date are inserted into the array from database
         
         cellanotation=[rs intForColumn:@"annotationid"];
-        NSLog(@"%d----->1",cellanotation);
         NSString *string = [NSString stringWithFormat:@"%d", cellanotation];
         [arrayOfNotes addObject:string];
         
         cellDescription=[rs stringForColumn:@"description"];
         [arrayOfNotes addObject:cellDescription];
-        NSLog(@"%@ ---- Data base",cellDescription);
         date=[rs stringForColumn:@"annotationdate"];
-        NSLog(@"%@ ----- date",date);
         [arrayOfNotes addObject:date];
-        
-        
         no++;
     }
     [dbManager.db close];
@@ -123,22 +116,20 @@
 {
     [super viewDidLoad];
     
-     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
-    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     arrayOfNotes = [[NSMutableArray alloc] init];
     [self loadAnnoataions];
-       UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
                                    UIBarButtonSystemItemAdd target:self action:@selector(addNote)];
     self.title=@"Notes";
     self.navigationItem.rightBarButtonItem = doneButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNote)];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    
     [doneButton release];
     [cancelButton release];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView           
 		   editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     NSUInteger rownumber = [indexPath row];
@@ -152,7 +143,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView 
+- (void)tableView:(UITableView *)tableView                          // code for deleting the row
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -164,23 +155,19 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         databaseManager *dbManager=[[databaseManager alloc] init];
         [dbManager updateNames];
         dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-        NSLog(@"path--- %@",dbManager.databasePath);
         if(![dbManager.db open]){
             NSLog(@"Could not open db.");
-            
-        }
+            }
         else{
             NSLog(@"database is open.");
         }
+        // this querry deletes the notes selected in the table view from the database
         NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where annotationid='%d'",[[arrayOfNotes objectAtIndex:((rownumber*3))] intValue]]];
-        NSLog(@"%@", query);
         BOOL suc = [dbManager.db executeUpdate:query];
         if(suc)
             NSLog(@"delete is successful.");
         else
             NSLog(@"delete failed.");
-
-        
         [dbManager.db close];
         [dbManager release];
         [query release];
@@ -193,7 +180,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)tableView:(UITableView *)tableView 
 didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.tableView reloadData];
+    [self.tableView reloadData];                                // this is used to reload the tableview
 }
 
 
@@ -215,10 +202,6 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewDidAppear:(BOOL)animated
 {
     
-//    NotesTableViewController *notesTVC=[[NotesTableViewController alloc] init];
-    
-     
-   //[self performSelector:@selector(addNote) withObject:nil afterDelay:0.1];
     [super viewDidAppear:animated];
 }
 
@@ -255,7 +238,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70.0f;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  //Each custom cell has a primary label which has note and secondary label which has anotated date
 {
     static NSString *CellIdentifier = @"AnnotationCell";
     
@@ -271,8 +254,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
         if(arrayOfNotes.count!=0)
         {
     cell.secondaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 1)];
-            NSLog(@"%@-----array pos",[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 1)]);
-            cell.primaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 2)] ;
+    cell.primaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 2)] ;
         }
     
     
@@ -320,7 +302,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath // when we select a row in the tableview then we are directed to a description controller which displays the note
 {
     DescriptionVC* descriptionVC = [[DescriptionVC alloc] initWithNibName:@"DescriptionVC" bundle:[NSBundle mainBundle]];
     descriptionVC.delegate=self;

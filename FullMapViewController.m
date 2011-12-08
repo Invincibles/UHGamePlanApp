@@ -47,8 +47,7 @@
 {
     
         [super viewDidLoad];
-    
-   // UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(cancel)];
+   
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     
     self.title=@"Map";
@@ -69,21 +68,20 @@
     else{
         NSLog(@"database is open.");
     }
-    
+    //below querry is used to select the distinct location where the files are tagged
     FMResultSet *rs=[dbManager.db executeQuery:@"select distinct latitude,longitude,description from geotagTable"];
     int no=0;
     while([rs next]) {
         NSString* lat=[rs stringForColumn:@"latitude"];
-        NSLog(@"%@...lat",lat);
-        [arrayOfLocations addObject:lat];
+        
+        [arrayOfLocations addObject:lat];// storing the latitude in the array
         
         NSString* lon=[rs stringForColumn:@"longitude"];
-        [arrayOfLocations addObject:lon];
-        NSLog(@"%@...lat",lon);
+        [arrayOfLocations addObject:lon];//storing the longitude in the array
+       
         NSString* description=[rs stringForColumn:@"description"];
-        [arrayOfLocations addObject:description];
-        NSLog(@"%@",lat);
-        NSLog(@"%@",lon);
+        [arrayOfLocations addObject:description];//storing the deascription in the array
+       
         no++;
     }
     int pos=0;
@@ -100,7 +98,8 @@
 
         pos++;
         MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:description andCoordinate:location];
-        [self.mapView addAnnotation:newAnnotation];
+        [self.mapView addAnnotation:newAnnotation];// this function drops the pin at the location with that particualr latitude and longitude on to the map
+
         [newAnnotation release];
     }
     
@@ -109,18 +108,20 @@
 
 }
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    //this function is used to customise the pin dropped 
+
 {
     annotatedFTVC=[[AnnotatedFilesTableViewController alloc]init];
     annotatedFTVC.longitude=longitude;
-    annotatedFTVC.latitude=latitude;
+    annotatedFTVC.latitude=latitude; 
     pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"identifier"];
     pinView.animatesDrop=YES;
-    pinView.canShowCallout=YES;
+    pinView.canShowCallout=YES;//setting properties to the pin dropped 
+
     pinView.pinColor=MKPinAnnotationColorGreen;
     UIButton* button=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button setTitle:annotation.title forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(getInfo) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(getInfo) forControlEvents:UIControlEventTouchUpInside];//when we click on button placed on the pin getinfo function is called
     pinView.rightCalloutAccessoryView=button;
     
     //UIImageView* iconView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"help.png"]];
@@ -130,13 +131,13 @@
                            
      
 }
--(void)getInfo
+-(void)getInfo //when getinfo is called a table view contoller containing all the files tagged at that particular location is displayed in table view
 {
     NSLog(@"animation clicked");
    AnnotatedFilesTableViewController *annotatedFilesTVC=[[AnnotatedFilesTableViewController alloc] initWithNibName:@"AnnotatedFilesTableViewController"bundle:[NSBundle mainBundle]];
    annotatedFilesTVC.fullMapVC=self;
     annotatedFilesTVC.geoDescription= anotationDescription;
-    annotatedFilesTVC.latitude=latitude;
+    annotatedFilesTVC.latitude=latitude; //latittude,longirude,geodescription are passed to the next control
     annotatedFilesTVC.longitude=longitude;
     
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:annotatedFilesTVC];

@@ -14,24 +14,20 @@
 
 
 
--(void) cancelAction
+-(void) cancelAction  // when we click on cancel button the controler should get dismissed 
 {
-   
-    [self.delegate loadAnnoataions];
-    [self.delegate.tableView reloadData];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate loadAnnoataions];  // this is used to load the annotations from the database to the array
+    [self.delegate.tableView reloadData]; // then tableveiew is reloaded with the objects in the array
+    [self dismissModalViewControllerAnimated:YES];//present controller is dismissed
 }
 /* update */
 
--(void) updateAction:(id)sender
+-(void) updateAction:(id)sender     // when we press done button the notes should be updated into the database for that file beacuse the note added can be changed
 {
-    
     description=textView.text;
-   
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
         
@@ -39,12 +35,8 @@
     else{
         NSLog(@"database is open.");
     }
-    
-    NSLog(@"%@ --->",description);
-    NSLog(@"%@ --->",descriptionText);
-    NSLog(@"%d --->",self.id);
     int k=self.id;
-    
+    //below querry is used to update the notes for that particaular file
    NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"update anotationTable set description='%@' where annotationid='%d'",description,k]];
    NSLog(@"%@", query);
     BOOL suc = [dbManager.db executeUpdate:query];

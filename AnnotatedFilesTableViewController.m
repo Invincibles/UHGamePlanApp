@@ -38,7 +38,6 @@
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
         [dbManager release];
@@ -47,40 +46,33 @@
     else{
         NSLog(@"database is open.");
     }
-    
-    NSLog(@"in ..%@",latitude);
+    //below querry is used retrive all the fileid's and filenames assosiated with that particualr latitude and location
     NSString* query = [NSString stringWithFormat:@"select fid,filename from filesystem where fid in(select fid from geotagTable where latitude='%@' and longitude='%@')",latitude,longitude];
-    NSLog(@"full   %@", query);
-    //BOOL suc = [dbManager.db executeUpdate:query];
-    
     FMResultSet *rs=[dbManager.db executeQuery:query];
-    
+    //below querry is used to get the count of distinct files assosiated to that particular latitude and longitude so that we can know number of rows stored in the table
     NSString* query1 = [NSString stringWithFormat:@"select count(distinct fid) as Count from geotagTable where latitude='%@'and longitude='%@'",latitude,longitude];
-    NSLog(@"%@", query1);
+    
     FMResultSet *rsCount=[dbManager.db executeQuery:query1];
     
     while([rsCount next])
     {
         rowcount=[rsCount intForColumn:@"Count"];
-        NSLog(@"%d------rowcount",rowcount);  
+
     }
     
     int no=0;
     while([rs next]) {
-        
-        fileid=[rs intForColumn:@"fid"];
-        NSLog(@"%d----->1",fileid);
+        fileid=[rs intForColumn:@"fid"]; 
         NSString *string = [NSString stringWithFormat:@"%d", fileid];
-        [arrayOfFiles addObject:string];
+        [arrayOfFiles addObject:string];// this is used store the fileid into the array
         fname=[rs stringForColumn:@"filename"];
-        [arrayOfFiles addObject:fname];
-        NSLog(@"%@ ---- Data base",fname);
+        [arrayOfFiles addObject:fname];// this is to store the file name into the array
       no++;
     }
     [dbManager.db close];
     [dbManager release];
     
-    [self.tableView reloadData];
+    [self.tableView reloadData];//this iss to reload the table
 }
 
 #pragma mark - View lifecycle
@@ -91,7 +83,7 @@
     
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     
-    arrayOfFiles = [[NSMutableArray alloc] init];
+    arrayOfFiles = [[NSMutableArray alloc] init];//intialising the array
     [self loadFiles];
  
     NSLog(@"description %@",  self.fullMapVC.anotationDescription);
@@ -159,9 +151,9 @@
      return rowcount;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath //to display all the cells with the file names related to the tag
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Cell";   
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -219,14 +211,14 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath//when we select a row in the table that paritcular file is opened 
 {
     int fileid=[[arrayOfFiles objectAtIndex:(indexPath.row)] intValue];
     
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path ---- %@",dbManager.databasePath);
+    
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
         [dbManager release];
@@ -237,7 +229,7 @@
     }
     NSDate* openedDate = [NSDate date];
     
-    //NSLog(@"%@",now);
+    //when ever the file is opened it needs to be be inserted into the history
     
     NSString* query = [NSString stringWithFormat:@"insert into filehistory (fid,openeddate) values (%d,'%@')",fileid,openedDate];
     NSLog(@"%@", query);
@@ -249,6 +241,7 @@
     
     [dbManager.db close];
     [dbManager release];
+    //it is redirected to the fileviewcontroller where the file is opened
     
     FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
     fvc.fileID =fileid;

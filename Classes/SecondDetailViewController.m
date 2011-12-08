@@ -26,7 +26,6 @@
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
-    NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
         [dbManager release];
@@ -35,19 +34,19 @@
     else{
         NSLog(@"database is open.");
     }
-
+//below querry is used to select the distinct location where the files are tagged
     FMResultSet *rs=[dbManager.db executeQuery:@"select distinct latitude,longitude,description from geotagTable"];
     int no=0;
     while([rs next]) {
         NSString* lat=[rs stringForColumn:@"latitude"];
         
-        [arrayOfLocations addObject:lat];
+        [arrayOfLocations addObject:lat];       // storing the latitude in the array
       
          NSString* lon=[rs stringForColumn:@"longitude"];
         
-        [arrayOfLocations addObject:lon];
+        [arrayOfLocations addObject:lon];//storing the longitude in the array
        NSString* description=[rs stringForColumn:@"description"];
-        [arrayOfLocations addObject:description];
+        [arrayOfLocations addObject:description];//storing the deascription in the array
         NSLog(@"%@",lat);
         NSLog(@"%@",lon);
         no++;
@@ -64,7 +63,7 @@
         anotationDescription=description;
         pos++;
         MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:description andCoordinate:location];
-        [self.mapView addAnnotation:newAnnotation];
+        [self.mapView addAnnotation:newAnnotation];   // this function drops the pin at the location with that particualr latitude and longitude on to the map
         [newAnnotation display];
         [newAnnotation release];
     }
@@ -107,23 +106,17 @@
 
 
 //Sai Check : return type of the function and the returned value type did not match
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation   //this function is used to customise the pin dropped 
 {
-    
-   
-    NSLog(@"while setting...%@",annotatedFTVC.latitude);
-     NSLog(@"while setting...%@",latitude);
-    
     annotatedFTVC.longitude=longitude;
-    
     MKPinAnnotationView* pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"identifier"];
     pinView.animatesDrop=YES;
     pinView.canShowCallout=YES;
-    pinView.pinColor=MKPinAnnotationColorGreen;
+    pinView.pinColor=MKPinAnnotationColorGreen;  //setting properties to the pin dropped 
     
     UIButton* button=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [button setTitle:annotation.title forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(getInfo) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(getInfo) forControlEvents:UIControlEventTouchUpInside]; //when we click on button placed on the pin getinfo function is called
     pinView.rightCalloutAccessoryView=button;
     
     //UIImageView* iconView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"help.png"]];
@@ -133,12 +126,12 @@
     
     
 }
--(void)getInfo
+-(void)getInfo      //when getinfo is called a table view contoller containing all the files tagged at that particular location is displayed in table view
 {
     NSLog(@"animation clicked");
     AnnotatedFilesTableViewController *annotatedFilesTVC=[[AnnotatedFilesTableViewController alloc] initWithNibName:@"AnnotatedFilesTableViewController"bundle:[NSBundle mainBundle]];
     annotatedFilesTVC.detailMVC=self;
-    annotatedFilesTVC.latitude=latitude;
+    annotatedFilesTVC.latitude=latitude;           //latittude,longirude,geodescription are passed to the next controller
     annotatedFilesTVC.longitude=longitude;
     annotatedFilesTVC.geoDescription= anotationDescription;
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:annotatedFilesTVC];
@@ -176,7 +169,7 @@
     [super dealloc];
 }	
 
-- (IBAction)fullScreen:(id)sender {
+- (IBAction)fullScreen:(id)sender {  //this function is used to switch to full screen mode
 
     FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];

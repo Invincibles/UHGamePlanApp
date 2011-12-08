@@ -12,7 +12,7 @@
 @interface GeoTagScreenView : UIViewController {
     
     UINavigationController* navigator;
-    UILabel *myLatitude;
+    UILabel *myLatitude; 
     UILabel *myLongitude;
     UITextView *myTextView;
 
@@ -20,9 +20,9 @@
     IBOutlet UITextField *myLongitudeTF;
 }
 @property (nonatomic, retain) UINavigationController* navigator;
-@property (nonatomic, retain) IBOutlet UILabel *myLatitude;
-@property (nonatomic, retain) IBOutlet UILabel *myLongitude;
-@property (nonatomic, retain) IBOutlet UITextView *myTextView;
+@property (nonatomic, retain) IBOutlet UILabel *myLatitude;// this label is used to store the laitutde
+@property (nonatomic, retain) IBOutlet UILabel *myLongitude;//this label is used to store the longitude
+@property (nonatomic, retain) IBOutlet UITextView *myTextView;//this label is used to store the textview
 @property(nonatomic,retain)FileViewController *fileVC;
 
 @end

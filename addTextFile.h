@@ -15,11 +15,9 @@
     
     NSString *description; 
     IBOutlet UITextView *textview;
-    
 }
 
 @property(nonatomic,retain)NSString* description;
-
 @property (nonatomic, assign) NotesTableViewController *delegate;
 
 - (void)cancelNote;

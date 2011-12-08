@@ -15,11 +15,16 @@ EKEventEditViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 {
     UINavigationController* myNavigationController;
     
+    //eventStore stores all the events in the default iPad Calendar
     EKEventStore *eventStore;
+    //eventsList contains all the event id's of the events in the calendar
     NSMutableArray *eventsList;
     EKCalendar *defaultCalendar;
+    //controller to simply view the events
     EKEventViewController *eventViewController;
+    //the unique id of an event
     NSString *eventIdentifier;
+    //controller which allows the user to edit an event
     EKEventEditViewController *eventEditController;
 }
 
@@ -31,5 +36,6 @@ EKEventEditViewDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 @property (nonatomic, retain) EKEventEditViewController *eventEditController;
 @property (nonatomic, readonly) NSString *eventIdentifier;
 
+//fetches all the events in a particular date range
 -(NSArray *) getEvents;
 @end

@@ -15,6 +15,6 @@
 }
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
 
-
+//Method to Add an Event - called when clicked on the icon in the details view
 - (IBAction)addEvent:(id)sender;
 @end

@@ -15,11 +15,11 @@
 {
     FullMapViewController *fullMapVC;
     SecondDetailViewController *detailMVC;
-    NSMutableArray* arrayOfFiles;
-     int rowcount; 
-    NSString* geoDescription;
-    NSString* latitude;
-    NSString* longitude;
+    NSMutableArray* arrayOfFiles;  // this array is used to store the files tagged in that region 
+     int rowcount;   // this variable is used to set the number of rows in a table view
+    NSString* geoDescription; // this gives us the description of the place
+    NSString* latitude;  // this has the latitude of selected place 
+    NSString* longitude; // this has the longitude of selected place 
     
     
 }

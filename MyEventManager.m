@@ -24,10 +24,10 @@
         myNavigationController.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
         
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEventAction:)];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+        
         UIBarButtonItem *addEventButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
         UIBarButtonSystemItemAdd target:self action:@selector(addEventAction:)];
-        
-        self.navigationItem.leftBarButtonItem = cancelButton;
         self.navigationItem.rightBarButtonItem = addEventButton;
         
         [cancelButton release];
@@ -89,20 +89,10 @@
 	// Fetch today's event on selected calendar and put them into the eventsList array
 	[self.eventsList addObjectsFromArray:[self getEvents]];
     
-    //eventIdentifier=[self.eventsList objectAtIndex:0];
-    
-   // EKEvent* myEvent = [self.eventsList objectAtIndex:0];
-    //NSLog(@"%@",myEvent.eventIdentifier);
-    
 	[self.tableView reloadData];
     
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)viewDidUnload
@@ -194,10 +184,8 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                        reuseIdentifier:CellIdentifier] autorelease];
 	}
-//	cell.selectionStyle = UITableViewCellEditingStyleNone;
-//	cell.accessoryType = editableCellAccessoryType;
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
 	// Get the event at the row selected and display it's title
 	cell.textLabel.text = [[self.eventsList objectAtIndex:indexPath.row] title];
@@ -207,49 +195,12 @@
 	return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    //pushing the EKEventViewController which shows the details of the event
     
     eventViewController = [[EKEventViewController alloc] initWithNibName:@"nil" bundle:nil];
     
@@ -258,8 +209,8 @@
     eventViewController.allowsEditing = YES;
     
     myNavigationController = [[UINavigationController alloc] init];
-    // Pass the selected object to the new view controller.    
     
+    // Pass the selected object to the new view controller.    
     eventViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self.navigationController pushViewController:eventViewController animated:YES];
@@ -268,10 +219,8 @@
     
 }
 
-
 -(void) eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action{
     
-    NSLog(@"event edit view called.... ");
     NSError *error = nil;
     EKEvent *currentEvent = controller.event;
     
@@ -322,7 +271,7 @@
     
 	NSDate *startDate = [NSDate date];
 	
-	// endDate is 1 day = 60*60*24 seconds = 86400 seconds from startDate
+	// endDate is given as distant future which means 4 years from now
 	NSDate *endDate = [NSDate distantFuture];
 	
 	// Create the predicate. Pass it the default calendar.
@@ -335,6 +284,7 @@
 	return events;
 }
 
+//method called when we click on + button to add an event
 -(void) addEventAction:(id)sender
 {
     EKEventEditViewController *addController = [[EKEventEditViewController alloc] initWithNibName:nil bundle:nil];
@@ -361,6 +311,7 @@
     [editController release];
 }
 
+//dismiss the present modal view controller
 -(void) cancelEventAction:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
