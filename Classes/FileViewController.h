@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This view controller presents a file to the user. This is the core part and has all the features of associating files to contacts, events, geotagging, notes, history
+ */
+
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
 #import "RootViewController.h"
@@ -20,7 +24,6 @@
     
     GKSession *presentSession;
     GKPeerPickerController *picker;
-   // databaseManager *dbManager;
     UIWebView *fileWebView;
     UIToolbar *toolbar;
     NSString *filename;
@@ -30,7 +33,6 @@
     NSDate *openedDate;
     ShareFilesViewController* sharedFiles;
 }
-//@property(nonatomic,retain)databaseManager *dbManager;
 @property(nonatomic,retain)NSDate* openedDate;
 @property(nonatomic, retain) GKSession *presentSession;
 @property(nonatomic, retain) GKPeerPickerController *picker;

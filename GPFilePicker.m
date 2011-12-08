@@ -36,12 +36,6 @@
         [cancelButton release];
         
         filesList = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        //get all files from main bundle's Files folder
-        //[filesList addObject:@"test1.pdf"];
-        //[filesList addObject:@"test2.pdf"];
-        //[filesList addObject:@"test3.pdf"];
-        //[filesList addObject:@"test.pdf"];
     }
     return self;
 }
@@ -61,6 +55,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+//this function is used to read the files list from the database
 -(void) loadFilesList
 {
     databaseManager* dbmanager = [[databaseManager alloc] init];
@@ -171,46 +166,9 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
+
+//when we select a file it should be added to that folder
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

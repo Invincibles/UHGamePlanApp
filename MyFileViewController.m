@@ -39,9 +39,10 @@
     return self;
 }
 
+//this function is used to read all the file names of files in the given folder
 -(void) reloadfileslist
 {
-    [fileslist removeAllObjects];
+    [fileslist removeAllObjects]; //we start by emptying the array
     
     databaseManager* dbmanager = [[databaseManager alloc] init];
     [dbmanager updateNames];
@@ -52,6 +53,7 @@
         return;
     }
     
+    //we select the files from the given folder
     NSString* query = [NSString stringWithFormat:@"select * from filesystem where isfolder=0 and foldername = '%@'",foldername];
     
     FMResultSet* rs = [dbmanager.db executeQuery:query];
@@ -65,8 +67,9 @@
     File* myfile;
     
     while ([rs next]) {
+        //we read each file
         myfile = [[File alloc] init:[rs intForColumn:@"fid"] _filename:[rs stringForColumn:@"filename"] _isfolder:YES _foldername:[rs stringForColumn:@"foldername"] _date:[rs stringForColumn:@"creationdate"]];
-        NSLog(@"--- filename - %@",[myfile filename]);
+        //we add the file to the array
         [fileslist addObject:myfile];
     }
     
@@ -80,6 +83,10 @@
     [delegate reloadFiles];
     [self dismissModalViewControllerAnimated:YES];
 }
+
+/*
+ To add a file to the folder.
+ */
 
 -(void) addAction:(id)sender
 {
@@ -131,7 +138,7 @@
     }
 }
 
-
+//this function is called when you want to delete a file from folder
 - (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -241,57 +248,11 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+
 }
 
 @end

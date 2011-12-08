@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This controller lists all the files in your application. It makes use of a database to store the files, it is updated each time a file is downloaded or received from bluetooth.
+ */
+
 #import <UIKit/UIKit.h>
 
 @class MyFileViewController;

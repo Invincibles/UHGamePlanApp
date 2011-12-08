@@ -26,25 +26,21 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
         folderList = [[NSMutableArray alloc] initWithCapacity:1];
         isSharedFilePortrait = 0;
-    /*    
-        //load all the folders here
-        File* file1 = [[File alloc] init:1 _filename:@"" _isfolder:1 _foldername:@"Folder 1" _date:@"2011-11-06"];
-        File* file2 = [[File alloc] init:1 _filename:@"" _isfolder:1 _foldername:@"Folder 2" _date:@"2011-11-06"];
-        [folderList addObject:file1];
-        [folderList addObject:file2];
-     */
         [self loadFolderList];
     }
     return self;
 }
 
+/*
+ This function loads all the foldernames for database to folderList array.
+ */
 -(void) loadFolderList
 {
-    [folderList removeAllObjects];
+    [folderList removeAllObjects]; //in order to avoid redundancy in adding foldernames, we empty this folder before we read all the files
     
+    //we initialize the database manager
     databaseManager* dbmanager = [[databaseManager alloc] init];
     [dbmanager updateNames];
     dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
@@ -55,6 +51,7 @@
         return;
     }
     
+    //we get all the folder names form filesystem
     FMResultSet* rs = [dbmanager.db executeQuery:@"select * from filesystem where isfolder=1"];
     
     if(rs == nil){
@@ -63,10 +60,13 @@
         return;
     }
     
+    //we define a file object to read the folder properties from the database
     File* myfile;
     
     while ([rs next]) {
+        //we read each file
         myfile = [[File alloc] init:[rs intForColumn:@"fid"] _filename:[rs stringForColumn:@"filename"] _isfolder:YES _foldername:[rs stringForColumn:@"foldername"] _date:[rs stringForColumn:@"creationdate"]];
+        //we are adding it to the array
         [folderList addObject:myfile];
     }
     [dbmanager.db close];
@@ -118,18 +118,17 @@
 {
     [super viewWillAppear:animated];
     
-    //Initialize the toolbar
-        
-    //Reload the table view
-    
     [self.tableView reloadData];
     
 }
 
+//this function is called when the alert view is dismissed
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    //we will press ok button
     if(buttonIndex != [alertView cancelButtonIndex])
     {
+        //we get the new folder name from uialertview
         NSString* newfoldername = [(CustomUIAlert*)alertView enteredText];
         
         //check if the folder name is already present, if its present dont add, else add to table view
@@ -192,6 +191,7 @@
 }
 
 
+//this function is called when we delete a folder. When we delete a folder all the associations associated with the files in the foder should also be deleted from the tables
 - (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -218,35 +218,42 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         
         NSString *query;
         
+        //for each file
         while([rs next])
         {
-         int fileID=[rs intForColumn:@"fid"]; 
+         int fileID=[rs intForColumn:@"fid"];
+            //we delete the contacts associated with it
             query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where fid='%d'",fileID]];
             NSLog(@"%@", query);
             [dbManager.db executeUpdate:query];
             [query release];
             
+            //we delete the events associated with it
             query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where fid='%d'",fileID]];
             NSLog(@"%@", query);
             [dbManager.db executeUpdate:query];
             [query release];
             
+            //we delete the geotags associated with it
             query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from geotagTable where fid='%d'",fileID]];
             NSLog(@"%@", query);
             [dbManager.db executeUpdate:query];
             [query release];
             
+            //we delete the history associated with it
             query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filehistory where fid='%d'",fileID]];
             NSLog(@"%@", query);
             [dbManager.db executeUpdate:query];
             [query release];
             
+            //we delete the anotations associated with it
             query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where fid='%d'",fileID]];
             NSLog(@"%@", query);
             [dbManager.db executeUpdate:query];
             [query release];
         }
         
+        //delete the folder
         NSString* query2 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filesystem where foldername='%@'",[[folderList objectAtIndex:rownumber] foldername ]]];
         NSLog(@"%@", query2);
         
@@ -260,6 +267,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [self loadFolderList];
         [dbManager release];
         
+        //reloading the fileview after deleting the folder, it should be set to null because we don't have any file selected now
         fileView.foldername = @"";
         [fileView reloadFiles];
         [fileView reloadInputViews];
@@ -272,6 +280,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
+//this function is called when you want to download a file to your app
 - (IBAction)downloadAction:(id)sender {
     
     GPNewFilePicker *picknewfile = [[GPNewFilePicker alloc] initWithNibName:@"GPNewFilePicker" bundle:[NSBundle mainBundle]];
@@ -280,6 +289,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [picknewfile release];
 }
 
+//this is called when you want to create a new folder
 - (IBAction)newFolderAction:(id)sender {
     
     //read filename from user
@@ -345,24 +355,6 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     int i = indexPath.row;
-    /*
-    switch (indexPath.row) {
-        case 0:
-            cell.titleLabel.text=@"";
-            return cell;
-        case 1:
-            cell.titleLabel.text = @"TES Presentation";
-            break;
-        case 2:
-            cell.titleLabel.text = @"FDIS Team";
-            break;
-        case 3:
-            cell.titleLabel.text = @"Lastest";
-            break;
-        default:
-            break;
-    }
-    */
     
     cell.iconImage.image = [UIImage imageNamed:@"folder_icon_small.png"];
     cell.titleLabel.text = [NSString stringWithString:[[folderList objectAtIndex:i] foldername]];
@@ -373,32 +365,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     if(fileView != nil)
     {
-        NSLog(@"object is assigned.");
-        //[fileView.numberOfFiles setText:[NSString stringWithFormat:@"number of files : %d",indexPath.row]];
-        /*
-        switch (indexPath.row) {
-            case 0:
-                fileView.fileCount=0;
-                break;
-            case 1:
-                fileView.fileCount = 10;
-                break;
-            case 2:
-                fileView.fileCount = 20;
-                break;
-            case 3:
-                fileView.fileCount = 30;
-            default:
-                break;
-        }
-        */
-        
-        NSLog(@"in did select row at index : %d",indexPath.row);
-        
         downloadBtn.enabled = YES;
-        
-        NSLog(@"Folder Name : %@",[NSString stringWithString:[[folderList objectAtIndex:indexPath.row] foldername]]);
-        
         fileView.foldername = [NSString stringWithString:[[folderList objectAtIndex:indexPath.row] foldername]];
         [fileView reloadFiles];
     }

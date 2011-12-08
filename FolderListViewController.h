@@ -6,6 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This is the controller that is pushed on to root view when files option is clicked. It contains a list of all the folders.
+ By clicking on the folder the user can view the files in that folder.
+ */
+
 #import <UIKit/UIKit.h>
 
 @class ShareFilesViewController;

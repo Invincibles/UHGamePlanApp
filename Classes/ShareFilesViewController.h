@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This is the view controller that has the rack view presented, all the files are arranged in the rack.
+ */
+
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 

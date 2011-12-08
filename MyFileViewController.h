@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This controller is used to list all the files present in a folder
+ */
+
 #import <UIKit/UIKit.h>
 
 @class ShareFilesViewController;
