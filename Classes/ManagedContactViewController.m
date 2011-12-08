@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ All the methods of the three delegates are implemented here.
+ */
+
 #import "ManagedContactViewController.h"
 
 
