@@ -25,8 +25,6 @@
 		7829F70C149071EB00B0467F /* FolderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7829F709149071EB00B0467F /* FolderListViewController.xib */; };
 		7829F70F1490730200B0467F /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7829F70D1490730100B0467F /* EventKit.framework */; };
 		7829F7101490730200B0467F /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7829F70E1490730100B0467F /* EventKitUI.framework */; };
-		7829F7111490734200B0467F /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78965F8814901625001D07D9 /* libKal.a */; };
-		7829F714149073E100B0467F /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829F713149073E100B0467F /* EventKitDataSource.m */; };
 		785AC56414678CA700558DEF /* AddEventToFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56214678CA700558DEF /* AddEventToFileViewController.m */; };
 		785AC56514678CA700558DEF /* AddEventToFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785AC56314678CA700558DEF /* AddEventToFileViewController.xib */; };
 		785AC5711467999B00558DEF /* ViewFileEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AC56F1467999B00558DEF /* ViewFileEventsController.m */; };
@@ -37,6 +35,8 @@
 		78A306BC14502F0500C837B4 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A306BB14502F0500C837B4 /* AddressBookUI.framework */; };
 		78AE37011466083000F83544 /* DescriptionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AE36FF1466083000F83544 /* DescriptionVC.m */; };
 		78AE37021466083000F83544 /* DescriptionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AE37001466083000F83544 /* DescriptionVC.xib */; };
+		78B918DE1490A6B600B55CFD /* EventKitDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B918DD1490A6B600B55CFD /* EventKitDataSource.m */; };
+		78B918E11490A6FF00B55CFD /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B918DB1490A61B00B55CFD /* libKal.a */; };
 		78BF74A1146A402300E51D82 /* CustomUIAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74A0146A402300E51D82 /* CustomUIAlert.m */; };
 		78BF74A6146A403800E51D82 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74A3146A403800E51D82 /* File.m */; };
 		78BF74A7146A403800E51D82 /* FileIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF74A5146A403800E51D82 /* FileIcon.m */; };
@@ -122,16 +122,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		78965F8714901625001D07D9 /* PBXContainerItemProxy */ = {
+		78B918DA1490A61B00B55CFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 78965F8014901625001D07D9 /* Kal.xcodeproj */;
+			containerPortal = 78B918D61490A61B00B55CFD /* Kal.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = Kal;
 		};
-		78965F8914901637001D07D9 /* PBXContainerItemProxy */ = {
+		78B918DF1490A6F700B55CFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 78965F8014901625001D07D9 /* Kal.xcodeproj */;
+			containerPortal = 78B918D61490A61B00B55CFD /* Kal.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = Kal;
@@ -166,8 +166,6 @@
 		7829F70A149071EB00B0467F /* FolderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderListViewController.h; sourceTree = "<group>"; };
 		7829F70D1490730100B0467F /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		7829F70E1490730100B0467F /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
-		7829F712149073E100B0467F /* EventKitDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventKitDataSource.h; sourceTree = "<group>"; };
-		7829F713149073E100B0467F /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventKitDataSource.m; sourceTree = "<group>"; };
 		7832CC99148F440E00477658 /* Manage-Folder-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Manage-Folder-Tab-Bar.png"; sourceTree = "<group>"; };
 		7832CC9C148F442300477658 /* New-Folder-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "New-Folder-Tab-Bar.png"; sourceTree = "<group>"; };
 		785AC56114678CA700558DEF /* AddEventToFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventToFileViewController.h; sourceTree = "<group>"; };
@@ -179,12 +177,14 @@
 		78916639148EC277004B5C0D /* Calendar-Tab-Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-Tab-Bar.png"; sourceTree = "<group>"; };
 		7891663B148ED305004B5C0D /* help_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help_3.png; path = ../help_3.png; sourceTree = "<group>"; };
 		7891663D148ED377004B5C0D /* watermark_logo_120611.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark_logo_120611.png; sourceTree = "<group>"; };
-		78965F8014901625001D07D9 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../../Desktop/Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
 		78965F8C1490167B001D07D9 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = ../../Desktop/Kal/src/Kal.bundle; sourceTree = "<group>"; };
 		78A306BB14502F0500C837B4 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		78AE36FE1466083000F83544 /* DescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptionVC.h; path = Classes/DescriptionVC.h; sourceTree = "<group>"; };
 		78AE36FF1466083000F83544 /* DescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescriptionVC.m; path = Classes/DescriptionVC.m; sourceTree = "<group>"; };
 		78AE37001466083000F83544 /* DescriptionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DescriptionVC.xib; path = Classes/DescriptionVC.xib; sourceTree = "<group>"; };
+		78B918D61490A61B00B55CFD /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../../Desktop/Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
+		78B918DC1490A6B600B55CFD /* EventKitDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventKitDataSource.h; path = ../../Desktop/Kal/Examples/NativeCal/Classes/EventKitDataSource.h; sourceTree = "<group>"; };
+		78B918DD1490A6B600B55CFD /* EventKitDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventKitDataSource.m; path = ../../Desktop/Kal/Examples/NativeCal/Classes/EventKitDataSource.m; sourceTree = "<group>"; };
 		78BF749F146A402300E51D82 /* CustomUIAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIAlert.h; sourceTree = "<group>"; };
 		78BF74A0146A402300E51D82 /* CustomUIAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIAlert.m; sourceTree = "<group>"; };
 		78BF74A2146A403800E51D82 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7829F7111490734200B0467F /* libKal.a in Frameworks */,
+				78B918E11490A6FF00B55CFD /* libKal.a in Frameworks */,
 				7829F70F1490730200B0467F /* EventKit.framework in Frameworks */,
 				7829F7101490730200B0467F /* EventKitUI.framework in Frameworks */,
 				78E7A89D1465E40D005D7F34 /* AddressBook.framework in Frameworks */,
@@ -347,9 +347,9 @@
 			children = (
 				7829F70D1490730100B0467F /* EventKit.framework */,
 				7829F70E1490730100B0467F /* EventKitUI.framework */,
+				78B918D61490A61B00B55CFD /* Kal.xcodeproj */,
 				78965F8C1490167B001D07D9 /* Kal.bundle */,
 				080E96DDFE201D6D7F000001 /* Main Classes */,
-				78965F8014901625001D07D9 /* Kal.xcodeproj */,
 				7807DDAC1464BEC200FC78B9 /* Database */,
 				78916646148EE06B004B5C0D /* Custom Classes */,
 				78916641148EDFFC004B5C0D /* Contact Classes */,
@@ -445,12 +445,12 @@
 		78916642148EE029004B5C0D /* Calendar Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7829F712149073E100B0467F /* EventKitDataSource.h */,
-				7829F713149073E100B0467F /* EventKitDataSource.m */,
 				E4314A87144FAA3400572B33 /* EventManagerViewController.h */,
 				E4314A88144FAA3400572B33 /* EventManagerViewController.m */,
 				E46F25BD146211FE00C0E14F /* MyEventManager.h */,
 				E46F25BE146211FE00C0E14F /* MyEventManager.m */,
+				78B918DC1490A6B600B55CFD /* EventKitDataSource.h */,
+				78B918DD1490A6B600B55CFD /* EventKitDataSource.m */,
 			);
 			name = "Calendar Classes";
 			sourceTree = "<group>";
@@ -634,10 +634,10 @@
 			name = "Logo & Watermark";
 			sourceTree = "<group>";
 		};
-		78965F8114901625001D07D9 /* Products */ = {
+		78B918D71490A61B00B55CFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				78965F8814901625001D07D9 /* libKal.a */,
+				78B918DB1490A61B00B55CFD /* libKal.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -714,7 +714,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				78965F8A14901637001D07D9 /* PBXTargetDependency */,
+				78B918E01490A6F700B55CFD /* PBXTargetDependency */,
 			);
 			name = GamePlanApp;
 			productName = MultipleDetailViews;
@@ -741,8 +741,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 78965F8114901625001D07D9 /* Products */;
-					ProjectRef = 78965F8014901625001D07D9 /* Kal.xcodeproj */;
+					ProductGroup = 78B918D71490A61B00B55CFD /* Products */;
+					ProjectRef = 78B918D61490A61B00B55CFD /* Kal.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -753,11 +753,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		78965F8814901625001D07D9 /* libKal.a */ = {
+		78B918DB1490A61B00B55CFD /* libKal.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libKal.a;
-			remoteRef = 78965F8714901625001D07D9 /* PBXContainerItemProxy */;
+			remoteRef = 78B918DA1490A61B00B55CFD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -876,17 +876,17 @@
 				78E1DD77148C21D4000476BB /* NewHelpViewController.m in Sources */,
 				C9A3F299148FED8100D72B27 /* GPNewFilePicker.m in Sources */,
 				7829F70B149071EB00B0467F /* FolderListViewController.m in Sources */,
-				7829F714149073E100B0467F /* EventKitDataSource.m in Sources */,
+				78B918DE1490A6B600B55CFD /* EventKitDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		78965F8A14901637001D07D9 /* PBXTargetDependency */ = {
+		78B918E01490A6F700B55CFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Kal;
-			targetProxy = 78965F8914901637001D07D9 /* PBXContainerItemProxy */;
+			targetProxy = 78B918DF1490A6F700B55CFD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
