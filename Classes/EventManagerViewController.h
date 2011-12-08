@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface EventManagerViewController : UIViewController <SubstitutableDetailViewController, UINavigationBarDelegate>{
-    
+@class KalViewController;
+
+@interface EventManagerViewController : UIViewController <SubstitutableDetailViewController, UINavigationBarDelegate,UITableViewDelegate>{
+    UINavigationController *mynav;
     UINavigationBar *navigationBar;
+    KalViewController *calendar;
+    id dataSource;
+    
 }
+@property (nonatomic, retain) UINavigationController *mynav;
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
-
-
+@property (nonatomic, retain) KalViewController *calendar;
 - (IBAction)addEvent:(id)sender;
+- (IBAction)viewCalendar:(id)sender;
 @end

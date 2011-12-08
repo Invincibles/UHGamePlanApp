@@ -193,6 +193,7 @@
     }
     
     [dbmanager.db close];
+    [dbmanager release];
 }
 
 -(void) reloadFiles{
