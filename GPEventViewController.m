@@ -28,23 +28,15 @@
 
 -(void) addToFile:(id)sender
 {
-    /*
-    for(EKEvent* obj in self.addVC.eventsList){
-        if([[obj eventIdentifier] isEqualToString:self.addVC.eventID]){
-            //contact is already added to the list
-            NSLog(@"event already tagged to the file.");
-            [self dismissModalViewControllerAnimated:YES];
-            return;
-        }
-    }
-     */
+
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
-        
+        [dbManager release];
+        return;
     }
     else{
         NSLog(@"database is open.");
@@ -63,22 +55,19 @@
     NSLog(@"%@", query1);
     BOOL suc1 = [dbManager.db executeUpdate:query1];
     BOOL suc = [dbManager.db executeUpdate:query];
-    if(suc)
+    if(suc && suc1)
         NSLog(@"insert is successful.");
     else
         NSLog(@"insert failed.");
     
+    [query release];
+    [query1 release];
     [dbManager.db close];
+    [dbManager release];
+    
     [addVC.delegate viewDidLoad];
     [addVC.delegate.tableView reloadData];
     [self dismissModalViewControllerAnimated:YES];
-    
-    
-    //EKEvent *event;
-    
-   // NSLog(@"GPEvent VC's current event ID = %@ ",addVC.eventIdentifier );
-    
-   
     
 }
 
@@ -118,6 +107,7 @@
     
     [rs close];
     [dbManager.db close];
+    [dbManager release];
     [query release];
     [afBtn release];
 }

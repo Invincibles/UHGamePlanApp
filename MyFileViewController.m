@@ -48,6 +48,7 @@
     dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         return;
     }
     
@@ -57,6 +58,7 @@
     
     if(rs == nil){
         NSLog(@"Error: result set is nil.");
+        [dbmanager release];
         return;
     }
     
@@ -69,7 +71,7 @@
     }
     
     [dbmanager.db close];
-    
+    [dbmanager release];
     [self.tableView reloadData];
 }
 
@@ -157,6 +159,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             NSLog(@"delete is successful.");
         else
             NSLog(@"delete failed.");
+        
+        [query release];
+        [dbManager.db close];
+        [dbManager release];
         
         [self reloadfileslist]; 
    

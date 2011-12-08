@@ -51,6 +51,7 @@
     NSLog(@"path - %@",dbmanager.databasePath);
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         return;
     }
     
@@ -58,6 +59,7 @@
     
     if(rs == nil){
         NSLog(@"Error: result set is nil.");
+        [dbmanager release];
         return;
     }
     
@@ -143,7 +145,7 @@
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd" ];
         NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-        
+        [dateFormatter release];
         //insert into database
         NSString* query = [NSString stringWithFormat:@"insert into filesystem (filename,isfolder,foldername,creationdate) values ('',1,'%@','%@')",newfoldername,dateString];
         
@@ -153,6 +155,7 @@
         //NSLog(@"path - %@",dbmanager.databasePath);
         if(![dbmanager.db open]){
             NSLog(@"Error: Could not connect to database.");
+            [dbmanager release];
             return;
         }
         
@@ -167,12 +170,11 @@
             NSLog(@"Error in creating file, please try again.");
         }
         [dbmanager.db close];
+        [dbmanager release];
         
         [self loadFolderList];
         
         [self.tableView reloadData];
-        
-        [dateFormatter release];
     }
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView 
@@ -213,40 +215,49 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         NSLog(@"%@", query1);
         FMResultSet *rs=[dbManager.db executeQuery:query1];
         
+        NSString *query;
+        
         while([rs next])
         {
          int fileID=[rs intForColumn:@"fid"]; 
-        NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where fid='%d'",fileID]];
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where fid='%d'",fileID]];
             NSLog(@"%@", query);
-             BOOL suc = [dbManager.db executeUpdate:query];
-        NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where fid='%d'",fileID]];
-            NSLog(@"%@", query1);
-             BOOL suc1 = [dbManager.db executeUpdate:query1];
-            NSString* query2 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from geotagTable where fid='%d'",fileID]];
-            NSLog(@"%@", query2);
-             BOOL suc2 = [dbManager.db executeUpdate:query2];
-            NSString* query3 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filehistory where fid='%d'",fileID]];
-            NSLog(@"%@", query3);
-             BOOL suc3 = [dbManager.db executeUpdate:query3];
-            NSString* query4 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where fid='%d'",fileID]];
-            NSLog(@"%@", query4);
-             BOOL suc4 = [dbManager.db executeUpdate:query4];
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from eventTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from geotagTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filehistory where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
+            
+            query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from anotationTable where fid='%d'",fileID]];
+            NSLog(@"%@", query);
+            [dbManager.db executeUpdate:query];
+            [query release];
         }
         
+        NSString* query2 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filesystem where foldername='%@'",[[folderList objectAtIndex:rownumber] foldername ]]];
+        NSLog(@"%@", query2);
         
-        NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from filesystem where foldername='%@'",[[folderList objectAtIndex:rownumber] foldername ]]];
-        NSLog(@"%@", query);
-        
-        
-        
-        BOOL suc = [dbManager.db executeUpdate:query];
-        if(suc)
+        if([dbManager.db executeUpdate:query2])
             NSLog(@"delete is successful.");
         else
             NSLog(@"delete failed.");
         
+        [query2 release];
+        [query1 release];
         [self loadFolderList];
-        
+        [dbManager release];
     }
 }
 

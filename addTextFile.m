@@ -42,6 +42,7 @@
     NSLog(@"path ---- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
+        [dbManager release];
         return;
     }
     else{
@@ -60,17 +61,16 @@
     NSLog(@"%@", query1);
     BOOL suc = [dbManager.db executeUpdate:query];
     BOOL suc1 = [dbManager.db executeUpdate:query1];
-    if(suc)
+    if(suc && suc1)
         NSLog(@"insert is successful.");
     else
         NSLog(@"insert failed.");
     
+    [query release];
+    [query1 release];
     [dbManager.db close];
-    
+    [dbManager release];
     [self cancelNote];
-    
-    
-    
 }
 
 -(void)cancelNote

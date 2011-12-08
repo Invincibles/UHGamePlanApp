@@ -19,15 +19,17 @@
  
 -(void)viewDidLoad{
     
-     arrayOfLocations = [[NSMutableArray alloc] initWithCapacity:1];
-     CLLocationCoordinate2D location;
-   
+    [super viewDidLoad];
+    arrayOfLocations = [[NSMutableArray alloc] initWithCapacity:1];
+    CLLocationCoordinate2D location;
+       
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
     NSLog(@"path--- %@",dbManager.databasePath);
     if(![dbManager.db open]){
         NSLog(@"Could not open db.");
+        [dbManager release];
         return;
     }
     else{
@@ -49,9 +51,6 @@
         NSLog(@"%@",lat);
         NSLog(@"%@",lon);
         no++;
-      
-        
-      
     }
     int pos=0;
     for(int i=0;i<no;i++){
@@ -67,16 +66,10 @@
         MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:description andCoordinate:location];
         [self.mapView addAnnotation:newAnnotation];
         [newAnnotation display];
+        [newAnnotation release];
     }
-    //MapAnnotation *newAnnotation = [[MapAnnotation alloc] initWithTitle:@"Buckingham Palace" andCoordinate:location];
-    //[self.mapView addAnnotation:newAnnotation];
     
-    
-    NSLog(@"out");
- 
-    
-    [super viewDidLoad];
- 
+    [dbManager release];
 }
 
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
@@ -113,6 +106,7 @@
 }
 
 
+//Sai Check : return type of the function and the returned value type did not match
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation    
 {
     
@@ -182,19 +176,13 @@
     [super dealloc];
 }	
 
-/*
-- (IBAction)fullScreenBtn:(id)sender {
-    
+- (IBAction)fullScreen:(id)sender {
+
     FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
     nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     [self presentModalViewController:nav animated:YES];
-}
-*/- (IBAction)fullScreen:(id)sender {
-    NSLog(@"Coming....");
-    FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-    [self presentModalViewController:nav animated:YES];
+    [nav release];
+    [fullmapVC release];
 }
 @end

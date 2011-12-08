@@ -33,6 +33,6 @@
 @property(nonatomic,retain)FileViewController *fileVC;
 
 -(NSArray *)getEvents;
--(NSArray *) getEventsOfFile;
+-(NSMutableArray *)getEventsOfFile;
 
 @end

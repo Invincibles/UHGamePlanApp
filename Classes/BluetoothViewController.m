@@ -137,8 +137,8 @@
         [progressBar setProgress:0.0f];
         NSString* fileInfo = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         _numberOfChunks = [fileInfo integerValue];
-     
         _receivedDataChunks = [NSMutableData new];
+        [fileInfo release];
     }
     else {
         
@@ -182,7 +182,7 @@
 		{
 			NSString *str=[NSString stringWithFormat:@"%@\n%@%@",textLabel.text,@"Connected from peer ",peerID];
 			textLabel.text= str;
-			NSLog(str);
+			NSLog(@"%@",str);
 			[myPeers addObject:peerID];
 			break;
 		}
@@ -192,9 +192,11 @@
             
 			NSString *str=[NSString stringWithFormat:@"%@\n%@%@",textLabel.text,@"DisConnected from peer ",peerID];
 			textLabel.text= str;
-			NSLog(str);
+			NSLog(@"%@",str);
 			break;
 		}
+        default:
+            break;
     }
 }
 
@@ -231,7 +233,7 @@
     
     bool suc = [filemgr createFileAtPath:fullPath contents:recData attributes:nil];
     
-    if(suc == YES)
+    if(suc)
     {
         NSLog(@"file created.");
     }
@@ -244,6 +246,8 @@
         NSLog(@"File Exists !");
     else
         NSLog(@"File not found.");
+    
+    [recData release];
 }
 
 - (NSArray *)dataChunks:(NSData *)orgData {

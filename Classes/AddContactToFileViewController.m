@@ -99,7 +99,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         NSLog(@"path--- %@",dbManager.databasePath);
         if(![dbManager.db open]){
             NSLog(@"Could not open db.");
-            
+            [dbManager release];
+            return;
         }
         else{
             NSLog(@"database is open.");
@@ -112,6 +113,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         else
             NSLog(@"delete failed.");
         
+        [query release];
+        [dbManager.db close];
+        [dbManager release];
         
         [self loadContactsList];
         
@@ -130,16 +134,15 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [contactIDList removeAllObjects];
     
     //get contacts from database
-    NSString* query = [[NSString alloc] initWithFormat:@"select contactid from contactTable where fid = %d",self.currentFileID];
+    NSString* query = [NSString stringWithFormat:@"select contactid from contactTable where fid = %d",self.currentFileID];
     NSLog(@"select query - %@",query);
-    
-    
     
     databaseManager* dbmanager = [[databaseManager alloc] init];
     [dbmanager updateNames];
     dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         return;
     }
     
@@ -147,12 +150,16 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(rs == nil){
         NSLog(@"Error: result set is nil.");
+        [dbmanager release];
         return;
     }
 
     while([rs next]){
         [contactIDList addObject:[[NSNumber alloc] initWithInt:[rs intForColumn:@"contactid"]]];
     }
+    
+    [dbmanager.db close];
+    [dbmanager release];
     
     [self.tableView reloadData];
     

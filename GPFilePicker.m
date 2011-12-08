@@ -68,6 +68,7 @@
     dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         return;
     }
     
@@ -75,6 +76,7 @@
     
     if(rs == nil){
         NSLog(@"Error: result set is nil.");
+        [dbmanager release];
         return;
     }
     
@@ -231,6 +233,7 @@
     dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         [self dismissModalViewControllerAnimated:YES];
         return;
     }
@@ -241,13 +244,15 @@
 
     NSString* query = [NSString stringWithFormat:@"insert into filesystem (filename,isfolder,foldername,creationdate) values ('%@',0,'%@','%@')",[filesList objectAtIndex:indexPath.row],delegate.foldername,dateString];
     
+    [dateFormatter release];
+    
     BOOL suc = [dbmanager.db executeUpdate:query];
     if(!suc){
         NSLog(@"Error: Inserting failed please try again.");
     }
     
     [dbmanager.db close];
-    
+    [dbmanager release];
     //NSLog(@"added %@ to folder %@",[filesList objectAtIndex:indexPath.row],delegate.foldername);
     [delegate reloadfileslist];
     [self dismissModalViewControllerAnimated:YES];

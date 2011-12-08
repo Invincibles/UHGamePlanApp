@@ -134,6 +134,7 @@
             dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
             if(![dbmanager.db open]){
                 NSLog(@"Error: Could not connect to database.");
+                [dbmanager release];
                 return;
             }
             

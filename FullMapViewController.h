@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 @class AnnotatedFilesTableViewController;
-@interface FullMapViewController : UIViewController<SubstitutableDetailViewController, MKMapViewDelegate>
+@interface FullMapViewController : UIViewController<MKMapViewDelegate> //, SubstitutableDetailViewController>
 {
   NSMutableArray* arrayOfLocations;  
     MKMapView *mapView;

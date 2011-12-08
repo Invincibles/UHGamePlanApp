@@ -175,6 +175,7 @@
     dbmanager.db = [FMDatabase databaseWithPath:dbmanager.databasePath];
     if(![dbmanager.db open]){
         NSLog(@"Error: Could not connect to database.");
+        [dbmanager release];
         return;
     }
     
@@ -184,6 +185,7 @@
     
     if(rs == nil){
         NSLog(@"Error: result set is nil.");
+        [dbmanager release];
         return;
     }
     
@@ -196,6 +198,7 @@
     }
     
     [dbmanager.db close];
+    [dbmanager release];
 }
 
 -(void) reloadFiles{

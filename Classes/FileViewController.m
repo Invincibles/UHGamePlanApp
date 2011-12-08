@@ -166,17 +166,16 @@
      didUpdateToLocation: (CLLocation *) newLocation
             fromLocation: (CLLocation *) oldLocation
 {
-    NSLog(@"IN LOCATION");
-  
-    int degrees=newLocation.coordinate.latitude;
-    double decimal=fabs(newLocation.coordinate.latitude - degrees);
-    int minutes=decimal*60;
-    double seconds=decimal*3600 - minutes*60;
+
+    //int degrees=newLocation.coordinate.latitude;
+    //double decimal=fabs(newLocation.coordinate.latitude - degrees);
+    //int minutes=decimal*60;
+    //double seconds=decimal*3600 - minutes*60;
     //NSString *lat = [NSString stringWithFormat:@"%d %d %1.4f",degrees,minutes,seconds];degrees=newLocation.coordinate.longitude;
     NSString *lat = [[NSString alloc] initWithFormat:@"%g",newLocation.coordinate.latitude];
-    decimal=fabs(newLocation.coordinate.longitude - degrees);
-    minutes=decimal*60;
-    seconds=decimal*3600 - minutes*60;
+    //decimal=fabs(newLocation.coordinate.longitude - degrees);
+    //minutes=decimal*60;
+    //seconds=decimal*3600 - minutes*60;
     //NSString *lon = [NSString stringWithFormat:@"%d %d %1.4f",degrees,minutes,seconds];
     NSString *lon = [[NSString alloc] initWithFormat:@"%g",newLocation.coordinate.longitude];
     
@@ -199,8 +198,6 @@
     
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
-  
-    
     [manager stopUpdatingLocation];
     
     GeoTagScreenView* myView = [[GeoTagScreenView alloc] initWithNibName:@"GeoTagScreenView" bundle:[NSBundle mainBundle]];
@@ -219,10 +216,11 @@
         myView.myTextView.text=description;
     }
     
-    
-    
-    
-    
+    [lat release];
+    [lon release];
+    [query release];
+    [myView release];
+    [dbManager release];
 }
 
 

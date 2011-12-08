@@ -41,7 +41,9 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd" ];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
 
-    NSString *query = [[NSString alloc] initWithFormat:@"insert into contactTable (contactid, fid, taggedDate) values (%d, %d, '%@')",ABRecordGetRecordID(self.displayedPerson),self.delegate.currentFileID,dateString];
+    NSString *query = [NSString stringWithFormat:@"insert into contactTable (contactid, fid, taggedDate) values (%d, %d, '%@')",ABRecordGetRecordID(self.displayedPerson),self.delegate.currentFileID,dateString];
+    
+    [dateFormatter release];
     
     databaseManager *dbmanager = [[databaseManager alloc] init];
     [dbmanager updateNames];
@@ -49,6 +51,7 @@
     if(![dbmanager.db open])
     {
         NSLog(@"Eror: Could not connect to database.");
+        [dbmanager release];
         [self dismissModalViewControllerAnimated:YES];
         return;
     }
@@ -57,11 +60,10 @@
         NSLog(@"Error: Inserting failed please try again.");
     }
     [dbmanager.db close];
+    [dbmanager release];
     
     NSLog(@"query - %@",query);
-    
-    [query release];
-    [dateFormatter release];
+
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate loadContactsList];
 }
