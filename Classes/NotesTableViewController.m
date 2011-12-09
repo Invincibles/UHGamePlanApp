@@ -5,12 +5,12 @@
 //  Created by Kowshik Gurram on 11/5/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+
 #import "FileViewController.h"
 #import "NotesTableViewController.h"
 #import "addTextFile.h"
 #import "databaseManager.h"
 #import "CustomCell.h"
-//#include "DescriptionViewController.h"
 #include "DescriptionVC.h"
 #import "AppDelegate.h"
 
@@ -35,6 +35,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+//this function calls addNotes ontoller to fix the bug, once akn         d
 -(void)addNote
 {
     addTextFile *addText = [[addTextFile alloc] initWithNibName:@"addTextFile" bundle:[NSBundle mainBundle]];
@@ -45,8 +46,6 @@
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
     [addText release];
-    
-    //[self loadAnnoataions];
 }
 
 -(void)cancelNote  /// this function is used to cancel the note
@@ -57,7 +56,7 @@
 
 -(void) loadAnnoataions         // this function is usd to store the anotations present in the database to the array
 {
-    [arrayOfNotes removeAllObjects];
+    [arrayOfNotes removeAllObjects]; //we start with an empty array
     
     NSString* cellDescription;
     NSString* date;
@@ -96,7 +95,6 @@
         cellanotation=[rs intForColumn:@"annotationid"];
         NSString *string = [NSString stringWithFormat:@"%d", cellanotation];
         [arrayOfNotes addObject:string];
-        
         cellDescription=[rs stringForColumn:@"description"];
         [arrayOfNotes addObject:cellDescription];
         date=[rs stringForColumn:@"annotationdate"];
@@ -143,7 +141,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView                          // code for deleting the row
+- (void)tableView:(UITableView *)tableView // code for deleting the row
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -172,6 +170,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [dbManager release];
         [query release];
         
+        //we reload the notes again to get the updated list
         [self loadAnnoataions];
         
     }
@@ -251,54 +250,15 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-        if(arrayOfNotes.count!=0)
-        {
+    if(arrayOfNotes.count!=0)
+    {
     cell.secondaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 1)];
     cell.primaryLabel.text=[arrayOfNotes objectAtIndex:(indexPath.row * 3 + 2)] ;
-        }
+    }
     
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

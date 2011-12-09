@@ -32,10 +32,10 @@
 }
 
 #pragma mark - View lifecycle
+
+//this function will add new note to database
 -(void)addNote
 {
-    
-    
     databaseManager *dbManager=[[databaseManager alloc] init];
     [dbManager updateNames];
     dbManager.db = [FMDatabase databaseWithPath:dbManager.databasePath];
@@ -51,11 +51,13 @@
     description=textview.text;
     int fileid=self.delegate.fileVC.fileID;
     NSDate *openedDate=self.delegate.fileVC.openedDate;
+    //inserting to anotationTable
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"insert into anotationTable (fid,description,annotationdate) values (%d,'%@','%@')",fileid,description,now]];
-    
+    //we also update the record in the history table
     NSString* query1 = [[NSString alloc] initWithString:[NSString stringWithFormat:@"UPDATE filehistory SET description='%@' WHERE fid='%d' and openeddate='%@'",description,fileid,openedDate]];
     BOOL suc = [dbManager.db executeUpdate:query];
     BOOL suc1 = [dbManager.db executeUpdate:query1];
+    //checking if botht the queries are successful
     if(suc && suc1)
         NSLog(@"insert is successful.");
     else
@@ -78,7 +80,6 @@
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     description=textView.text;
-    
 }
 
 - (void)viewDidLoad

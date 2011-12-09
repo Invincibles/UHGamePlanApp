@@ -6,6 +6,12 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This view controller is used to share the current file via bluetooth.
+ We use the GKSendDataReliable mode to transfer data.
+ There is a limitation(64kb) on the size of packet that we can transfer at a time.
+ */
+
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
 
@@ -19,10 +25,10 @@
     UILabel *textLabel;
     UIProgressView *progressBar;
     
-    NSString* transferedfile;
-    NSInteger _numberOfChunks;
-    NSInteger _currentChunkId;
-    NSMutableData *_receivedDataChunks;
+    NSString* transferedfile; //this is the name of the file being transfered / recieved
+    NSInteger _numberOfChunks; //this is the number of chunks we are receiving
+    NSInteger _currentChunkId; //this stores the current chunk that is being received
+    NSMutableData *_receivedDataChunks; //this stores all the data recieved in the transfer
     BOOL receiveFile;
     IBOutlet UIButton *connectBtn;
 }

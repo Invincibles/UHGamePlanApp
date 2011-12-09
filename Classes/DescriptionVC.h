@@ -6,11 +6,15 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This view controller is used to view the note and make changes to it.
+ */
+
 #import <UIKit/UIKit.h>
 @class NotesTableViewController;
 @interface DescriptionVC : UIViewController
 {
-    NSString* descriptionText;
+    NSString* descriptionText; //contains the description string
     UINavigationController* myNav;
     UITextView *textView;
     NSString *description;

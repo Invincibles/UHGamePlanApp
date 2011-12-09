@@ -34,7 +34,6 @@
 @property (nonatomic) int isSharedFilePortrait;
 
 -(void) loadFolderList;
-- (IBAction)fileDownlaod:(id)sender;
 - (IBAction)downloadAction:(id)sender;
 - (IBAction)newFolderAction:(id)sender;
 

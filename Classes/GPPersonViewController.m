@@ -25,9 +25,11 @@
     return self;
 }
 
+
+//this function is called when you tag a contact to file
 -(void) addToFile:(id)sender
 {
-    //this the place for inserting into database
+    //we are checking if the contact is already tagged to the file
     for(NSNumber* cid in self.delegate.contactIDList){
         if([cid intValue] == (int)ABRecordGetRecordID(self.displayedPerson)){
             //contact is already added to the list
@@ -38,9 +40,10 @@
     }
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd" ];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd" ];//get today date
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
 
+    //inseting the contact to database
     NSString *query = [NSString stringWithFormat:@"insert into contactTable (contactid, fid, taggedDate) values (%d, %d, '%@')",ABRecordGetRecordID(self.displayedPerson),self.delegate.currentFileID,dateString];
     
     [dateFormatter release];
@@ -63,14 +66,17 @@
     [dbmanager release];
     
     NSLog(@"query - %@",query);
-
+    //dismiss the control once the tagging is done
     [self dismissModalViewControllerAnimated:YES];
+    //reload the contacts list because we made changes to the list
     [self.delegate loadContactsList];
 }
 
 -(void) viewDidLoad{
     [super viewDidLoad];
+    //creating a button
     UIBarButtonItem* afBtn = [[UIBarButtonItem alloc] initWithTitle:@"Tag To File" style:UIBarButtonItemStylePlain target:self action:@selector(addToFile:)];
+    //adding it to navigation bar
     self.navigationItem.rightBarButtonItem = afBtn;
     NSLog(@"coming to view did load...");
 }

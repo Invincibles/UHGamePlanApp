@@ -200,6 +200,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd" ];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
 
+    //inserting into the database
     NSString* query = [NSString stringWithFormat:@"insert into filesystem (filename,isfolder,foldername,creationdate) values ('%@',0,'%@','%@')",[filesList objectAtIndex:indexPath.row],delegate.foldername,dateString];
     
     [dateFormatter release];
@@ -211,7 +212,7 @@
     
     [dbmanager.db close];
     [dbmanager release];
-    //NSLog(@"added %@ to folder %@",[filesList objectAtIndex:indexPath.row],delegate.foldername);
+    
     [delegate reloadfileslist];
     [self dismissModalViewControllerAnimated:YES];
 }

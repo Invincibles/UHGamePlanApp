@@ -24,12 +24,15 @@
     if (self) {
         // Custom initialization
         myNav = [[UINavigationController alloc] initWithRootViewController:self];
+        //setting the navigation bar tint color
         myNav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
         
+        //setting the left button to navigation bar
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
         self.navigationItem.leftBarButtonItem = cancelButton;
         [cancelButton release];
         
+        //setting the right button to navigation bar
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addAction:)];
         self.navigationItem.rightBarButtonItem = addButton;
         [addButton release];
@@ -78,9 +81,14 @@
     [self.tableView reloadData];
 }
 
+/*
+ called when cancel button is pressed
+ */
 -(void) cancelAction:(id)sender
 {
+    //before we dismiss the controller we reload the shared files view (i.e., files rack)
     [delegate reloadFiles];
+    //we dismiss the viewcontroller
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -114,9 +122,9 @@
  
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
     
+    //we set the title of the detailed view to foldername
     self.title = foldername;
-    
-    
+    //we read the list of files in the given folder
     [self reloadfileslist];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -138,7 +146,7 @@
     }
 }
 
-//this function is called when you want to delete a file from folder
+//this function is called when you want to delete a file from folder, delete appears when we swipe on a row
 - (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -170,10 +178,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [query release];
         [dbManager.db close];
         [dbManager release];
-        
+        //once the file is delete we should reload the list of files
         [self reloadfileslist]; 
-   
-        
     }
 }
 

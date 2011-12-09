@@ -17,7 +17,7 @@
 @interface GPFilePicker : UITableViewController
 {
     UINavigationController* myNavigator;
-    NSMutableArray* filesList;
+    NSMutableArray* filesList; //this contains the list of files available in the application
     MyFileViewController* delegate;
 }
 

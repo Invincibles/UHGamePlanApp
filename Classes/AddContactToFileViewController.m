@@ -27,7 +27,9 @@
     NSLog(@"this is my change");
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    //changing the tint color
     picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    
     picker.peoplePickerDelegate = self;
     picker.modalPresentationStyle = UIModalPresentationFormSheet;
     
@@ -48,13 +50,15 @@
         
         contactIDList = [[NSMutableArray alloc] initWithCapacity:1];
         
-        // Custom initialization
+        //initializing the addressbook object
         addressBook = ABAddressBookCreate();
         mynav = [[UINavigationController alloc] initWithRootViewController:self];
         mynav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
         
+        //left bar button item
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEventAction:)];
         
+        //right bar button item
         UIBarButtonItem *selectAContactBtn = [[UIBarButtonItem alloc] initWithTitle:@"Select Contact" style:UIBarButtonItemStylePlain target:self action:@selector(selectAContactAction:)];
         
         self.navigationItem.leftBarButtonItem = cancelButton;
@@ -83,7 +87,7 @@
     }
 }
 
-
+//this function is called when you delete a tagged contact, swipe on any cell delete button appears
 - (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,6 +95,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger rownumber = [indexPath row];
     NSUInteger count = [contactIDList count];
     
+    //checking if the swip operation is on the currect table cell
     if (rownumber < count) {
         
         databaseManager *dbManager=[[databaseManager alloc] init];
@@ -105,6 +110,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         else{
             NSLog(@"database is open.");
         }
+        //delete contact from database
         NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"delete from contactTable where contactid=%d",[[contactIDList objectAtIndex:rownumber] intValue]]];
         NSLog(@"%@", query);
         BOOL suc = [dbManager.db executeUpdate:query];
@@ -128,6 +134,8 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
+
+//this function is used to read contact ids of contacts already tagged to this file
 -(void) loadContactsList
 {
     //remove exisiting contacts
@@ -155,6 +163,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 
     while([rs next]){
+        //storing them to the array
         [contactIDList addObject:[[NSNumber alloc] initWithInt:[rs intForColumn:@"contactid"]]];
     }
     

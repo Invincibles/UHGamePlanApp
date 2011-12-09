@@ -6,15 +6,19 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This view controller is used to display all the contacts that are tagged to the file. When you click on the contact you can view the details of that contact, you can delete the tagged contact and tag new contact to the file.
+ */
+
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
 @interface AddContactToFileViewController : UITableViewController <ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate> {
-    ABAddressBookRef addressBook;
+    ABAddressBookRef addressBook; //it is a reference to address book on ipad, we can get the contacts from this object
     UINavigationController *mynav;
-    NSMutableArray *contactIDList;
-    int currentFileID;
+    NSMutableArray *contactIDList; //it contains the list of contact ids that are already tagged to the file
+    int currentFileID; //it contains the current file id
 }
 
 @property (nonatomic) ABAddressBookRef addressBook;

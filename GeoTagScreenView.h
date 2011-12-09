@@ -6,6 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ This view controller is used to tag a file opened in the current location.
+ It displays the latitude and longitude of the current location, user should give a description to it so that he can easy remember it.
+ */
+
 #import <UIKit/UIKit.h>
 
 @class FileViewController;

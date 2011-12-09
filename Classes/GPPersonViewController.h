@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ In this class we inherit the ABPersonViewController to customize it according to our requirement. We need a tag to file button instead of an edit button.
+ */
+
 #import <Foundation/Foundation.h>
 #import "AddressBook/AddressBook.h"
 #import "AddressBookUI/AddressBookUI.h"

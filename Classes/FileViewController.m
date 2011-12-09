@@ -66,33 +66,7 @@
 #pragma mark - View lifecycle
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [UIView animateWithDuration:duration animations:^{
-        
         ispotrait=UIDeviceOrientationIsPortrait(self.interfaceOrientation);
-        NSLog(@"rotated in detail");
-        NSLog(@"%d",ispotrait);
-        if(!ispotrait)
-        {
-//            [toolbar removeFromSuperview];
-//            UIToolbar *toolbar1;
-//            toolbar1 = [UIToolbar new];
-//            toolbar1.barStyle = UIBarStyleBlackTranslucent;
-//            [toolbar1 sizeToFit];
-//            toolbar1.frame = CGRectMake(0,955, 1100, 50);
-//            [self.view addSubview:toolbar1];
-//            UIBarButtonItem *button1= [[UIBarButtonItem alloc] 
-//                                       initWithTitle:@"Back" style:UIBarButtonItemStyleBordered 
-//                                       target:self action:@selector(gotoSplitView)];
-//            NSArray *items = [NSArray arrayWithObjects:  button1,  nil];
-//            [button1 release];
-//            [toolbar1 setItems:items animated:NO];
-//            self.toolbar.frame = CGRectMake(0,955, 1100, 50);
-        }
-        else{
-            
-            //[self.view addSubview: toolbar];
-            
-        }    
-
     }];
 
 }
@@ -114,38 +88,13 @@
 - (void)viewDidLoad
 {
     toolbar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-    NSLog(@"start of full");
-    
-
-  
-    
-    
-//    toolbar = [UIToolbar new];
-//	toolbar.barStyle = UIBarStyleBlackTranslucent;
-//	[toolbar sizeToFit];
-//    toolbar.frame = CGRectMake(0,0, 100, 100);
-//    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-//	
-//	[self.view addSubview:toolbar];
-    
-//	UIBarButtonItem *button1 = [[UIBarButtonItem alloc]
-//                                initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-//                                target:self action:@selector(action:)];
-//	UIBarButtonItem *button2= [[UIBarButtonItem alloc] 
-//                               initWithTitle:@"Back" style:UIBarButtonItemStyleBordered 
-//                               target:self action:@selector(gotoSplitView)];
-//	NSArray *items = [NSArray arrayWithObjects:  button1,  button2,  nil];
-//	[button1 release];
-//	[button2 release];
-//	[toolbar setItems:items animated:NO];
-    
     
     fileWebView.scalesPageToFit=YES;
     
-    NSLog(@"file name..%@",self.filename);
- 
+    //we get the file path from mainbundle
     NSString *urlAdd = [[NSBundle mainBundle] pathForResource:self.filename ofType: @"pdf"];
     
+    //if its not present in mainbundle, we check in the documents directory
     if(urlAdd == nil){
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -156,8 +105,6 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:ur]; 
     [fileWebView loadRequest:requestObj];
     
-    
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -167,16 +114,10 @@
             fromLocation: (CLLocation *) oldLocation
 {
 
-    //int degrees=newLocation.coordinate.latitude;
-    //double decimal=fabs(newLocation.coordinate.latitude - degrees);
-    //int minutes=decimal*60;
-    //double seconds=decimal*3600 - minutes*60;
-    //NSString *lat = [NSString stringWithFormat:@"%d %d %1.4f",degrees,minutes,seconds];degrees=newLocation.coordinate.longitude;
+    //reading the latitude value
     NSString *lat = [[NSString alloc] initWithFormat:@"%g",newLocation.coordinate.latitude];
-    //decimal=fabs(newLocation.coordinate.longitude - degrees);
-    //minutes=decimal*60;
-    //seconds=decimal*3600 - minutes*60;
-    //NSString *lon = [NSString stringWithFormat:@"%d %d %1.4f",degrees,minutes,seconds];
+
+    //reading the longitude value
     NSString *lon = [[NSString alloc] initWithFormat:@"%g",newLocation.coordinate.longitude];
     
     databaseManager *dbManager=[[databaseManager alloc] init];
@@ -191,10 +132,9 @@
         NSLog(@"database is open.");
     }
     
-    
+
+    //checking if the location is previously used
     NSString* query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select description from geotagTable where latitude='%@' and longitude='%@'",lat,lon]];
-    NSLog(@"%@", query);
-    //BOOL suc = [dbManager.db executeUpdate:query];
     
     FMResultSet *rs=[dbManager.db executeQuery:query];
     
@@ -206,9 +146,11 @@
     
     myView.navigator.modalPresentationStyle = UIModalPresentationFormSheet;
     
+    //we present the view controller with latitude, longitude and description 
     [self presentModalViewController:myView.navigator animated:YES];
     
 
+    //we are populating the values for latitude, longitude and description
     [myView.myLatitude setText:lat];
     [myView.myLongitude setText:lon];
     while([rs next]) {
@@ -242,14 +184,14 @@
 }
 
 - (IBAction)backButton:(id)sender {
+    //the view controller is dismissed when the back button is pressed
     sharedFiles.folderListView.isFileSelected = FALSE;
     [self dismissModalViewControllerAnimated:YES];
 }
 
 
 - (IBAction)calendarAction:(id)sender {
-    
-    
+    //ViewFileEventsController is used to display all the events tagged to the file
     ViewFileEventsController *viewFileEventVC=[[ViewFileEventsController alloc] initWithNibName:@"ViewFileEventsController"bundle:[NSBundle mainBundle]];
     viewFileEventVC.fileVC=self;
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:viewFileEventVC];
@@ -260,6 +202,7 @@
 }
 
 - (IBAction)geoTagAction:(id)sender {
+    //when we press the geotag button we start reading the latitude and longitude values
     lManager = [[CLLocationManager alloc] init];
     lManager.delegate=self;
     lManager.distanceFilter=kCLHeadingFilterNone;
@@ -268,7 +211,9 @@
 }
 
 - (IBAction)shareFileAction:(id)sender {
+    //BluetoothViewController is used to share the current file with other game plan users via bluetooth
     BluetoothViewController *bluetoothVC = [[BluetoothViewController alloc] initWithNibName:@"BluetoothViewController" bundle:[NSBundle mainBundle]];
+    //we are setting the file we want to transfer
     bluetoothVC.transferedfile = [NSString stringWithFormat:@"%@.pdf",filename];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:bluetoothVC];
     
@@ -280,6 +225,7 @@
 
 - (IBAction)noteAction:(id)sender {
     
+    //NotesTableViewController is used to display all the notes added to the file with the latest one first
     NotesTableViewController *notestableview=[[NotesTableViewController alloc] initWithNibName:@"NotesTableViewController"bundle:[NSBundle mainBundle]];
     notestableview.fileVC=self;
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:notestableview];
@@ -291,6 +237,7 @@
 
 - (IBAction)historyAction:(id)sender {
     
+    //FileHistoryTableViewContoller is used to display when a file is opened and where it it tagged. The latest one appears first
     FileHistoryTableViewController *filehistory=[[FileHistoryTableViewController alloc] initWithNibName:@"FileHistoryTableViewController"bundle:[NSBundle mainBundle]];
     filehistory.fileVC=self;
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:filehistory];
@@ -302,6 +249,7 @@
 
 - (IBAction)contactAction:(id)sender {
     
+    //AddContactToFileViewController displays list of all contacts present in the ipad, we can select one from them and tag it to file
     AddContactToFileViewController* myContacts = [[AddContactToFileViewController alloc] init];
     NSLog(@"this is being set. %d", self.fileID);
     myContacts.currentFileID = self.fileID;

@@ -27,7 +27,7 @@
         // Custom initialization
         navigator = [[UINavigationController alloc] initWithRootViewController:self];
         navigator.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
-        
+        //setting the right button
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
         self.navigationItem.rightBarButtonItem = cancelButton;
         [cancelButton release];
@@ -85,11 +85,13 @@
     NSString *filename = filenamefield.text;
     NSString *urlString = urlfield.text;
     
+    //checking if the filename is empty
     if([filename isEqualToString:@""]){
         errorMsg.text = [NSString stringWithFormat:@"%@\nfile name cannot be empty.",errorMsg.text];
         return;
     }
     
+    //checking the url to download file is empty
     if([urlString isEqualToString:@""] || [urlString isEqualToString:@"http://"]){
         errorMsg.text = [NSString stringWithFormat:@"%@\nurl cannot be empty.",errorMsg.text];
         return;
@@ -99,6 +101,7 @@
     start = [filename rangeOfString:@"."];
     NSString *extention = [filename substringFromIndex:start.location+1];
     
+    //checking if the file has extention or not
     if(start.location == NSNotFound){
         errorMsg.text = [NSString stringWithFormat:@"%@\nFile should contain an extention.",errorMsg.text];
         return;
@@ -108,31 +111,36 @@
         return;
     }
     
+    //checking if there are no errors
     if([errorMsg.text isEqualToString:@""]){
 
+        //get the path to new file from documents folder
         NSFileManager *filemgr = [NSFileManager defaultManager];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString* filePath = [NSString stringWithFormat:@"%@/%@",documentsDirectory,filename];
-        
+        //if the file already exisits then we do not over write it but request for another name
         if([filemgr fileExistsAtPath:filePath]){
             errorMsg.text = @"File with the given name already exists. Please give another name.";
             return;
         }
         
+        //reading the data from the given url
         NSData *filedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         
+        //if the file data is null then we display the appropriate error message
         if(filedata == NULL){
-            NSLog(@"file data is null.");
+            errorMsg.text = @"file data is null.";
+            return;
         }
         else{
             NSLog(@"file data is not null.");
         }
         
+        //writing data to file
         bool suc = [filedata writeToFile:filePath atomically:YES];
         
-        if(suc){
-            [self dismissModalViewControllerAnimated:YES];
+        if(suc){ //if writing to file is successful
             
             //after downloading the file, we add it to the list of files available in the app
             databaseManager* dbmanager = [[databaseManager alloc] init];
@@ -143,10 +151,9 @@
                 [dbmanager release];
                 return;
             }
-            
+            //inserting the file into the filelist table
             NSString* query = [NSString stringWithFormat:@"insert into filelist (filename) values ('%@')",filename];
-            NSLog(@"query string : %@",query);
-            
+           
             bool suc = [dbmanager.db executeUpdate:query];
             
             if(suc)
@@ -156,6 +163,7 @@
             
             [dbmanager.db close];
             [dbmanager release];
+            [self dismissModalViewControllerAnimated:YES];
         }
         else{
             errorMsg.text = @"Writing to file failed. Please try again.";

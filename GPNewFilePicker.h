@@ -14,9 +14,9 @@
 #import <UIKit/UIKit.h>
 
 @interface GPNewFilePicker : UIViewController {
-    UITextField *filenamefield;
-    UITextField *urlfield;
-    UITextView *errorMsg;
+    UITextField *filenamefield; //textfield to read the filename
+    UITextField *urlfield; //textfield to read the url
+    UITextView *errorMsg; //label to display the error message
     UINavigationController *navigator;
 }
 

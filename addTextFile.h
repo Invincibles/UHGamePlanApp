@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ addTextFile is used to add new notes to the file
+ */
+
 #import <UIKit/UIKit.h>
 
 
