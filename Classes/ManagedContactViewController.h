@@ -8,7 +8,7 @@
 
 /*
  This UIViewController appears when a user clicks contacts in the root view.
- It makes use of built in delegates ABPeoplePickerNavigationControllerDelegate to handle editing an exisiting contact,
+ It makes use of built in delegates ABPeoplePickerNavigationControllerDelegate to display list of all contacts,
  ABNewPersonViewControllerDelegate to handle adding a new contact,
  ABPersonViewControllerDelegate to handle viewing a contact
  */

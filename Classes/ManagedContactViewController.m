@@ -69,35 +69,44 @@
 //this function handles the new contact functionality
 - (IBAction)addNewContact:(id)sender {
     
+    //ABNewPersonViewController displays the screen to read a new contact
     ABNewPersonViewController *picker = [[ABNewPersonViewController alloc] init];
     picker.newPersonViewDelegate = self;
     
+    //creating a naviation controller to present the view controller
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:picker];
+    //setting the navigation bar to requried color
     navigation.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    //defining style for presenting it
     navigation.modalPresentationStyle=UIModalPresentationFormSheet;
-    
+    //presenting the view controller
     [self presentModalViewController:navigation animated:YES];
     [picker release];
     [navigation release];
+    [picker release];
 }
 
+//this method is called when cancel button is pressed
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonViewController didCompleteWithNewPerson:(ABRecordRef)person
 {
+    //we are dismissing the controller here
     [self dismissModalViewControllerAnimated:YES];
 }
 
 //this function handles the view contact functionality
 - (IBAction)viewContact:(id)sender {
     
-    self.setEdit = FALSE;
+    self.setEdit = FALSE; //in order to get the mode to view we should have setEdit to false
     
+    //ABPeoplePickerNavigationController displays list of all contacts
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    //we sent the color of navigation bar here
     picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     picker.peoplePickerDelegate = self;
     picker.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [picker setEditing:YES animated:YES];
-    
+    //presenting the picker here
     [self presentModalViewController:picker animated:YES];
     [picker release];
 }
@@ -105,8 +114,9 @@
 //this function handles the edit contact functionality
 - (IBAction)editContact:(id)sender {
     
-    self.setEdit = TRUE;
+    self.setEdit = TRUE; //in order to get the mode to edit we should have setEdit to true
     
+    //ABPeoplePickerNavigationController displays list of all contacts
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
     picker.peoplePickerDelegate = self;
@@ -116,24 +126,27 @@
     [picker release];
 }
 
+//comes here when we press cancel button
 - (void)peoplePickerNavigationControllerDidCancel:
 (ABPeoplePickerNavigationController *)peoplePicker {
+    //we dismiss the controller here
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)peoplePickerNavigationController:
 (ABPeoplePickerNavigationController *)peoplePicker
       shouldContinueAfterSelectingPerson:(ABRecordRef)person {
-    //comes here after selecting a function
+    //this method is common to both view and edit contact, this is called when we select a contact, if setEdit is true then edit button appear to the right top of the controller
     if(self.setEdit)
     {
-        NSString* name = (NSString*)ABRecordCopyCompositeName(person);
+        NSString* name = (NSString*)ABRecordCopyCompositeName(person); // we are reading the name of selected contact
         NSLog(@"Full Name : %@", name);    
         [name release];
-    
+        
+        //ABPersonViewController will show the details of the contact
         ABPersonViewController *controller = [[ABPersonViewController alloc] init];
         controller.displayedPerson = person;
-        controller.allowsEditing = TRUE;
+        controller.allowsEditing = TRUE; //inorder to have edit button
         controller.personViewDelegate = self;
         [peoplePicker pushViewController:controller animated:YES]; //pushing view controller on to peoplePicker
         [controller release];
