@@ -307,7 +307,14 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if(!isFileSelected) [fileView.manageFolderBtn setEnabled:NO];
+    if(!isFileSelected){
+        NSLog(@"orientation = %d",fileView.isLandscape);
+        if(fileView.isLandscape == 0){
+            //[fileView.manageFolderBtn setEnabled:NO];
+            [root loadHomePage];
+            fileView.isFolderViewPresent = FALSE;
+        }
+    }
         //[root loadHomePage];
 }
 

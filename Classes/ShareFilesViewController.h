@@ -34,6 +34,7 @@
     UIButton *manageFolderOutlet;
     int isLandscpae;
     FolderListViewController *folderListView;
+    BOOL isFolderViewPresent;
 }
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *manageFolderBtn;
 @property (nonatomic, retain) IBOutlet UIButton *manageFolderOutlet;
@@ -51,6 +52,7 @@
 @property (nonatomic) int isLandscape;
 
 @property (nonatomic, assign) FolderListViewController *folderListView;
+@property (nonatomic) BOOL isFolderViewPresent;
 
 - (IBAction)previousButton:(id)sender;
 - (IBAction)nextButton:(id)sender;

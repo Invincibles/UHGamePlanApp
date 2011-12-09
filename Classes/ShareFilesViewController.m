@@ -26,7 +26,7 @@
 @synthesize toolbar;
 @synthesize Button;
 @synthesize numberOfFiles;
-@synthesize foldername,arrayoffileicons,fileslist,isLandscape, folderListView;
+@synthesize foldername,arrayoffileicons,fileslist,isLandscape, folderListView, isFolderViewPresent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -220,8 +220,10 @@
     
     NSLog(@"RELOAD FILES : %@",self.foldername);
     [self.manageFolderBtn setEnabled:NO];
+    isFolderViewPresent = FALSE;
     if(!([foldername isEqualToString:@""] || ([foldername isEqualToString:@"(null)"]) || (foldername == NULL))){
         [self.manageFolderBtn setEnabled:YES];
+        isFolderViewPresent=TRUE;
         self.navigationBar.topItem.title = foldername;
         NSLog(@"-----> Folder Name : '%@'", foldername);
     }else{

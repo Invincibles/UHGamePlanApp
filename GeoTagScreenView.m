@@ -139,7 +139,8 @@
 {
     // Return YES for supported orientations
     //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+    return YES;
 }
 
 @end

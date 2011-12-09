@@ -87,11 +87,12 @@
     
     if([filename isEqualToString:@""]){
         errorMsg.text = [NSString stringWithFormat:@"%@\nfile name cannot be empty.",errorMsg.text];
+        return;
     }
     
     if([urlString isEqualToString:@""] || [urlString isEqualToString:@"http://"]){
         errorMsg.text = [NSString stringWithFormat:@"%@\nurl cannot be empty.",errorMsg.text];
-        
+        return;
     }
     
     NSRange start;
@@ -100,9 +101,11 @@
     
     if(start.location == NSNotFound){
         errorMsg.text = [NSString stringWithFormat:@"%@\nFile should contain an extention.",errorMsg.text];
+        return;
     }
     else if(!([extention isEqualToString:@"pdf"] || [extention isEqualToString:@"doc"] || [extention isEqualToString:@"doc"] || [extention isEqualToString:@"ppt"] || [extention isEqualToString:@"pptx"] || [extention isEqualToString:@"png"] || [extention isEqualToString:@"jpg"])){
         errorMsg.text = [NSString stringWithFormat:@"%@\nFile extention is not supported. (should be pdf, doc, docx, png, jpg, pptx or ppt)",errorMsg.text];
+        return;
     }
     
     if([errorMsg.text isEqualToString:@""]){

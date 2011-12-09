@@ -21,6 +21,9 @@
 -(void) aMethod:(id)sender
 {
     
+    if(!mydelegate.isFolderViewPresent)
+        return;
+    
     NSLog(@"%@ is clicked. fid - %d",fileNameLabel.text,fileid);
     
     // whenever a file is opened, we need to update the same in the history table
@@ -48,6 +51,7 @@
      
     [dbManager.db close];
     [dbManager release];
+    
     mydelegate.folderListView.isFileSelected = TRUE;
     FileViewController *fvc = [[FileViewController alloc] initWithNibName:@"FileViewController" bundle:[NSBundle mainBundle]];
     fvc.sharedFiles = mydelegate;
