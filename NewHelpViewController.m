@@ -87,7 +87,7 @@
     
     HelpFullScreenVC *fullScreenVC = [[HelpFullScreenVC alloc] initWithNibName:@"HelpFullScreenVC" bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullScreenVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.navigationBar.tintColor=[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     [self presentModalViewController:nav animated:YES];
     [nav release];
     [fullScreenVC release];

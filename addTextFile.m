@@ -84,13 +84,14 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
     self.title=@"Add Notes";
     self.navigationItem.rightBarButtonItem = doneButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNote)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     [doneButton release];
-    [super viewDidLoad];
+    [cancelButton release];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -141,11 +141,12 @@
     annotatedFilesTVC.longitude=longitude;
     
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:annotatedFilesTVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.navigationBar.tintColor=[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
    // pinView = annotatedFilesTVC.view;
     [self presentModalViewController:nav animated:YES];
     //[self.navigationController pushViewController:annotatedFilesTVC animated:YES];
+    [nav release];
     [annotatedFilesTVC release]; 
     
 }

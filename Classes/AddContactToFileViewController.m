@@ -28,7 +28,7 @@
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     //changing the tint color
-    picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    picker.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     
     picker.peoplePickerDelegate = self;
     picker.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -53,7 +53,7 @@
         //initializing the addressbook object
         addressBook = ABAddressBookCreate();
         mynav = [[UINavigationController alloc] initWithRootViewController:self];
-        mynav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+        mynav.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
         
         //left bar button item
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEventAction:)];
@@ -164,7 +164,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 
     while([rs next]){
         //storing them to the array
-        [contactIDList addObject:[[NSNumber alloc] initWithInt:[rs intForColumn:@"contactid"]]];
+        [contactIDList addObject:[[[NSNumber alloc] initWithInt:[rs intForColumn:@"contactid"]] autorelease]];
     }
     
     [dbmanager.db close];
@@ -270,7 +270,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     if(person1 != nil)
         name = (NSString*)ABRecordCopyCompositeName(person1);
     cell.textLabel.text = [NSString stringWithString:name];
-    cell.textLabel.textColor = [UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f];
+    cell.textLabel.textColor = [[UIColor colorWithRed:(154.0/255.0f) green:(176.0/255.0f) blue:(44.0/255.0f) alpha:1.0f] autorelease];
     
     return cell;
 }

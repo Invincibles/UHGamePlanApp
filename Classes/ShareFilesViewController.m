@@ -34,10 +34,10 @@
     if (self) {
         // Custom initialization
         [self reloadFiles];
-        self.arrayoffileicons = [[NSMutableArray alloc] initWithCapacity:1];
-        self.fileslist = [[NSMutableArray alloc] initWithCapacity:1];
-        self.manageFolderBtn.enabled = NO;
-        self.manageFolderOutlet.enabled = NO;
+        arrayoffileicons = [[NSMutableArray alloc] initWithCapacity:1];
+        fileslist = [[NSMutableArray alloc] initWithCapacity:1];
+        manageFolderBtn.enabled = NO;
+        manageFolderOutlet.enabled = NO;
     }
     return self;
 }

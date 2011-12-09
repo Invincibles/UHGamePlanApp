@@ -109,11 +109,12 @@
     calendar.dataSource = dataSource;
     
     mynav = [[UINavigationController alloc] initWithRootViewController:calendar];
-    mynav.navigationBar.tintColor =[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    mynav.navigationBar.tintColor =[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     mynav.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentModalViewController:mynav animated:YES];
-
+    
+    [mynav release];
 }
  
 

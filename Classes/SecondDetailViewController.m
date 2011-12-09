@@ -122,7 +122,7 @@
     //UIImageView* iconView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"help.png"]];
     //pinView.leftCalloutAccessoryView=iconView;
     //[iconView release];
-    return pinView;
+    return [pinView autorelease];
     
     
 }
@@ -135,11 +135,11 @@
     annotatedFilesTVC.longitude=longitude;
     annotatedFilesTVC.geoDescription= anotationDescription;
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:annotatedFilesTVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.navigationBar.tintColor=[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
     [annotatedFilesTVC release];
-    
+    [nav release];
 }
 
 #pragma mark -
@@ -173,7 +173,7 @@
 
     FullMapViewController *fullmapVC = [[FullMapViewController alloc] initWithNibName:@"FullMapViewController" bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:fullmapVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.navigationBar.tintColor=[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     [self presentModalViewController:nav animated:YES];
     [nav release];
     [fullmapVC release];

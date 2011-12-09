@@ -17,11 +17,11 @@
     self = [super init];
     if (self) {
         // Initialization code here.
-        self.fid = id;
-        self.filename = [[NSString alloc] initWithString:fn];
-        self.isfolder = isFolder;
-        self.foldername = [[NSString alloc] initWithString:folder];
-        self.creationdate = [[NSString alloc] initWithString:cdate];
+        fid = id;
+        filename = [[NSString alloc] initWithString:fn];
+        isfolder = isFolder;
+        foldername = [[NSString alloc] initWithString:folder];
+        creationdate = [[NSString alloc] initWithString:cdate];
     }
     return self;
 }

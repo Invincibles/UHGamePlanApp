@@ -65,7 +65,11 @@
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"done" style:UIBarButtonItemStylePlain target:self action:@selector(updateAction:)];
         self.navigationItem.rightBarButtonItem = doneButton;
         
+        [cancelButton release];
+        [doneButton release];
+        
         descriptionText = [[NSString alloc] init];
+        [myNav release];
     }
     return self;
 }

@@ -18,16 +18,16 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.textAlignment = UITextAlignmentLeft;
-        self.titleLabel.textColor = [UIColor yellowColor];
-        self.titleLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
+        titleLabel = [[UILabel alloc] init];
+        titleLabel.textAlignment = UITextAlignmentLeft;
+        titleLabel.textColor = [UIColor yellowColor];
+        titleLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"celltexture.png"]];
         
         //self.titleLabel.textColor = [UIColor greenColor];
-        self.titleLabel.textColor = [[UIColor alloc] initWithRed:154.0f/255.0f green:176.0f/255.0f blue:44.0f/255.0f alpha:1.0f];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:24];
+        titleLabel.textColor = [[[UIColor alloc] initWithRed:154.0f/255.0f green:176.0f/255.0f blue:44.0f/255.0f alpha:1.0f] autorelease];
+        titleLabel.font = [UIFont boldSystemFontOfSize:24];
         
-        self.iconImage = [[UIImageView alloc] init];
+        iconImage = [[UIImageView alloc] init];
         
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.iconImage];

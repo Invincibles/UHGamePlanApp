@@ -42,10 +42,11 @@
     addText.delegate = self;
     
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:addText];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.navigationBar.tintColor=[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:nav animated:YES];
     [addText release];
+    [nav release];
 }
 
 -(void)cancelNote  /// this function is used to cancel the note
@@ -266,7 +267,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     DescriptionVC* descriptionVC = [[DescriptionVC alloc] initWithNibName:@"DescriptionVC" bundle:[NSBundle mainBundle]];
     descriptionVC.delegate=self;
-    descriptionVC.myNav.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    descriptionVC.myNav.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     descriptionVC.myNav.modalPresentationStyle = UIModalPresentationFormSheet;
     descriptionVC.descriptionText = [arrayOfNotes objectAtIndex:((indexPath.row)*3+1)];
     descriptionVC.id = [[arrayOfNotes objectAtIndex:((indexPath.row)*3)] intValue];

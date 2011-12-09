@@ -76,7 +76,7 @@
     //creating a naviation controller to present the view controller
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:picker];
     //setting the navigation bar to requried color
-    navigation.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    navigation.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     //defining style for presenting it
     navigation.modalPresentationStyle=UIModalPresentationFormSheet;
     //presenting the view controller
@@ -101,7 +101,7 @@
     //ABPeoplePickerNavigationController displays list of all contacts
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     //we sent the color of navigation bar here
-    picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    picker.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     picker.peoplePickerDelegate = self;
     picker.modalPresentationStyle = UIModalPresentationFormSheet;
     
@@ -118,7 +118,7 @@
     
     //ABPeoplePickerNavigationController displays list of all contacts
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    picker.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     picker.peoplePickerDelegate = self;
     picker.modalPresentationStyle = UIModalPresentationFormSheet;
     

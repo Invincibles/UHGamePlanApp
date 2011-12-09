@@ -78,7 +78,7 @@
     UIBarButtonItem* afBtn = [[UIBarButtonItem alloc] initWithTitle:@"Tag To File" style:UIBarButtonItemStylePlain target:self action:@selector(addToFile:)];
     //adding it to navigation bar
     self.navigationItem.rightBarButtonItem = afBtn;
-    NSLog(@"coming to view did load...");
+    [afBtn release];
 }
 
 -(void) dealloc{

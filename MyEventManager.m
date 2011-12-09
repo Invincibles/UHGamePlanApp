@@ -21,7 +21,7 @@
     if (self) {
         // Custom initialization
         myNavigationController = [[UINavigationController alloc] initWithRootViewController:self];
-        myNavigationController.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+        myNavigationController.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
         
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEventAction:)];
         self.navigationItem.leftBarButtonItem = cancelButton;
@@ -63,7 +63,7 @@
     
     EKEvent *myEvent = [[EKEvent alloc] init];
     
-    return myEvent;
+    return [myEvent autorelease];
 }
 
 
@@ -77,12 +77,12 @@
     self.title = @"Events List";
 	
 	// Initialize an event store object with the init method. Initilize the array for events.
-	self.eventStore = [[EKEventStore alloc] init];
+	eventStore = [[EKEventStore alloc] init];
     
-	self.eventsList = [[NSMutableArray alloc] initWithArray:0];
+	eventsList = [[NSMutableArray alloc] initWithArray:0];
 	
 	// Get the default calendar from store.
-	self.defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
+	defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
     
     self.myNavigationController.delegate = self;
     
@@ -292,7 +292,7 @@
 	// set the addController's event store to the current event store.
 	addController.eventStore = self.eventStore;
 	
-    addController.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    addController.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     
 	// present EventsAddViewController as a modal view controller
     addController.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -306,7 +306,7 @@
 -(void) editEventAction:(id) sender{
     EKEventEditViewController *editController = [[EKEventEditViewController alloc]initWithNibName:nil bundle:nil];
     
-    editController.navigationBar.tintColor = [[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    editController.navigationBar.tintColor = [[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     
     [editController release];
 }

@@ -53,7 +53,7 @@
 -(EKEvent *)eventWithIdentifier:(NSString *)eventID{
     EKEvent *myEvent = [[EKEvent alloc] init];
     
-    return myEvent;
+    return [myEvent autorelease];
 }
 
 
@@ -75,16 +75,16 @@
     [selectEventButton release];
     
     // Initialize an event store object with the init method. Initilize the array for events.
-	self.eventStore = [[EKEventStore alloc] init];
+	eventStore = [[EKEventStore alloc] init];
     
-    self.fileEventStore = [[EKEventStore alloc] init];
+    fileEventStore = [[EKEventStore alloc] init];
     
-	self.eventsList = [[NSMutableArray alloc] initWithArray:0];
+	eventsList = [[NSMutableArray alloc] initWithArray:0];
     
-    self.fileEventsList = [[NSMutableArray alloc] initWithArray:0];
+    fileEventsList = [[NSMutableArray alloc] initWithArray:0];
 	
 	// Get the default calendar from store.
-	self.defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
+	defaultCalendar = [self.eventStore defaultCalendarForNewEvents];
     
     //self.myNavigationController.delegate = self;
     
@@ -336,7 +336,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.tableView reloadData];
     
-    return events;
+    return [events autorelease];
 }
 
 
@@ -348,11 +348,12 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)selectEventAction:(id)sender{
     AddEventToFileViewController *addEventVC=[[AddEventToFileViewController alloc] initWithNibName:@"AddEventToFileViewController"bundle:[NSBundle mainBundle]];
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:addEventVC];
-    nav.navigationBar.tintColor=[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f];
+    nav.navigationBar.tintColor=[[[UIColor alloc] initWithRed:(54.0f/255.0f) green:(23.0f/255.0f) blue:(89.0f/255.0f) alpha:1.0f] autorelease];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     addEventVC.delegate = self;
     [self presentModalViewController:nav animated:YES];
     [addEventVC release]; 
+    [nav release];
 }
 
 -(void) eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action{
